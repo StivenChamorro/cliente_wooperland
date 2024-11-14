@@ -1,0 +1,883 @@
+body{
+    height: auto  ;
+    width: auto;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+}
+main{
+    background-color:rgb(241, 199, 91);
+    width: 100%;
+    height: 90vh;
+    position: relative;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    transition: .5s ease all;
+}
+body.dark main{
+    background-color: #31312C;
+    color: aliceblue;
+}
+aside{
+    background-color: rgb(252, 192, 42);
+    position: absolute;
+    top: 20px;
+    right:0px;
+    width: 80%;
+    height: 85vh;
+    border-radius: 50px 0px 0px 50px;
+    overflow: hidden;
+    transition: .5s ease all;
+}
+body.dark aside{
+    background-color: #4E4E4B;
+}
+aside h2{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    margin: 30px;
+    top: -2%;
+    left: 5%;
+    font-size: 40px;
+    transition: .5s ease all;
+}
+aside hr{
+    position: relative;
+    width: 28%;
+    height: 2px;
+    background-color: black;
+    border: none;
+    left: -29%;
+    top: 8%;
+}
+aside .agregar{
+position: absolute;
+width: 133px;
+height: 45px;
+left: 45%;
+top: 5%;
+background-color: #EF476F;
+border: solid 1px black;
+border-radius: 100px;
+font-family: 'Happy Monkey', 'Happy Monkey' ;
+font-size: 12px;
+transition: .5s ease all;
+z-index: 2;
+}
+aside .agregar:hover{
+    background-color: #e7a305;
+    box-shadow: 0 2px 10px -2px black ;
+    border: solid 2px black;
+    border-radius: 10px;
+}
+body.dark .agregar{
+    color: aliceblue;
+    border: solid 1px white;
+}
+
+body.dark .agregar:hover{
+    background-color: #949494;
+    box-shadow: 0 2px 10px -2px rgb(180, 180, 180) ;
+    border: solid 2px white;
+}
+
+aside .eliminar{
+position: absolute;
+width: 133px;
+height: 45px;
+left: 65%;
+top: 5%;
+background-color: #EF476F;
+border-radius: 100px;
+border: solid 1px black;
+font-family: 'Happy Monkey', 'Happy Monkey' ;
+font-size: 12px;
+transition: .5s ease all;
+z-index: 2;
+}
+aside .eliminar:hover{
+    background-color: #e7a305;
+    border: solid 2px black;
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 10px;
+}
+body.dark .eliminar{
+    color: aliceblue;
+    border: solid 2px white;
+
+}
+body.dark .eliminar:hover{
+    background-color: #949494;
+    box-shadow: 0 2px 10px -2px rgb(180, 180, 180) ;
+    border: solid 2px white;
+}
+
+body.dark aside hr{
+    background-color: aliceblue;
+}
+.decoracion{
+    background-color:rgb(241, 199, 91);
+    position: absolute;
+    width: 45%;
+    height: 70%;
+    border-radius: 100%;
+    right: -10%;
+    top:-15%;
+    transition: .5s ease all;
+    z-index: 1;
+}
+.switch{
+    background-color: gray ;
+    border-radius: 100px;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    width: 85px;
+    height: 40px;
+    left: 84%;
+    top: 0%;
+    background: #31312C;
+    z-index: 4;
+}
+.switch::after{
+    content: "";
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: rgb(245, 197, 75);
+    top: 2px;
+    left: 2px;
+    right: unset;
+    border-radius: 100px;
+    transition: .5s ease all;
+    z-index: 5;
+}
+.switch.active{
+    background-color: rgb(245, 197, 75);
+    transition: .5s ease all;
+}
+.switch.active::after{
+    right: 2px ;
+    top: 2px;
+    left: unset;
+    background: #31312C;
+}
+span{
+    position: relative;
+    display: flex;
+    width: 45px;
+    height: 45px;
+    line-height: 30px;
+    display: block;
+    background: none;
+}
+span img{
+    position: relative;
+    margin: 0 auto;
+    width: 25px;
+    height: 25px;
+    top: 10px;
+}
+.vistas{
+    position: absolute;
+    width: 25%;
+    height: 110vh;
+}
+.vistas h3{
+    position: absolute;
+    height: 40px;
+    margin: 30px;
+    top: 150px;
+    left: 15%;
+    font-size: 24px;
+}
+#inputFoto{
+    display: none;
+    position: absolute;
+}
+#avatar{
+    position: absolute;
+    cursor: pointer;
+    width: 130px;
+    height: 130px;
+    left: 23%;
+    top: 30px;
+    z-index: 1;
+    border-radius: 100px;
+    border: 2px solid #4E4E4B;
+    box-shadow: 0 2px 10px -2px black ;
+}
+.camara{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    left: 42%;
+    top: 130px;
+    border: 1px solid black;
+    background-color: rgb(209, 43, 107);
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+.camara img{
+position: relative;
+width: 22px;
+height: 22px;
+z-index: 3;;
+}
+.menu{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 250px;
+    grid-template-rows: 70px 70px 70px 200px;
+    align-items: center;
+    justify-content: center;
+    top: 25vh;
+    left: 60px;
+    gap: 38px;
+}
+.item a{
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 50px 200px;
+    grid-template-rows: 50px;
+    left: 25px;
+    top: 0%;
+    }
+.img{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 7px;
+    background-color:#696969;
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 100%;
+}
+.item img{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 7px;
+    background-color:#696969;
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 100px;
+}
+.item p{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 42px;
+    font-size: 20px;
+    left: 10%;
+}
+#jugador.item img {
+    background-color: rgb(209, 43, 107);
+}
+body.dark .decoracion{
+    background-color: #31312C;
+}
+section{
+    position: absolute;
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    top: 15%;
+    width: 90%;
+    left: 100px;
+    height: 70vh;
+    z-index: 2;
+    background-color: #DFAA30 ;
+    border-radius: 50px;
+    transition: .5s ease all;
+    scrollbar-width: none;
+    overflow-y: auto;
+}
+body.dark section {
+    background-color: #2A2B2A ;
+}
+.agregados{
+    position: relative;
+    display: grid;
+    grid-template-columns: 250px 250px 250px 250px 250px;
+    grid-template-rows: 250px  250px 250px;
+    margin: 20px;
+    padding: 50px;
+    gap: 30px;
+    flex-direction: row;
+    top: 0%;
+    height: 60vh;
+    width: 90%;
+}
+.card{
+    position: relative;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: 3fr;
+    border-radius: 30px;
+    background-color: #FFCE5E;
+    width: 220px;
+    height: 220px;
+    top: 10%;
+    transition: .5s ease all;
+    z-index: 6;
+}
+.card h3{
+    position: relative;
+    top: 20px;
+}
+.card:hover{
+    box-shadow: 0 2px 10px -2px black ;
+    width: 250px;
+    height: 250px;
+}
+body.dark .card {
+    background-color: #31312C ;
+}
+body.dark .card:hover{
+    box-shadow: 0 2px 10px -2px rgb(110, 110, 110) ;
+    width: 250px;
+    height: 250px;
+}
+.card img{
+    position: relative;
+    width: 82px;
+    height: 82px;
+    top: 20px;
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 100px;
+    transition: .5s ease all;
+}
+.card:hover img{
+    width: 100px;
+    height: 100px;
+}
+body.dark .card img{
+    box-shadow: 0 2px 10px -2px rgb(110, 110, 110) ;
+}
+.card p{
+    position: relative;
+    background-color: #EF476F;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0px 0px 30px 30px;
+    top: 20%;
+}
+.agregara{
+    display: none;
+}
+.agregara.activo {
+    position: absolute;
+    display: block;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 50px;
+    width: 400px;
+    height: 670px;
+    background-color: #e7a305;
+    left: 20%;
+    z-index: 9;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px -2px rgb(110, 110, 110) ;
+    transition: .5s ease all;
+}
+.agregara.activo .back2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: none;
+    background-color: #FFCE5E;
+  }
+
+body.dark .agregara.activo{
+    background-color: #31312C;
+}
+.agregara.activo input {
+    position: relative;
+    background-color: aliceblue;
+    width: 200px;
+    padding: 10px;
+    height: 25px;
+    top: 80px;
+    border-radius: 20px;
+    border: #31312C;
+}
+.agregara.activo #inputImagen{
+    position: relative;
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    background-color: #EF476F;
+    border: 0px;
+    top: 100px;
+    padding: 0;
+}
+.agregara.activo #avatar{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    left: 37%;
+    top: 15%;
+    z-index: 1;
+    border-radius: 100px;
+}
+.agregara.activo #botonagregar{
+    position: relative;
+    top: 90px;
+    width: 150px;
+    height: 50px;
+    border-radius: 20px;
+    background-color: #EF476F;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    color: white;
+}
+.registro{
+    display: none;
+}
+body.ok .registro{
+    display: block;
+    position: absolute;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #FFCE5E;
+    width: 541px;
+    height: 570px;
+    border-radius: 50px;
+    gap: 40px;
+    box-shadow: 0 2px 10px -2px rgb(110, 110, 110) ;
+    z-index: 4;
+    top: 200px;
+    left: 300px;
+    padding: 30px;
+}
+.registro button{
+    font-family: 'Happy Monkey', 'Happy Monkey';
+width: 113px;
+height: 38px;
+border-radius: 50px;
+background-color: #EF476F;
+top: -30px;
+border: none;
+box-shadow: 0 2px 10px -2px rgb(110, 110, 110) ;
+}
+
+.details{
+    position: absolute;
+    cursor: pointer;
+    width: 400px;
+    height: 580px;
+    border-radius: 30px;
+    z-index: 5;
+    top: 20%;
+    padding: 30px;
+    left: 30%;
+    background-color: #FFCE5E;;
+}
+.nino{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: row;
+    cursor: pointer;
+    width: 340px;
+    height: 200px;
+    border-radius: 30px;
+    gap: 40px;
+    z-index: 5;
+    padding: 30px;
+    background-color: #e7a305;;
+}
+.details .img{
+    position: relative;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    background-color: #e7a305;
+}
+.details img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.grafico{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 340px;
+    height: 200px;
+    top: 20px;
+    padding: 30px;
+    gap: 20px;
+    background-color: #e7a305;
+    border-radius: 20px;
+}
+.grafico img{
+    border-radius: 0%;
+    width: 150px;
+    height: 150px;
+}
+.details button{
+    position: relative;
+    left: 27%;
+    top: 40px;
+}
+.card .icono-basura {
+    position: absolute;
+    width: 50px; /* Ajusta el tamaño del icono */
+    height: 50px;
+    left: 85%;
+    top: 85%;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el icono */
+}
+.card:hover .icono-basura {
+    width: 60px;
+    height: 60px;
+}
+.card input{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 85%;
+    top: 0%;
+}
+.btn-eliminar {
+    position: absolute;
+    background-color: #EF476F; /* Color de fondo */
+    color: black; /* Color de texto */
+    left: 80%;
+    width: 170px;
+    height: 45px;
+    border: solid 1px black;
+    border-radius: 100px;
+    cursor: pointer; /* Cambiar cursor al pasar */
+    font-family: 'Happy Monkey', 'Happy Monkey' ;
+    font-size: 12px;
+    transition: .5s ease all;/* Tamaño de fuente */
+    margin-top: 10px; /* Margen superior */
+}
+
+.btn-eliminar:hover {
+    background-color: #e7a305; /* Cambio de color al pasar el ratón */
+}
+
+@media  (max-width: 2000px){
+    .agregados{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 250px 250px;
+    }
+}
+
+
+@media  (max-width: 1440px){
+    .agregados{
+        grid-template-columns: 1fr 1fr 1fr ;
+        grid-template-rows: 250px  250px 250px;
+    }
+    .camara{
+        left: 50%;
+   }
+   .vistas h3{
+    top: 150px;
+    left: 13%;
+}
+    .menu{
+        left: 10%;
+        top: 230px;
+    }
+}
+
+@media  (max-width: 1250px){
+    aside hr{
+        left: -25%;
+        width: 350px;
+        z-index: 4;
+    }
+    aside h2{
+        font-size: 38px;
+        z-index: 4;
+    }
+    aside .eliminar{
+        left: 70%;
+        }
+    aside .agregar{
+            left: 50%;
+        }
+    .vistas img{
+        left: 20%;
+        width: 120px;
+        height: 120px;
+    }
+    .camara{
+        left: 50%;
+        width: 35px;
+        height: 35px;
+    }
+    .camara img{
+        left: 5%;
+        width: 20px;
+        height: 20px;
+    }
+    .agregados{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 250px  250px 250px 250px;
+    }
+    .menu img{
+        left: 0%;
+        width: 40px;
+        height: 40px;
+    }
+    .cerrar img {
+        top: -200px;
+     left: 12%;
+     width: 40px;
+     height: 40px;
+    }
+    .cerrar p{
+        display: none;
+    }
+}
+@media  (max-width: 1024px){
+    main{
+        height: 110vh;
+    }
+    aside{
+        height: 100vh;
+    }
+    aside h2{
+        z-index: 4;
+        left: 10%;
+        font-size: 35px;
+    }
+    aside hr{
+        top: 7%;
+        left: -18%;
+        width: 300px;
+        z-index: 4;
+    }
+    #avatar {
+        left: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    .vistas h3{
+        left: 5%;
+        top: 120px;
+        width: 100px;
+    }
+    .camara {
+        width: 30px;
+        height: 30px;
+        top: 110px;
+        left: 40%;
+    }
+    .camara img{
+        left: 5%;
+        width: 20px;
+        height: 20px;
+    }
+    .menu .item p{
+        display: none;
+    }
+    section{
+        top: 20%;
+        height: 78vh;
+    }
+    aside .eliminar{
+        top: 13%;
+        left: 70%;
+        }
+    aside .agregar{
+        top: 13%;
+            left: 35%;
+        }
+}
+
+@media  (max-width: 768px){
+    footer{
+     top: 110%;
+    }
+    aside h2{
+        z-index: 4;
+        left: 15%;
+        font-size: 35px;
+    }
+    aside hr{
+        left: -5%;
+        width: 300px;
+        z-index: 4;
+    }
+    .vistas img{
+        left: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    .vistas h3{
+        left: 5%;
+        top: 120px;
+        width: 100px;
+    }
+    #avatar {
+        left: 10%;
+        width: 100px;
+        height: 100px;
+    }
+    .camara {
+        width: 30px;
+        height: 30px;
+        top: 110px;
+        left: 45%;
+    }
+    .camara img{
+        left: 5%;
+        width: 20px;
+        height: 20px;
+    }
+    .agregados{
+        left: 15%;
+        margin-top: 50px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 250px  250px 250px 250px 250px;
+    }
+    .menu{
+        top: 230px;
+        left: 5%;
+    }
+    .menu img{
+        left: 0%;
+        width: 40px;
+        height: 40px;
+    }
+    .menu .item p{
+        display: none;
+    }
+    .cerrar img {
+        top: -200px;
+        left: 5%;
+        width: 40px;
+        height: 40px;
+       }
+       .cerrar p{
+           display: none;
+       }
+}
+@media(max-width: 425px){
+    main{
+        width: 100%;
+        height: 140vh;
+    }
+    section{
+        padding: 0px;
+        left: 20px;
+    }
+    .switch{
+        left: 75%;
+    }
+    .vistas{
+        width: 100%;
+        height: 25%;
+    }
+    #avatar{
+        left: 35%;
+        top: 20px;
+        width: 130px;
+        height: 130px;
+    }
+    .vistas .camara{
+        top: 120px;
+        left: 58%;
+        width: 40px;
+        height: 40px;
+    }
+    .camara img{
+        width: 25px;
+        height: 25px;
+    }
+    .vistas h3{
+        left: 27%;
+        top:140px ;
+        width: 140px;
+    }
+    .menu{
+        position: absolute;
+        display: grid;
+        grid-template-columns: 60px 60px 60px 70px;
+        grid-template-rows: 90px;
+        top: 23vh;
+        gap: 20px;
+    }
+    .item{
+        width: 60px;
+        height: 60px;
+        left: 0px;
+    }
+    .item a{
+        grid-template-columns: 60px;
+        grid-template-rows: 60px;
+    }
+    .item .img{
+        left: 0px;
+    }
+    aside{
+        width: 100%;
+        top: 27%;
+    }
+    aside h2{
+        left: 10px;
+    }
+    aside hr{
+        width: 250px;
+        left: -10%;
+        top: 6%;
+    }
+    .agregados{
+        padding: 20px;
+        left: 15px;
+    }
+    aside .eliminar{
+        top: 13%;
+        left: 60%;
+        }
+    aside .agregar{
+        top: 13%;
+            left: 7%;
+        }
+}
+
+

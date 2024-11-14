@@ -1,0 +1,393 @@
+/* CONTENIDO DEL BODY */
+body {
+    background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%);
+    font-family: 'Happy Monkey', cursive;
+}
+
+.contenedor_main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* CONTENIDO DEL MAIN */
+.descripcion_store {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.07em;
+    text-align: left;
+}
+
+.titulo_store .titulo {
+    font-size: 50px;
+    line-height: 1.2;
+    font-weight: 400;
+    color: #000000;
+    margin: 50px 0;
+    margin-left: 20px;
+}
+
+.text_descripcion_store {
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #000000;
+}
+
+.barra_6_main {
+    width: 1000px;
+    max-width: 500%;
+    margin: 2px auto;
+    border: 1px solid #000000;
+}
+
+.barra_5_main {
+    width: 1000px;
+    max-width: 500%;
+    margin-top: 100%;
+    margin: 2px auto;
+    border: 1px solid #000000;
+}
+
+.barra_4_main {
+    width: 550px;
+    margin: 20px;
+    border: 1px solid #000000;
+}
+
+.img_store_descripcion {
+    display: flex;
+    max-width: 340px;
+    margin: 200px auto;
+    margin-top: -32%;
+    margin-left: 55%;
+}
+
+.contenedor_tus_diamantes {
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.texto_tus-diamantes {
+    font-size: 25px;
+    line-height: 1.2;
+    letter-spacing: 0.07em;
+    margin-left: -80%;
+    margin-bottom: -70px;
+}
+
+.diamantes {
+    width: 200px;
+    height: 75px;
+    background: #B43654;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    margin: 20px;
+    margin-left: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto_diamantes_boton {
+    color: #FFFFFF;
+    line-height: 18px;
+    letter-spacing: 0.07em;
+    font-weight: 100;
+}
+
+/* CONTENEDOR DE IMAGENES QUE HAY EN LA TIENDA */
+.contenedor_imgs_store {
+    display: grid;
+    width: 100%;
+    max-width: 1000px;
+    margin: 40px auto;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.IMG_STORE {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.product_store {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.candado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 60px;
+    height: auto;
+}
+
+.costo_imagen,
+.Nombre_Imagen {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.costo_imagen {
+    bottom: 40px;
+    font-size: 25px;
+}
+
+.Nombre_Imagen {
+    bottom: 10px;
+    font-size: 22px;
+}
+
+/* ESTILOS MEJORADOS PARA LA TARJETA DE COMPRA DEL DRAGÓN */
+
+#modal_desplegado {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 1000;
+    display: none; 
+    position: fixed;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* box-shadow */
+}
+
+#modal_desplegado::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente negro */
+    z-index: -1; /* Para que esté detrás del modal */
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Justo debajo del z-index del modal */
+}
+
+.container_tarjeta {
+    display: flex;
+    max-width: 600px;
+    top: 300px;
+    left: 20%;
+    width: 100%;
+    margin: 60px;
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.img_dragon {
+    position: relative;
+    z-index: 1;
+}
+
+.img_dragon .sombreado,
+.img_dragon .tarjeta_comprar {
+    width: 100%;
+    height: auto;
+}
+
+.img_dragon .sombreado {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.titulo_anuncio_compra,
+.texto_anuncio_compra,
+.costo_anuncio_compra {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFFFFF;
+    text-align: center;
+    z-index: 3;
+    width: 80%;
+    font-family: 'Happy Monkey', sans-serif;
+}
+
+.titulo_anuncio_compra {
+    top: 5%;
+    left: 70%;
+    font-size: 20px;
+}
+
+.texto_anuncio_compra {
+    top: 25%;
+    left: 70%;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+    width: 30%;
+}
+
+.costo_anuncio_compra {
+    top: 75%;
+    left: 75%;
+    font-size: 24px;
+}
+
+.boton_comprar {
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FFD166;
+    z-index: 2;
+}
+
+#a_comprar {
+    position: relative;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size:x-large;
+    font-weight: 100;
+    top: -30%;
+}
+
+@media screen and (min-width: 468px) and (max-width: 780px) {
+
+    .contenedor_main .descripcion_store {
+        width: 80%;
+        top: 5%;
+        left: 10%;
+        font-size: 12px;
+    }
+
+    .titulo_store .titulo {
+        top: 100px;
+        left: 10%;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .contenedor_main .barra_4_main,
+    .contenedor_main .barra_5_main,
+    .contenedor_main .barra_6_main {
+        width: 80%;
+        left: 50%;
+    }
+
+    .contenedor_main .img_store_descripcion {
+        margin-top: 20%;
+        margin-left: 25%;
+        width: 60%;
+    }
+
+    .contenedor_main .contenedor_tus_diamantes {
+        width: 80%;
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    .contenedor_tus_diamantes .texto_tus-diamantes {
+        width: 90%;
+        margin-left: -20px;
+        margin: 1px;
+        font-size: 17px;
+    }
+
+    .contenedor_tus_diamantes .diamantes {
+        width: 60%;
+        margin: 50 auto;
+        margin-top: 10px;
+        margin-left: 70px;
+    }
+
+    .contenedor_imgs_store {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 30%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .IMG_STORE {
+        width: 100%;
+    }
+
+    .candado {
+        top: 10px;
+        right: 10px;
+        width: 60px;
+    }
+
+    .costo_imagen {
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20px;
+    }
+
+    .Nombre_Imagen {
+        bottom: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 18px;
+    }
+
+    .container_tarjeta {
+        top: auto;
+        margin-left: 10px;
+        width: 80%;
+        margin-top: 50px;
+    }
+
+    .img_dragon .sombreado,
+    .img_dragon .tarjeta_comprar {
+        width: 100%;
+        left: 0;
+    }
+
+    .container_tarjeta .titulo_anuncio_compra,
+    .container_tarjeta .texto_anuncio_compra {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    .container_tarjeta .costo_anuncio_compra{
+        left: 70%;
+        top: 60%;
+        transform: translateX(-50%);
+        width: 90%;
+    }
+
+    .container_tarjeta .boton_comprar {
+        left: 20%;
+        transform: translateX(-50%);
+        width: 34%;
+    }
+
+    .img_store_descripcion{
+        display: contents;
+    }    
+}

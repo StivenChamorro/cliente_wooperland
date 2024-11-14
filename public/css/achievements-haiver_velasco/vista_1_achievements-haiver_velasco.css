@@ -1,0 +1,443 @@
+body {
+    font-family: 'Happy Monkey', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor_principal{
+    position: relative;
+    width: 100%;
+    top: -20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* CONTENEDOR ESTILOS, EJEMPLO (Matematicas) */
+
+.container_info_matematicas {
+    position: relative;
+    margin: 0 auto;
+    width: 70%; 
+    height: 400px;
+    top: 20px;
+    left: 1%;
+    font-family: 'Happy Monkey', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.matematicas .titulo_matematicas {
+    position: absolute;
+    top: 40%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    font-family: 'Happy Monkey', sans-serif;
+    font-size: 36px;
+    color: #000000;
+    z-index: 10; 
+}
+
+.matematicas .img_matematicas {
+    width: 250px;
+    margin-top: -90px;
+    margin-left: -10%;
+    height: auto;
+    border-radius: 20px; 
+    object-fit: cover; 
+}
+
+.diamantes_jugador .diamantes, 
+.logros_completados .logros {
+    font-size: 20px;
+    font-weight: bold;
+    display: inline-flex;
+    margin-inline: 7px;
+}
+
+.diamantes_jugador {
+    position: relative;
+    width: 25%;
+    padding: 1%;
+    margin-top: 250px;
+    margin-left: -900px;
+    height: auto;
+    left: 17%;
+    display: inline;
+    font-size: 16px;
+}
+
+.logros_completados {
+    position: relative;
+    padding: 1%;
+    width: 200px;
+    right: 40%;
+    margin-top: 250px;
+    margin-left: 10%;
+    font-size: 17px;
+}
+
+/* CONTAINER DE LOS LOGROS */
+
+.container_logros {
+    position: relative;
+    top: 40px;
+    left: 15%;
+    width: 0px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    font-family: Happy Monkey;
+    padding-bottom: 6%;
+}
+
+.product-card {
+    border-radius: 10px;
+    width: 280px;
+    height: 230px;
+    text-align: center;
+    background-color: #DFAA30;
+}
+
+.product-card img {
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: auto;
+}
+
+.product-card .descripcion {
+    position: relative;
+    font-family: 'Happy Monkey';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+    color: #000000;
+    width: 270px;
+    top: 55px;
+    left: 4px;
+    text-align: left;
+}
+
+.product-card .logro {
+    font-family: Happy Monkey;
+    position: relative;
+    top: 10px;
+    right: -3%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.info .logro{
+    width: 120px;
+}
+
+.product-card .diamante_logro {
+    position: relative;
+    left: 50px;
+    top: -110px;
+    height: auto;
+    width: 6%;
+
+}
+
+.product-card .diamante_logro_wooper {
+    position: relative;
+    left: 80px;
+    top: -60px;
+    height: auto;
+    width: 6%;
+}
+
+.product-card .diamante_logro_franchesco {
+    position: relative;
+    left: 80px;
+    top: -60px;
+    height: auto;
+    width: 6%;
+}
+
+.product-card .candado_bloqueo {
+    position: relative;
+    top: -170px;
+    right: -10px;
+    width: 50px;
+    height: auto;
+}
+
+.product-card .logro_wooper {
+    position: absolute;
+    width: 130px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.product-card .logro_franchesco {
+    position: absolute;
+    width: 180px;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product-card .descripcion_wooper {
+    position: relative;
+    top: 35px;
+    left: 5px;
+    text-align: left;
+}
+
+.product-card .descripcion_franchesco {
+    position: relative;
+    top: 35px;
+    left: 5px;
+    text-align: left;
+}
+
+.product-card .numero_diamantes {
+    position: relative;
+    top: -49px;
+    left: 230px;
+    width: 15px;
+    font-size: 15px;
+}
+
+.product-card .numero_diamantes_wooper {
+    position: relative;
+    top: 6px;
+    left: 230px;
+    width: 15px;
+    font-size: 15px;
+}
+
+.product-card .numero_diamantes_franchesco {
+    position: relative;
+    top: 6px;
+    left: 230px;
+    width: 15px;
+    font-size: 15px;
+}
+
+/* DESPLEGABLE ELIGE TEMA */
+
+.matematicas .desplegable_tema {
+    position: absolute;
+    top: 55%;
+    left: 32%;
+    width: 20%;
+    z-index: 10;
+}
+
+.titulo_matematicas{
+    border: none;
+    cursor: pointer;
+    width: 35%;
+    height: auto;
+    padding: 7px;
+    border-radius: 10px 5px;
+}
+
+.matematicas .menu {
+    background-color: #FABD30;
+    width: 310px;
+    margin-top: 4%;
+    margin-left: -3.3%;
+    border-radius: 10px;
+    max-height: 0;
+    overflow:hidden;
+    transition: max-height 0.5s ease-out;
+}
+
+.menu.open-menu {
+    max-height: 1000px;
+}
+
+.menu .elige_tema {
+    position: relative;
+    left: 20px;
+    font-size: 22px;
+    font-style: normal;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.tema {
+    position: relative;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tema .img_tema {
+    width: 100px;
+    height: auto;
+}
+
+.tema .titulo_tema {
+    position: relative;
+    top: -20px;
+    left: 30px;
+    font-size: 20px;
+}
+
+.img_diamante_tema,
+.img_copa_tema {
+    position: relative;
+    top: 14px;
+    left: -113px;
+    width: 15px;
+    margin-left: 10px;
+    height: auto;
+
+}
+
+.numero_diamantes_tema,
+.numero_copas_tema {
+    position: relative;
+    top: 14px;
+    left: -113px;
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.numero_diamantes_tema {
+    margin-right: 20px;
+}
+
+
+@media screen and (max-width: 768px) and (min-width: 480px) {
+
+    .container_info_matematicas {
+        width: 90%;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .container_logros {
+        left: 0%;
+        top: 1px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .matematicas .img_matematicas {
+        width: 200px;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .diamantes_jugador,
+    .logros_completados {
+        position: static;
+        width: 100%;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .matematicas .desplegable_tema {
+        position: absolute;
+        width: 100%;
+        margin-top: -30px;
+        margin-left: -50px;
+    }
+
+    .matematicas .titulo_matematicas {
+        font-size: 20px;
+        left: 50%;
+        width: 40%;
+        height: 7%;
+        margin-top: 8%;
+        padding-top: 7px;
+        text-align: center;
+    }
+
+    .diamantes_jugador{
+        margin-bottom: -5%;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 480px) {
+
+    .container_logros {
+        left: 0;
+        width: 90%;
+        margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .product-card {
+        width: 100%;
+        height: auto;
+        padding-bottom: 10px;
+        position: relative;
+    }
+
+    .product-card img {
+        height: 80px;
+        object-fit: cover;
+    }
+
+    .product-card .descripcion,
+    .product-card .descripcion_wooper,
+    .product-card .descripcion_franchesco {
+        font-size: 12px;
+        line-height: 14px;
+        position: static;
+        width: 90%;
+        margin: 10px auto;
+        text-align: center;
+    }
+
+    .product-card .logro,
+    .product-card .logro_wooper {
+        font-size: 14px;
+        position: static;
+        width: 100%;
+        text-align:center;
+        margin-top: 5px;
+    }
+
+    .product-card .logro_franchesco, 
+    .diamante_logro_franchesco,
+    .descripcion_franchesco {
+        font-size: 14px;
+        position: static;
+        width: 70%;
+        text-align: center;
+        margin-top: 1;
+    }
+
+    .product-card .diamante_logro,
+    .product-card .diamante_logro_wooper,
+    .product-card .diamante_logro_franchesco {
+        width: 15px;
+        position: absolute;
+        top: 90px;
+        left: 160px;
+    }
+
+    .product-card .numero_diamantes,
+    .product-card .numero_diamantes_wooper,
+    .product-card .numero_diamantes_franchesco {
+        font-size: 12px;
+        position: absolute;
+        top: 83px;
+        left: 180px;
+    }
+
+    .product-card .candado_bloqueo {
+        width: 30px;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

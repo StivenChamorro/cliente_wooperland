@@ -1,0 +1,127 @@
+/* General Styles */
+body {
+    font-family: 'Happy Monkey', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%);
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10rem 0 10rem;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 20px;
+    margin-top: 24px;
+}
+
+.image-wrapper {
+    display: none;
+    /* margin-left: 8px;
+    margin-top: 35px; */
+}
+
+.terms-image {
+    height: 45rem;
+    border-radius: 12px 0 0 12px;
+}
+
+/* Términos y Condiciones */
+.terms-container {
+    background: linear-gradient(to bottom, #EF476F, #892940);
+    border-radius: 16px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.terms-title {
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.terms-content {
+    color: white;
+    font-size: 1.125rem;
+    overflow-y: auto;
+    max-height: 30rem;
+    padding: 16px;
+}
+
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    font-weight: bold;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.section-text {
+    font-size: 1rem;
+    margin-bottom: 16px;
+}
+
+/* Checkbox */
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.terms-checkbox {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.terms-label {
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* Botón Continuar */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.continue-button {
+    width: 100%;
+    padding: 15px 30px 15px 30px;
+    background-color: #FFD166;
+    color: black;
+    border-radius: 16px;
+    font-size: 1.2rem;
+    border: none;
+    font-family: 'happy monkey', cursive;
+    transition: transform 0.2s ease;
+}
+
+.continue-button:hover {
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Responsive Styles */
+@media (min-width: 1024px) {
+    .image-wrapper {
+        display: block;
+    }
+}

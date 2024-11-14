@@ -1,0 +1,185 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Happy Monkey', sans-serif;
+}
+
+.container1 {
+    position: relative;
+    width: 920px;
+    height: 500px;
+}
+
+.return-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.return-icon:hover {
+    transform: scale(1.1);
+}
+
+.contenedor {
+    width: 920px;
+    height: 500px;
+    position: relative;
+    background: url("/img/imagenes_game/fondo2.png");
+    object-fit: cover;
+    transition: background-color 1s linear;
+    overflow: hidden;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#startScreen {
+    color: #FFD166;
+    text-align: center;
+}
+
+#startScreen h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 48px;
+    margin-bottom: 40px;
+    text-shadow: 4px 4px 0px #000;
+}
+
+.start-button, .retry-button {
+    padding: 20px 40px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    background-color: #FFD166;
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.start-button:hover, .retry-button:hover {
+    transform: scale(1.1);
+    background-color: #FABD30;
+}
+
+.game-screen {
+    display: none;
+}
+
+.dino {
+    width: 84px;
+    height: 84px;
+    position: absolute;
+    bottom: 22px;
+    left: 42px;
+    z-index: 2;
+    background: url("/img/imagenes_game/ajolote3.png") repeat-x 0px 0px;
+    background-size: 336px 84px;
+    background-position-x: 0px;
+}
+
+.dino-corriendo {
+    animation: animarDino 0.25s steps(2) infinite;
+}
+
+.dino-estrellado {
+    background-position-x: -252px;
+}
+
+.suelo {
+    width: 200%;
+    height: 42px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: url("/img/imagenes_game/suelo.png") repeat-x 0px 0px;
+    background-size: 50% 42px;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #FFD166;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 30px;
+    z-index: 10;
+}
+
+.game-over {
+    display: none;
+    color: #FFD166;
+    text-align: center;
+}
+
+.game-over h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 48px;
+    margin-bottom: 30px;
+    text-shadow: 4px 4px 0px #000;
+}
+
+.final-score {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+@keyframes animarDino {
+    from {
+        background-position-x: -84px;
+    }
+    to {
+        background-position-x: -252px;
+    }
+}
+
+.cactus {
+    width: 46px;
+    height: 96px;
+    position: absolute;
+    bottom: 16px;
+    left: 600px;
+    z-index: 1;
+    background: url("/img/imagenes_game/bird.png") no-repeat;
+}
+
+.cactus2 {
+    width: 98px;
+    height: 66px;
+    background: url("/img/imagenes_game/perro.png") no-repeat;
+}
+
+.nube {
+    width: 92px;
+    height: 26px;
+    position: absolute;
+    z-index: 0;
+    background: url("/img/imagenes_game/nube.png") no-repeat;
+    background-size: 92px 26px;
+}

@@ -1,0 +1,756 @@
+body{
+    height: auto  ;
+    width: auto;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+}
+main{
+    background-color:rgb(241, 199, 91);
+    width:auto;
+    height: 90vh;
+    position: relative;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    transition: .5s ease all;
+}
+body.dark main{
+    background-color: #31312C;
+    color: aliceblue;
+}
+aside{
+    background-color: rgb(252, 192, 42);
+    position: absolute;
+    top: 20px;
+    right:0px;
+    width: 80%;
+    height: 85vh;
+    border-radius: 50px 0px 0px 50px;
+    overflow: hidden;
+    transition: .5s ease all;
+}
+body.dark aside{
+    background-color: #4E4E4B;
+}
+aside h2{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    margin: 30px;
+    top: -3%;
+    left: 5%;
+    font-size: 40px;
+    transition: .5s ease all;
+}
+aside hr{
+    position: relative;
+    width: 435px;
+    height: 2px;
+    background-color: black;
+    border: none;
+    left: -27%;
+    top: 7%;
+}
+body.dark aside hr{
+    background-color: aliceblue;
+}
+.decoracion{
+    background-color:rgb(241, 199, 91);
+    position: absolute;
+    width: 45%;
+    height: 70%;
+    border-radius: 100%;
+    right: -10%;
+    top:-15%;
+    transition: .5s ease all;
+    z-index: 1;
+}
+.switch{
+    background-color: gray  ;
+    border-radius: 100px;
+    border: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    width: 85px;
+    height: 40px;
+    left: 84%;
+    top: 0%;
+    background: #31312C;
+    z-index: 4;
+}
+.switch::after{
+    content: "";
+    display: block;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    background-color: rgb(245, 197, 75);
+    top: 2px;
+    left: 2px;
+    right: unset;
+    border-radius: 100px;
+    transition: .5s ease all;
+    z-index: 5;
+}
+.switch.active{
+    background-color: rgb(245, 197, 75);
+    transition: .5s ease all;
+}
+.switch.active::after{
+    right: 2px ;
+    top: 2px;
+    left: unset;
+    background: #31312C;
+}
+span{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    line-height: 30px;
+    display: block;
+    background: none;
+}
+span img{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    top: 10px;
+    margin: 0 auto;
+}
+.vistas{
+    position: absolute;
+    width: 25%;
+    height: 90vh;
+}
+.vistas h3{
+    position: relative;
+    height: 40px;
+    margin: 30px;
+    left: 15%;
+    top: 140px;
+    font-size: 24px;
+}
+#inputFoto{
+    display: none;
+    position: absolute;
+}
+#avatar{
+    position: absolute;
+    cursor: pointer;
+    width: 130px;
+    height: 130px;
+    left: 23%;
+    top: 30px;
+    z-index: 1;
+    border-radius: 100px;
+    border: 2px solid #4E4E4B;
+    box-shadow: 0 2px 10px -2px black ;
+}
+.camara{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content:  center;
+    width: 35px;
+    height: 35px;
+    padding: 6px;
+    left: 42%;
+    top: 130px;
+    border: 1px solid black;
+    background-color: rgb(209, 43, 107);
+    box-shadow: 0 2px 10px -2px black ;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 2;
+}
+.camara img{
+position: relative;
+width: 22px;
+height: 22px;
+z-index: 3;;
+}
+.menu{
+    position: absolute;
+    display: grid;
+    grid-template-columns: 250px;
+    grid-template-rows: 70px 70px 70px 200px;
+    align-items: center;
+    justify-content: center;
+    top: 25vh;
+    left: 60px;
+    gap: 38px;
+}
+.item a{
+    position: relative;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 50px 200px;
+    grid-template-rows: 50px;
+    left: 25px;
+    top: 0%;
+    }
+.img{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        padding: 7px;
+        background-color:#696969;
+        box-shadow: 0 2px 10px -2px black ;
+        border-radius: 100%;
+    }
+.item img{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+}
+.item p{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    height: 42px;
+    font-size: 20px;
+    left: 10%;
+}
+#perfil.item .img {
+    background-color: rgb(209, 43, 107);
+}
+body.dark .decoracion{
+    background-color: #31312C;
+}
+section{
+    position: relative;
+    width: 100%;
+    padding: 0px 80px 0px 80px;
+    height: 77vh;
+    overflow: auto;
+    scrollbar-width: none;
+}
+.perfil{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 90%;
+    height: auto;
+    gap: 70px;
+    margin: 10px;
+}
+.informacion.activo img{
+    display: block;
+    left: 75%;
+    top: -30px;
+}
+.informacion.activo {
+    grid-template-rows: 40px 100px 35px 35px 5px 5px 35px 35px 5px 5px 35px 35px 5px 5px 35px 35px 5px 5px 50px;
+}
+.informacion img{
+    display: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    top: -70%;
+    left: 440px;
+}
+.usuario{
+    position: relative;
+    left: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 80%;
+    height: 140px;
+}
+.usuario img{
+    display: block;
+    width: 120px;
+    height: 120px;
+    left: 0%;
+    top: 0%;
+}
+.informacion.activo .usuario img{
+    left: 0px;
+    top: 0;
+}
+.usuario h2{
+    top: -10px;
+    position: relative;
+    font-size: 25px;
+    width: 100%;
+    height: 50px;
+    left: 10px;
+}
+.informacion{
+    position: relative;
+    display: grid;
+    grid-template-rows: 40px 100px 35px 35px 5px 35px 35px 5px 35px 35px 5px 35px 35px 40px;
+    width: 90%;
+    height: 65vh;
+    border-radius: 40px;
+    background-color:rgb(224, 171, 36) ;
+    transition: .5s ease all;
+    padding: 40px;
+    margin: 0 auto;
+    scrollbar-width:none;
+    overflow-y: auto;
+}
+.informacion.activo{
+    box-shadow: 0 2px 10px -2px black ;
+}
+.informacion.activo input{
+    border: none;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    font-size: 16px;
+    background-color:rgb(224, 171, 36) ;
+    transition: .5s ease all;
+}
+body.dark .informacion{
+background-color: #2A2B2A;
+}
+body.dark .informacion button{
+    color: aliceblue;
+    }
+body.dark .informacion.activo input{
+        background-color: #2A2B2A;
+        color: wheat;
+    }
+.informacion h3{
+    position: relative;
+    font-size: 22px;
+    width: 260px;
+    margin: 0px auto;
+}
+.informacion p{
+    position: relative;
+    left: 10%;
+    font-size: 16px;
+    width: 70%;
+}
+.informacion h4{
+    position: relative;
+    left: 10% ;
+    font-size: 19px;
+    width: 70%;
+}
+.informacion hr{
+    position: relative;
+    width: 70%;
+    height: 1px;
+    background-color: black;
+    border: none;
+    left: -5%;
+    top: 0%;
+    transition: .5s ease all;
+}
+.informacion button p{
+    font-size: 17px;
+    left: 0px;
+}
+body.dark .informacion hr{
+    background-color: aliceblue;
+    }
+.adicional{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+}
+.clave{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: auto;
+    height: 28vh;
+    background-color:rgb(224, 171, 36);
+    border-radius: 40px;
+    z-index: 2;
+    transition: .2s ease all;
+    padding: 40px;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+.clave.activo{
+    box-shadow: 0 2px 10px -2px black ;
+    background-color: rgb(224, 171, 36);
+}
+body.dark .clave{
+    background-color: #2A2B2A;
+    }
+.clave h3{
+    position: relative;
+    width: 260px;
+    height: 30px;
+    margin: 0px auto;
+    font-size: 22px;
+}
+.clave h4{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    left: 25%;
+    font-size: 17px;
+    gap: 40px;
+}
+.clave input{
+    position: relative;
+    width: 80%;
+    height: 20px;
+    top: 30%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color:rgb(224, 171, 36);
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    font-size: 17px;
+    border: 0.5px solid black;
+    transition: .5s ease all;
+    cursor: pointer;
+}
+#botonera {
+    position: relative;
+    display: flex;
+    gap: 10px;
+
+}
+#guardar, #cancelar{
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    width: 100px;
+    height: 50px;
+}
+.fa-solid{
+    position: absolute;
+    top: 54%;
+    left: 78%;
+    cursor: pointer;
+}
+body.dark .clave input{
+    background-color: #2A2B2A;
+    border: 0.5px solid aliceblue;
+    }
+.formulario{
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: 66px 66px;
+}
+.informacion button, .clave button{
+    background-color:#EF476F;
+    position: relative;
+    cursor: pointer;
+    width: 125px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 2px 10px -2px black ;
+    font-family: 'Happy Monkey', 'Happy Monkey';
+    font-size: 17px;
+    padding: 0px;
+    margin: 0 auto;
+    }
+    .informacion.activo button {
+        top: 30px;
+    }
+    .clave button{
+        top: 20px;
+    }
+body.dark .clave button{
+    color: aliceblue;
+    }
+.relleno{
+    position: relative;
+    width: 100%;
+    height: 34vh;
+    background-color:rgb(224, 171, 36);
+    border-radius: 40px;
+    z-index: 2;
+}
+body.dark .relleno{
+    background-color: #2A2B2A;
+    }
+
+
+     @media  (max-width: 1440px){
+        aside hr{
+            position: relative;
+            left: -24%;
+            width: 35%;
+            top: 7%;
+            z-index: 4;
+        }
+        .vistas h3{
+            top: 150px;
+            left: 13%;
+        }
+       .camara{
+            left: 50%;
+       }
+        .decoracion{
+            height: 500px;
+            top: -100px;
+        }
+        .menu{
+            left: 10%;
+            top: 230px;
+        }
+        .clave i{
+            top: 54%;
+            left: 80%;
+        }
+    }
+    @media  (max-width: 1024px){
+        aside h3{
+            z-index: 4;
+            left: 10%;
+            font-size: 35px;
+        }
+        aside hr{
+            top: 7%;
+            left: -18%;
+            width: 300px;
+            z-index: 4;
+        }
+        #avatar {
+            left: 10%;
+            width: 100px;
+            height: 100px;
+        }
+        .vistas h3{
+            left: 5%;
+            top: 120px;
+            width: 100px;
+        }
+        .camara {
+            width: 30px;
+            height: 30px;
+            top: 110px;
+            left: 40%;
+        }
+        .camara img{
+            left: 5%;
+            width: 20px;
+            height: 20px;
+        }
+        .informacion p{
+            font-size: 13px;
+        }
+        .informacion h4{
+            font-size: 14px;
+        }
+        .informacion h3{
+            font-size: 17px;
+        }.informacion img{
+            width: 20px;
+            height: 20px;
+        }
+        .usuario{
+            height: 90px;
+        }
+        .usuario img{
+            width: 80px;
+            height: 80px;
+        }
+        .informacion h2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 17px;
+            margin: 0px;
+        }
+        .informacion button{
+            top: -3%;
+            width: 100px;
+            height: 38px;
+            font-size: 13px;
+        }
+        .clave{
+            display: grid;
+            grid-template-columns: 100%;
+            grid-template-rows: 30px 150px 50px;
+
+        }
+         .formulario{
+                display: grid;
+                grid-template-columns: 70%;
+                grid-template-rows: 30px 40px 30px 40px;
+        }
+        .clave i{
+            top: 62%;
+            left: 70%;
+        }
+        .clave input{
+            width: 200px;
+        }
+        .clave h4{
+            font-size: 13px;
+            left: 0%;
+            top: 10px;
+        }
+        .clave h3{
+            font-size: 17px;
+        }
+
+        .clave button{
+            width: 100px;
+            height: 38px;
+        }
+        .clave p{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 37px;
+            margin: 0px;
+        }
+        .menu .item p{
+            display: none;
+        }
+    }
+    @media(max-width: 768px){
+        .perfil{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 50vh;
+            z-index: 3;
+        }
+        aside hr{
+            left: -10%;
+            top: 6%;
+        }
+        .usuario h2{
+            justify-content: start;
+            left: 10%;
+        }
+        
+        .usuario img{
+            width: 100px;
+            height: 100px;
+        }
+        .relleno{
+            display: none;
+        }
+        .formulario{
+            display: grid;
+            grid-template-columns: 35% 65%;
+            grid-template-rows: 66px 66px;
+        }
+        .formulario h4{
+            left: 20%;
+        }
+        .formulario input{
+            width: 250px;
+        }
+        .clave i{
+            top: 53%;
+            left: 80%;
+        }
+    }
+    @media(max-width: 425px){
+        main{
+            width: 100%;
+            height: 130vh;
+        }
+        section{
+            padding: 0px 20px 0px 20px;
+        }
+        .switch{
+            left: 70%;
+        }
+        .vistas{
+            width: 100%;
+            height: 25%;
+        }
+        #avatar{
+            left: 35%;
+            top: 20px;
+            width: 130px;
+            height: 130px;
+        }
+        .vistas .camara{
+            top: 120px;
+            left: 58%;
+            width: 40px;
+            height: 40px;
+        }
+        .camara img{
+            width: 25px;
+            height: 25px;
+        }
+        .vistas h3{
+            left: 27%;
+            top:140px ;
+            width: 140px;
+        }
+        .menu{
+            position: absolute;
+            display: grid;
+            grid-template-columns: 60px 60px 60px 70px;
+            grid-template-rows: 90px;
+            top: 23vh;
+            gap: 20px;
+        }
+        .item{
+            width: 60px;
+            height: 60px;
+            left: 0px;
+        }
+        .item a{
+            grid-template-columns: 60px;
+            grid-template-rows: 60px;
+        }
+        .item .img{
+            left: 0px;
+        }
+        aside{
+            width: 100%;
+            top: 27%;
+        }
+        aside hr{
+            width: 200px;
+            left: -10%;
+        }
+        .informacion{
+            width: 70%;
+        }
+        .informacion h3, .clave h3{
+            left: 15%;
+        }
+        .adicional{
+            width: 90%;
+        }
+        .formulario{
+            display: grid;
+            grid-template-columns: 70%;
+            grid-template-rows: 30px 40px 30px 40px;
+    }
+    .formulario h4{
+        left: 0%;
+    }
+    .clave input{
+        width: 230px;
+    }
+    .clave i{
+        top: 62%;
+    }
+
+    }
