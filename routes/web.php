@@ -71,7 +71,7 @@ Route::get('dashboard', function () {
 // Rutas para la interfaz de Store en el frontend
 Route::get('/stores', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
 Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
-Route::put('/stores/{id}', [StoreController::class, 'update'])->name('stores.update');
+Route::get('/stores/{id}/edit', [StoreController::class, 'edit']);  // Para procesar la actualización
 
 ///articles///por corregir
 //Route::get('/articles', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
@@ -81,4 +81,4 @@ Route::put('/stores/{id}', [StoreController::class, 'update'])->name('stores.upd
 //topic////
 Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
-Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.update');
+Route::put('/topics/{id}', [TopicController::class, 'edit'])->name('topics.update');

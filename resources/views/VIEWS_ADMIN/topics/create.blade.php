@@ -26,7 +26,7 @@
   <textarea class="input" id="description" name="description"></textarea>
   
   <br>
-  <button class="button" type="submit">Create</button>
+  <a href="{{route('topics.index')}}"><button class="button" type="submit">Create</button></a>
 </form>
 
 </div>

@@ -1,9 +1,9 @@
-.store-list {
+.topic-list {
     list-style-type: none;
     padding: 0;
     width: 100%;
   }
-  .store-item {
+  .topic-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,10 +12,10 @@
     background-color: #f0f0f0;
     border-radius: 5px;
   }
-  .store-info {
+  .topic-info {
     flex-grow: 1;
   }
-  .store-actions {
+  .topic-actions {
     display: flex;
     gap: 10px;
   }
@@ -38,7 +38,7 @@
     color: white;
   }
 
-  .create-store{
+  .create-topic{
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
@@ -51,5 +51,6 @@
 
   .container{
     display: flex;
+    flex-direction: column;
     gap: 2rem;
   }

@@ -20,7 +20,7 @@
             <div class="nav-item">Users</div>
             <a href="{{route('stores.index')}}"><div class="nav-item">Stores</div></a>
             <div class="nav-item">Articles</div>
-            <div class="nav-item">Topics</div>
+            <a href="{{route('topics.index')}}"><div class="nav-item">Topics</div></a>
             <div class="nav-item">Levels</div>
             <div class="nav-item">Questions</div>
             <div class="nav-item">Achievements</div>
