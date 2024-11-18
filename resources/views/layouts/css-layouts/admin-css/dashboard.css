@@ -12,6 +12,10 @@
     box-sizing: border-box;
 }
 
+a{
+    text-decoration: none;
+    color: white;
+}
 body {
     background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%); 
     font-family: 'Happy Monkey', sans-serif;

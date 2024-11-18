@@ -1,0 +1,42 @@
+.container{
+margin-right: 10rem;
+}
+
+#create-topic-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input{
+    border: none;
+    padding: 5px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-family: 'happy monkey', cursive;
+}
+
+.button{
+    border: none;
+    background-color: #B43654;
+    padding: 5px;
+    font-family: 'happy monkey', cursive;
+    font-size: medium;
+    color: whitesmoke;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    width: 50%;
+}
+
+.input-image{
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: white;
+    font-family: 'happy monkey', cursive;
+    justify-content: center;
+}

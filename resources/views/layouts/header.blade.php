@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ asset('js/script_escoger-imagen.js') }}"></script>
-    @vite(['resources/views/layouts/css-layouts/header.css', 'resources/views/layouts/js-layouts/header.js', 'resources/js/target.js'])
+    @vite(['resources/views/layouts/css-layouts/header.css', 'resources/views/layouts/js-layouts/header.js'])
 
     @yield('custom_css')
 

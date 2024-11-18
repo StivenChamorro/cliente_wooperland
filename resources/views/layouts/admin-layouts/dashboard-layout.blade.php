@@ -6,6 +6,7 @@
     <title>@yield('title', 'Admin Dashboard')</title>
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
     @vite(['resources/views/layouts/css-layouts/admin-css/dashboard.css', 'resources/views/layouts/js-layouts/admin-js/dashboard.js'])
+    @yield('custom_css')
 </head>
 <body>
     <!-- Sidebar -->
@@ -17,10 +18,13 @@
         <nav>
             <div class="nav-item active">Dashboard</div>
             <div class="nav-item">Users</div>
-            <div class="nav-item">Products</div>
-            <div class="nav-item">Orders</div>
-            <div class="nav-item">Analytics</div>
-            <div class="nav-item">Settings</div>
+            <a href="{{route('stores.index')}}"><div class="nav-item">Stores</div></a>
+            <div class="nav-item">Articles</div>
+            <div class="nav-item">Topics</div>
+            <div class="nav-item">Levels</div>
+            <div class="nav-item">Questions</div>
+            <div class="nav-item">Achievements</div>
+            <div class="nav-item">Answers</div>
         </nav>
     </aside>
 

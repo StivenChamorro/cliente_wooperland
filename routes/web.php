@@ -16,7 +16,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StoreController;
 
 use App\Http\Controllers\ProfileFatherController;
-
+use App\Http\Controllers\TopicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +38,7 @@ Route::get('header',[HomeController::class,'Header']);
 Route::get('listgames',[LevelController::class, 'Listgames'])->name('listgames');
 Route::get('woopergames',[LevelController::class, 'WoopergameDino'])->name('woopergamedino');
 Route::get('woopergames2',[LevelController::class, 'SpaceRuner'])->name('woopergamespacerunner');
+
 Route::get('login',[LoginController::class,'store'])->name('login');
 Route::get('register',[RegisterController::class,'store'])->name('register');
 Route::get('add_child',[AddChildController::class,'store'])->name('add_child');
@@ -65,3 +66,19 @@ Route::get('question', function () {
 Route::get('dashboard', function () {
     return view('VIEWS_ADMIN.dashboard.dashboard');
 });
+
+///////////pruebas////////////////
+// Rutas para la interfaz de Store en el frontend
+Route::get('/stores', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
+Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
+Route::put('/stores/{id}', [StoreController::class, 'update'])->name('stores.update');
+
+///articles///por corregir
+//Route::get('/articles', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
+//Route::get('/articles/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
+//Route::get('/articles/{id}/edit', [StoreController::class, 'edit'])->name('stores.edit'); // Formulario para editar un store existente
+
+//topic////
+Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
+Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
+Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.update');

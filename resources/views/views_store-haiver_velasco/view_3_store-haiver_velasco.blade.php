@@ -22,7 +22,7 @@
         <div class="contenedor_main">
 
             <div class="titulo_store">
-                <h1 class="titulo">Tienda de Wooper</h1s=>
+                <h1 class="titulo">Tienda de Wooper</h1>
             </div>
             <div class="barra_4_main"></div>
             <div class="descripcion_store">
