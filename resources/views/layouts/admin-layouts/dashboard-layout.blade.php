@@ -23,7 +23,7 @@
             <div class="nav-item">Topics</div>
             <div class="nav-item">Levels</div>
             <div class="nav-item">Questions</div>
-            <div class="nav-item">Achievements</div>
+            <a href="{{route('Achievements.index')}}"> <div class="nav-item">Achievements</div> </a>
             <div class="nav-item">Answers</div>
         </nav>
     </aside>

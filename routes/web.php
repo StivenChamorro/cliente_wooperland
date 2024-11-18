@@ -82,3 +82,9 @@ Route::put('/stores/{id}', [StoreController::class, 'update'])->name('stores.upd
 Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
 Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.update');
+
+
+//Achievement////
+Route::get('/Achievements', [AchievementController::class, 'index'])->name('Achievements.index'); // Muestra la lista de topics
+Route::get('/Achievements/create', [AchievementController::class, 'create'])->name('Achievements.create'); // Formulario para crear un nuevo store
+Route::put('/Achievements/{id}', [AchievementController::class, 'update'])->name('Achievements.update');
