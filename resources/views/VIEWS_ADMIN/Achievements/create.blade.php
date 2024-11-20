@@ -20,14 +20,12 @@
   <textarea class="input" id="description" name="description"></textarea>
   <label for="reward">reward:</label>
   <textarea class="input" id="reward" name="reward"></textarea>
-  <label for="children_id">children_id:</label>
-  <textarea class="input" id="children_id" name="children_id"></textarea>
   <label for="level_id">level_id:</label>
   <textarea class="input" id="level_id" name="level_id"></textarea>
   <label for="status">status:</label>
   <textarea class="input" id="status" name="status"></textarea>
-  <a href="{{route('Achievements.index')}}"><button class="button" type="submit">Create</button></a>
+  <a href="{{route('achievements.index')}}"><button class="button" type="submit">Create</button></a>
 </form>
-<script src="{{asset('js/admin/store/createstore.js')}}"></script>
+<script src="{{asset('js/admin/Achievements/createachievement.js')}}"></script>
 @endsection
 

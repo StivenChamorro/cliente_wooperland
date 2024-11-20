@@ -9,7 +9,7 @@ document.getElementById('create-store-form').addEventListener('submit', async (e
 
     const token = localStorage.getItem('token'); // Obtén el token
 
-    const response = await fetch('https://backend-production-40d8.up.railway.app/v1/Achievement/create', {
+    const response = await fetch('https://backend-production-40d8.up.railway.app/v1/achievement/store', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

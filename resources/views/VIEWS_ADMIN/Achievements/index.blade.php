@@ -14,8 +14,8 @@
 <h1>Achievement List</h1>
 <br>
 <div class="container">
-<button onclick="loadStores()" class="btn">Load Stores</button>
-<a href="{{route('Achievements.create')}}"><button class="create-store">Create Store</button></a>
+<button onclick="loadStores()" class="btn">Load Achievement</button>
+<a href="{{route('achievements.create')}}"><button class="create-store">Create Achievement</button></a>
 </div>
 
 <table class="store-table">
@@ -25,16 +25,15 @@
       <th>Name</th>
       <th>Description</th>
       <th>Reward</th>
-      <th>Children_id</th>
       <th>Level_id</th>
       <th>Status</th>
       <th>Actions</th>
 
     </tr>
   </thead>
-  <tbody id="store-list">
+  <tbody id="achievement-list">
     <!-- The rows will be populated dynamically -->
   </tbody>
 </table>
-<script src="{{asset('js/admin/store/indexsore.js')}}"></script>
+<script src="{{asset('js/admin/Achievement/indexachievement.js')}}"></script>
 @endsection
