@@ -1,6 +1,6 @@
 @extends('layouts.admin-layouts.dashboard-layout')
 
-@section('title','Crear tienda')
+@section('title','Crear Logro')
 
 @section('custom_css')
 
@@ -12,7 +12,7 @@
 
 @section('content')
 <!-- stores/create.blade.php -->
-<h1>Create Store</h1>
+<h1>Create Achievement</h1>
 <form id="create-store-form">
   <label for="name">Name:</label>
   <input class="input" type="text" id="name" name="name" required>

@@ -1,6 +1,6 @@
 @extends('layouts.admin-layouts.dashboard-layout')
 
-@section('title', 'Editar Tienda')
+@section('title', 'Editar Logro')
 
 @section('custom_css')
 
@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<h1>Edit Store</h1>
+<h1>Edit Achievement</h1>
 <form id="edit-achievement-form" class="form">
   <div class="form-group">
     <label for="name">Name:</label>

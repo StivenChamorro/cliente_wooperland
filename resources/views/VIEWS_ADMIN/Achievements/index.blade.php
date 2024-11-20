@@ -1,6 +1,6 @@
 @extends('layouts.admin-layouts.dashboard-layout')
 
-@section('title', 'Crear tienda')
+@section('title', 'Crear logro')
 
 @section('custom_css')
 
