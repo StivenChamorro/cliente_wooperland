@@ -39,12 +39,12 @@
                     </p>
                 </div>
 
-                <div class="google-button-container">
+                {{-- <div class="google-button-container">
                     <button class="google-button">
                         <img src="{{ asset('img/img-google.png') }}" alt="Google Icon" class="google-icon">
                         Continuar con Google
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </main>

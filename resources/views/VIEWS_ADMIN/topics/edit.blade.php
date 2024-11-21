@@ -23,7 +23,8 @@
             <div id="current-image-container">
                 <!-- La imagen actual se mostrará aquí -->
             </div>
-            <label for="image">Change image::</label>
+            <br>
+            <label for="image">Change image:</label>
             <input type="file" name="image" id="image" class="form-control">
         </div>
         <div class="form-group">

@@ -12,11 +12,13 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TermsController;
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StoreController;
 
 use App\Http\Controllers\ProfileFatherController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,14 +73,17 @@ Route::get('dashboard', function () {
 // Rutas para la interfaz de Store en el frontend
 Route::get('/stores', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
 Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
-Route::put('/stores/{id}/edit', [StoreController::class, 'edit']);  // Para procesar la actualización
+Route::get('/stores/{id}/edit', [StoreController::class, 'edit']);  // Para procesar la actualización
 
 ///articles///por corregir
-//Route::get('/articles', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
-//Route::get('/articles/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
-//Route::get('/articles/{id}/edit', [StoreController::class, 'edit'])->name('stores.edit'); // Formulario para editar un store existente
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index'); // Muestra la lista de stores
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create'); // Formulario para crear un nuevo store
+Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit'); // Formulario para editar un store existente
 
 //topic////
 Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
-Route::put('/topics/{id}', [TopicController::class, 'edit'])->name('topics.update'); 
+Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.update');
+
+//users///
+Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics

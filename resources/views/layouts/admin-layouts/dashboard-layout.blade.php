@@ -17,9 +17,9 @@
         </div>
         <nav>
             <div class="nav-item active">Dashboard</div>
-            <div class="nav-item">Users</div>
+            <a href="{{route('user.index')}}"><div class="nav-item">Users</div></a>
             <a href="{{route('stores.index')}}"><div class="nav-item">Stores</div></a>
-            <div class="nav-item">Articles</div>
+            <a href="{{route('articles.index')}}"><div class="nav-item">Articles</div></a>
             <a href="{{route('topics.index')}}"><div class="nav-item">Topics</div></a>
             <div class="nav-item">Levels</div>
             <div class="nav-item">Questions</div>

@@ -1,0 +1,56 @@
+.topic-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+  }
+  .topic-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  .topic-info {
+    flex-grow: 1;
+  }
+  .topic-actions {
+    display: flex;
+    gap: 10px;
+  }
+  .btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Happy Monkey', cursive;
+    margin-bottom: 20px;
+    background-color: #A12E49;
+    color: white;
+  }
+  .btn-edit {
+    background-color: #4CAF50;
+    color: white;
+  }
+  .btn-delete {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .create-topic{
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'Happy Monkey', cursive;
+    margin-bottom: 20px; 
+    background-color: #A12E49;
+    color: white;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }

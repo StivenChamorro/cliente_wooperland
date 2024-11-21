@@ -52,7 +52,7 @@ function editTopic(id) {
     return;
   }
 
-  window.location.href = `/topic/${id}/edit`;
+  window.location.href = `/topics/${id}/edit`;
 }
 
 // Eliminar un topic
@@ -71,7 +71,7 @@ async function deleteTopic(id) {
     }
 
     try {
-      const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/topic/delete/${id}`, {
+      const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/topic/destroy/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,

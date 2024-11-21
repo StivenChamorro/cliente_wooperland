@@ -20,3 +20,17 @@ window.onclick = function(event) {
         modal.classList.remove('show');
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const navItems = document.querySelectorAll(".nav-item");
+
+    navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+            // Eliminar la clase 'active' de todos los elementos
+            navItems.forEach((i) => i.classList.remove("active"));
+
+            // Agregar la clase 'active' al elemento clicado
+            item.classList.add("active");
+        });
+    });
+});
