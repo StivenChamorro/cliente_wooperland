@@ -21,7 +21,7 @@
     <label for="description">Description:</label>
     <textarea id="description" name="description" class="form-control"></textarea>
   </div>
-  <button type="submit" class="btn btn-submit">Update</button>
+  <a href="{{route('stores.index')}}"><button type="submit" class="btn btn-submit">Update</button></a>
 </form>
 
 <script src="{{ asset('js/admin/store/editstore.js') }}"></script>

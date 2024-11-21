@@ -1,63 +1,113 @@
-// Load store data on page load
-window.onload = async function() {
-    const token = localStorage.getItem('token'); // Obtén el token
-    const id = getStoreIdFromUrl(); // Obtén el ID dinámicamente desde la URL
-  
+// Cargar datos del topic al cargar la página
+window.onload = async function () {
+    const token = localStorage.getItem("token");
+    const id = getTopicIdFromUrl();
+
+    if (!id) {
+        alert("ID de tema no encontrado en la URL.");
+        return;
+    }
+
     try {
-      const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/stores/show/${id}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
+        const response = await fetch(
+            `https://backend-production-40d8.up.railway.app/v1/topic/show/${id}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+
+        if (response.ok) {
+            const data = await response.json();
+            const topic = data.topic;
+
+            document.getElementById("name").value = topic.name;
+            document.getElementById("description").value = topic.description;
+
+            // Mostrar la imagen actual
+            const currentImageContainer = document.getElementById(
+                "current-image-container"
+            );
+            if (topic.image) {
+                currentImageContainer.innerHTML = `
+                    <img src="${topic.image}" alt="${topic.name}" style="max-width: 200px; height: auto;">
+                `;
+            } else {
+                currentImageContainer.innerHTML = "<p>No hay imagen disponible.</p>";
+            }
+        } else {
+            const errorText = await response.text();
+            console.error("Error al cargar el tema:", errorText);
+            alert("No se pudieron cargar los datos del tema.");
         }
-      });
-  
-      if (response.ok) {
-        const store = await response.json();
-        document.getElementById('name').value = store.name;
-        document.getElementById('description').value = store.description;
-      } else {
-        const errorText = await response.text();
-        console.error('Error loading store:', errorText);
-        alert('Failed to load store data');
-      }
     } catch (error) {
-      console.error('Fetch error:', error);
+        console.error("Error de Fetch:", error);
+        alert("Ocurrió un error al cargar los datos del tema.");
     }
-  };
-  
-  // Handle update form submission
-  document.getElementById('edit-store-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-  
-    const name = document.getElementById('name').value;
-    const description = document.getElementById('description').value;
-    const token = localStorage.getItem('token'); // Obtén el token
-    const id = getStoreIdFromUrl(); // Obtén el ID dinámicamente desde la URL
-  
-    try {
-      const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/stores/update/${id}`, {
-        method: 'PUT', // Cambiado a PUT
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({ name, description })
-      });
-  
-      if (response.ok) {
-        alert('Store updated successfully');
-      } else {
-        const errorText = await response.text();
-        console.error('Error updating store:', errorText);
-        alert('Error updating store');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-    }
-  });
-  
-  // Función para obtener el ID desde la URL
-  function getStoreIdFromUrl() {
-    const urlParts = window.location.pathname.split('/');
-    return urlParts[urlParts.length - 2]; // En este caso, el penúltimo segmento es el ID
-  }
-  
+};
+
+// Manejar la sumisión del formulario de actualización
+document
+    .getElementById("edit-topic-form")
+    .addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const description = document.getElementById("description").value.trim();
+        const image = document.getElementById("image").files[0];
+        const token = localStorage.getItem("token");
+        const id = getTopicIdFromUrl();
+
+        if (!id) {
+            alert("ID de tema no encontrado en la URL.");
+            return;
+        }
+
+        try {
+            // Configurar la solicitud
+            let formData;
+            let headers = {
+                Authorization: `Bearer ${token}`,
+            };
+
+            if (image) {
+                // Usar FormData si hay una nueva imagen
+                formData = new FormData();
+                formData.append("name", name);
+                formData.append("description", description);
+                formData.append("image", image);
+            } else {
+                // Enviar JSON si no se selecciona una nueva imagen
+                formData = JSON.stringify({ name, description });
+                headers["Content-Type"] = "application/json";
+            }
+
+            const response = await fetch(
+                `https://backend-production-40d8.up.railway.app/v1/topic/update/${id}`,
+                {
+                    method: "PUT",
+                    headers: headers,
+                    body: formData,
+                }
+            );
+
+            if (response.ok) {
+                alert("Tema actualizado exitosamente");
+                window.location.href = "/topics"; // Redirigir después de la actualización
+            } else {
+                const errorData = await response.json();
+                console.error("Error al actualizar el tema:", errorData);
+                alert(`Error al actualizar el tema: ${errorData.message}`);
+            }
+        } catch (error) {
+            console.error("Error de Fetch:", error);
+            alert("Ocurrió un error al actualizar el tema.");
+        }
+    });
+
+// Función para obtener el ID desde la URL
+function getTopicIdFromUrl() {
+    const urlParts = window.location.pathname.split("/");
+    return urlParts[urlParts.length - 2]; // Suponiendo formato /topics/{id}/edit
+}

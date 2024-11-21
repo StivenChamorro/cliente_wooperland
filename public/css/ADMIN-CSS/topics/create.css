@@ -1,6 +1,4 @@
-.container{
-margin-right: 10rem;
-}
+
 
 #create-topic-form{
     display: flex;
@@ -13,6 +11,7 @@ margin-right: 10rem;
     margin-bottom: 1rem;
     border-radius: 8px;
     font-family: 'happy monkey', cursive;
+    width: 50%;
 }
 
 .button{
@@ -39,4 +38,5 @@ a{
     background-color: white;
     font-family: 'happy monkey', cursive;
     justify-content: center;
+    width: 50%;
 }

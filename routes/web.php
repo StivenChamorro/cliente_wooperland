@@ -12,11 +12,15 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TermsController;
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StoreController;
 
 use App\Http\Controllers\ProfileFatherController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,16 +75,17 @@ Route::get('dashboard', function () {
 // Rutas para la interfaz de Store en el frontend
 Route::get('/stores', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
 Route::get('/stores/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
-Route::put('/stores/{id}', [StoreController::class, 'update'])->name('stores.update');
+Route::get('/stores/{id}/edit', [StoreController::class, 'edit']);  // Para procesar la actualización
 
 ///articles///por corregir
-//Route::get('/articles', [StoreController::class, 'index'])->name('stores.index'); // Muestra la lista de stores
-//Route::get('/articles/create', [StoreController::class, 'create'])->name('stores.create'); // Formulario para crear un nuevo store
-//Route::get('/articles/{id}/edit', [StoreController::class, 'edit'])->name('stores.edit'); // Formulario para editar un store existente
+Route::get('/articles', [ArticleController::class, 'index'])->name('articles.index'); // Muestra la lista de stores
+Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create'); // Formulario para crear un nuevo store
+Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit'); // Formulario para editar un store existente
 
 //topic////
 Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
+
 Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.update');
 
 
@@ -88,3 +93,22 @@ Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.upd
 Route::get('/achievements', [AchievementController::class, 'index'])->name('achievements.index'); // Muestra la lista de topics
 Route::get('/achievements/create', [AchievementController::class, 'create'])->name('achievements.create'); // Formulario para crear un nuevo store
 Route::put('/achievements/{id}', [AchievementController::class, 'update'])->name('achievements.update');
+
+Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.update');
+
+// Rutas para la interfaz de Store en el frontend
+Route::get('/levels', [LevelController::class, 'index'])->name('levels.index'); // Muestra la lista de levels
+Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create'); // Formulario para crear un nuevo store
+Route::get('/levels/{id}/edit', [LevelController::class, 'edit']);  // Para procesar la actualización
+
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index'); // Muestra la lista de questions
+Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create'); // Formulario para crear un nuevo store
+Route::get('/questions/{id}/edit', [QuestionController::class, 'edit']);  // Para procesar la actualización
+
+Route::get('/answers', [AnswerController::class, 'index'])->name('answers.index'); // Muestra la lista de answers
+Route::get('/answers/create', [AnswerController::class, 'create'])->name('answers.create'); // Formulario para crear un nuevo store
+Route::get('/answers/{id}/edit', [AnswerController::class, 'edit']);  // Para procesar la actualización
+
+//users///
+Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics
+
