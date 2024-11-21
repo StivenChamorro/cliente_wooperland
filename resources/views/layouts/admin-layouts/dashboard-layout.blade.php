@@ -16,15 +16,22 @@
             <span class="logo-text">AdminPanel</span>
         </div>
         <nav>
-            <div class="nav-item active">Dashboard</div>
-            <a href="{{route('user.index')}}"><div class="nav-item">Users</div></a>
-            <a href="{{route('stores.index')}}"><div class="nav-item">Stores</div></a>
-            <a href="{{route('articles.index')}}"><div class="nav-item">Articles</div></a>
-            <a href="{{route('topics.index')}}"><div class="nav-item">Topics</div></a>
-            <div class="nav-item">Levels</div>
-            <div class="nav-item">Questions</div>
-            <div class="nav-item">Achievements</div>
-            <div class="nav-item">Answers</div>
+            <a href="{{ route('user.index') }}">
+                <div class="nav-item {{ Request::is('users*') ? 'active' : '' }}">Users</div>
+            </a>
+            <a href="{{ route('stores.index') }}">
+                <div class="nav-item {{ Request::is('stores*') ? 'active' : '' }}">Stores</div>
+            </a>
+            <a href="{{ route('articles.index') }}">
+                <div class="nav-item {{ Request::is('articles*') ? 'active' : '' }}">Articles</div>
+            </a>
+            <a href="{{ route('topics.index') }}">
+                <div class="nav-item {{ Request::is('topics*') ? 'active' : '' }}">Topics</div>
+            </a>
+            <div class="nav-item {{ Request::is('levels*') ? 'active' : '' }}">Levels</div>
+            <div class="nav-item {{ Request::is('questions*') ? 'active' : '' }}">Questions</div>
+            <div class="nav-item {{ Request::is('achievements*') ? 'active' : '' }}">Achievements</div>
+            <div class="nav-item {{ Request::is('answers*') ? 'active' : '' }}">Answers</div>
         </nav>
     </aside>
 
