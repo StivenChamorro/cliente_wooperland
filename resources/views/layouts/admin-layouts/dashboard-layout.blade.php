@@ -34,8 +34,12 @@
             <a href="{{route('questions.index')}}">
                 <div class="nav-item {{ Request::is('questions*') ? 'active' : '' }}">Questions</div>
             </a>
+            
             <div class="nav-item {{ Request::is('achievements*') ? 'active' : '' }}">Achievements</div>
-            <div class="nav-item {{ Request::is('answers*') ? 'active' : '' }}">Answers</div>
+            
+            <a href="{{route('answers.index')}}">
+                <div class="nav-item {{ Request::is('answers*') ? 'active' : '' }}">Answers</div>
+            </a>
         </nav>
     </aside>
 

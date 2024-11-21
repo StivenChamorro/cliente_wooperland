@@ -1,0 +1,36 @@
+#edit-level-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 50vh;
+  }
+
+  .form-control {
+    border: none;
+    padding: 5px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    font-family: 'happy monkey', cursive;
+  }
+
+  .btn-submit {
+    border: none;
+    background-color: #B43654;
+    padding: 5px;
+    font-family: 'Happy Monkey', cursive;
+    font-size: medium;
+    color: whitesmoke;
+    border-radius: 8px;
+    width: 50vh;
+    cursor: pointer;
+  }
+
+  .btn-submit:hover {
+    background-color: #A12E49;
+  }

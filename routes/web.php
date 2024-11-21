@@ -12,6 +12,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TermsController;
 
 use App\Http\Controllers\AchievementController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StoreController;
@@ -94,6 +95,10 @@ Route::get('/levels/{id}/edit', [LevelController::class, 'edit']);  // Para proc
 Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index'); // Muestra la lista de questions
 Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create'); // Formulario para crear un nuevo store
 Route::get('/questions/{id}/edit', [QuestionController::class, 'edit']);  // Para procesar la actualización
+
+Route::get('/answers', [AnswerController::class, 'index'])->name('answers.index'); // Muestra la lista de answers
+Route::get('/answers/create', [AnswerController::class, 'create'])->name('answers.create'); // Formulario para crear un nuevo store
+Route::get('/answers/{id}/edit', [AnswerController::class, 'edit']);  // Para procesar la actualización
 
 //users///
 Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics
