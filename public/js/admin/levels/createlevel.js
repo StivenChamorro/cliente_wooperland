@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch("https://backend-production-40d8.up.railway.app/v1/topic/index");
         
         if (!response.ok) {
-            throw new Error("Error al obtener los niveles");
+            throw new Error("Error al obtener los temas");
         }
 
         const topics = await response.json();

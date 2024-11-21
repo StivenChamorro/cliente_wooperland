@@ -31,7 +31,9 @@
             <a href="{{route('levels.index')}}">
                 <div class="nav-item {{ Request::is('levels*') ? 'active' : '' }}">Levels</div>
             </a>
-            <div class="nav-item {{ Request::is('questions*') ? 'active' : '' }}">Questions</div>
+            <a href="{{route('questions.index')}}">
+                <div class="nav-item {{ Request::is('questions*') ? 'active' : '' }}">Questions</div>
+            </a>
             <div class="nav-item {{ Request::is('achievements*') ? 'active' : '' }}">Achievements</div>
             <div class="nav-item {{ Request::is('answers*') ? 'active' : '' }}">Answers</div>
         </nav>

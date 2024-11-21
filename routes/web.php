@@ -17,6 +17,7 @@ use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StoreController;
 
 use App\Http\Controllers\ProfileFatherController;
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
 
@@ -89,6 +90,10 @@ Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index'); // Muestra la lista de levels
 Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create'); // Formulario para crear un nuevo store
 Route::get('/levels/{id}/edit', [LevelController::class, 'edit']);  // Para procesar la actualización
+
+Route::get('/questions', [QuestionController::class, 'index'])->name('questions.index'); // Muestra la lista de questions
+Route::get('/questions/create', [QuestionController::class, 'create'])->name('questions.create'); // Formulario para crear un nuevo store
+Route::get('/questions/{id}/edit', [QuestionController::class, 'edit']);  // Para procesar la actualización
 
 //users///
 Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics
