@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Editar Artículo</h1>
+    <h1>Edit Article</h1>
     <form id="edit-article-form" enctype="multipart/form-data">
         <div class="form-group">
             <label for="name">Nombre:</label>

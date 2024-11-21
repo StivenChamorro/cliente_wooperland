@@ -85,5 +85,10 @@ Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); 
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
 Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.update');
 
+// Rutas para la interfaz de Store en el frontend
+Route::get('/levels', [LevelController::class, 'index'])->name('levels.index'); // Muestra la lista de levels
+Route::get('/levels/create', [LevelController::class, 'create'])->name('levels.create'); // Formulario para crear un nuevo store
+Route::get('/levels/{id}/edit', [LevelController::class, 'edit']);  // Para procesar la actualización
+
 //users///
 Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics

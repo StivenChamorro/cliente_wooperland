@@ -19,11 +19,11 @@
   <label for="name">Name:</label>
   <input class="input" type="text" id="name" name="name" required>
   
-  <label for="image">Image:</label>
-  <input type="file" name="image" id="image" class="input-image" placeholder="image">
-  
   <label for="description">Description:</label>
   <textarea class="input" id="description" name="description"></textarea>
+
+  <label for="image">Image:</label>
+  <input type="file" name="image" id="image" class="input-image" placeholder="image">
   
   <br>
   <a href="{{route('topics.index')}}"><button class="button" type="submit">Create</button></a>
