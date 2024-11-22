@@ -22,7 +22,7 @@ class AchievementController extends Controller
     }
 
     // Muestra el formulario para editar un store
-    public function edit($id)
+    public function update($id)
     {
         return view('VIEWS_ADMIN.Achievements.edit', ['id' => $id]);
     }

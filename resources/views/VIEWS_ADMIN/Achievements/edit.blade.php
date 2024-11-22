@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/edit.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/achievement/edit.css') }}">
 
 @endsection
 
@@ -27,7 +27,8 @@
   </div>
   <div class="form-group">
     <label for="level_id">level_id:</label>
-    <input id="level_id" name="level_id" class="form-control"></input>
+    <select id="level_id" name="level_id" class="form-control">
+    <option value="">Seleccione un nivel</option></select>
   </div>
   <div class="form-group">
     <label for="status">status:</label>

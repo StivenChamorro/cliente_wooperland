@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/achievement/index.css') }}">
 
 @endsection
 
@@ -14,8 +14,8 @@
 <h1>Achievement List</h1>
 <br>
 <div class="container">
-<button onclick="loadStores()" class="btn">Load Achievement</button>
-<a href="{{route('achievements.create')}}"><button class="create-store">Create Achievement</button></a>
+<button onclick="loadAchievements()" class="btn">Load Achievement</button>
+<a href="{{route('achievements.create')}}"><button class="create-achievement">Create Achievement</button></a>
 </div>
 
 <table class="store-table">
