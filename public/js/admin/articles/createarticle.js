@@ -70,6 +70,7 @@ document
                 const data = await response.json();
                 alert("Artículo creado exitosamente.");
                 console.log(data);
+                window.location.href = `/articles`
             } else {
                 const error = await response.json();
                 alert("Error al crear el artículo: " + (error.message || "Desconocido"));

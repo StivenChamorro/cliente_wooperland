@@ -18,6 +18,12 @@
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" class="form-control" required>
         </div>
+        
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" class="form-control" required></textarea>
+        </div>
+
         <div class="form-group">
             <label for="image">Actual image:</label>
             <div id="current-image-container">
@@ -26,10 +32,6 @@
             <br>
             <label for="image">Change image:</label>
             <input type="file" name="image" id="image" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" class="form-control" required></textarea>
         </div>
         <button type="submit" class="btn btn-submit">Update</button>
     </form>

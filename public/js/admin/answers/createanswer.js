@@ -61,7 +61,7 @@ document
                 alert("Respuesta creada exitosamente.");
                 console.log(data);
                 // Redirigir o realizar una acción específica tras la creación
-                window.location.reload();
+                window.location.href = `/answers`;
             } else {
                 const error = await response.json();
                 alert("Error al crear la respuesta: " + (error.message || "Desconocido"));

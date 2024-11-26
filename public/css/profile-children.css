@@ -1,0 +1,288 @@
+body {
+  font-family: 'Happy Monkey', sans-serif;
+  margin: 0;
+  background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%);
+  min-height: 100vh;
+  color: #333;
+}
+
+.child-profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.child-profile-header {
+  position: relative;
+  height: 200px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.child-profile-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.child-profile-header h1 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 2.5em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.child-profile-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 20px;
+}
+
+.child-profile-card,
+.child-about-section,
+.child-topics-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.child-profile-picture {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 20px;
+}
+
+.child-profile-picture img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #FFD166;
+}
+
+.child-edit-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #B43654;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 18px;
+}
+
+.child-user-info {
+  text-align: center;
+}
+
+.child-user-info h2 {
+  margin-bottom: 10px;
+  color: #B43654;
+}
+
+.child-user-info p {
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.child-save-btn {
+  background: #B43654;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  font-family: 'Happy Monkey', sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.child-save-btn:hover {
+  background-color: #a02f4b;
+}
+
+.child-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.child-edit-button {
+  background: none;
+  border: none;
+  color: #B43654;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.child-topic-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #FFD166;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.child-topic-item:hover {
+  transform: translateX(5px);
+}
+
+.child-topic-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.child-modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.child-modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.child-modal-content button {
+  margin: 10px 5px;
+  width: 100px;
+}
+
+.child-modal-content .modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+/* Cuando el modal está visible */
+.child-modal.show {
+  display: flex;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Efecto de fade-in para que el modal aparezca suavemente */
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.child-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.child-modal-content button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #B43654;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.child-character-count {
+  text-align: right;
+  color: #666;
+  font-size: 0.8em;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+#childFileInput {
+  display: none; /* Oculta el botón de archivo */
+}
+
+#childUsernameInput{
+  font-family: 'happy monkey', cursive;
+  padding: 5px;
+}
+
+#childAboutInput{
+  font-family: 'happy monkey', cursive;
+  padding: 5px;
+}
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .child-profile-content {
+      grid-template-columns: 1fr;
+  }
+
+  .child-profile-header {
+      height: 150px;
+  }
+
+  .child-profile-header h1 {
+      font-size: 2em;
+  }
+
+  .child-profile-card,
+  .child-about-section,
+  .child-topics-section {
+      padding: 15px;
+  }
+
+  .child-modal-content {
+      width: 95%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .child-profile-header h1 {
+      font-size: 1.5em;
+  }
+
+  .child-profile-picture {
+      width: 120px;
+      height: 120px;
+  }
+
+  .child-edit-icon {
+      width: 25px;
+      height: 25px;
+      font-size: 14px;
+  }
+
+  .child-save-btn,
+  .child-modal-content button {
+      font-size: 14px;
+      padding: 8px 16px;
+  }
+}

@@ -17,10 +17,10 @@
   
   <div class="button-group">
     <!-- Botón para cargar los topics -->
-    <button onclick="loadArticles()" class="btn">Load Topics</button>
+    <button onclick="loadArticles()" class="btn">Load Articles</button>
 
     <!-- Botón para crear un nuevo topic -->
-    <a href="{{ route('articles.create') }}" class="btn create-topic">Create Article</a>
+    <a href="{{ route('articles.create') }}" class="btn create-article">Create Article</a>
   </div>
 
   <table class="article-table">

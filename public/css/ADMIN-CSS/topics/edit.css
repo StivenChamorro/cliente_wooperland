@@ -1,4 +1,4 @@
-#edit-store-form {
+#edit-topic-form {
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
@@ -17,6 +17,8 @@
     border-radius: 8px;
     width: 100%;
     font-family: 'happy monkey', cursive;
+    background-color: white;
+
   }
 
   .btn-submit {
@@ -34,3 +36,12 @@
   .btn-submit:hover {
     background-color: #A12E49;
   }
+
+  .input-image{
+    border: none;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-family: 'happy monkey', cursive;
+    justify-content: center;
+    width: 50%;
+}

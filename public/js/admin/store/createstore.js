@@ -16,6 +16,7 @@ document.getElementById('create-store-form').addEventListener('submit', async (e
     
     if (response.ok) {
       alert('Store created successfully');
+      window.location.href = `/stores`
     } else {
       alert('Error creating store');
     }

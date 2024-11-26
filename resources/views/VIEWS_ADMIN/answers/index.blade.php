@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<h1>Lista de Respuestas</h1>
+<h1>Answers list</h1>
 <br>
 <div class="container">
   <button onclick="loadAnswers()" class="btn">Load answers</button>

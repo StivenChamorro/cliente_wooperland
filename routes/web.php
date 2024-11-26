@@ -85,16 +85,13 @@ Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('art
 //topic////
 Route::get('/topics', [TopicController::class, 'index'])->name('topics.index'); // Muestra la lista de topics
 Route::get('/topics/create', [TopicController::class, 'create'])->name('topics.create'); // Formulario para crear un nuevo store
-
-Route::put('/topics/{id}', [TopicController::class, 'update'])->name('topics.update');
+Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.update');
 
 
 //Achievement////
 Route::get('/achievements', [AchievementController::class, 'index'])->name('achievements.index'); // Muestra la lista de topics
 Route::get('/achievements/create', [AchievementController::class, 'create'])->name('achievements.create'); // Formulario para crear un nuevo store
 Route::put('/achievements/{id}', [AchievementController::class, 'update'])->name('achievements.update');
-
-Route::get('/topics/{id}/edit', [TopicController::class, 'edit'])->name('topics.update');
 
 // Rutas para la interfaz de Store en el frontend
 Route::get('/levels', [LevelController::class, 'index'])->name('levels.index'); // Muestra la lista de levels

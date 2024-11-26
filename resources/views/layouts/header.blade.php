@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ asset('js/script_escoger-imagen.js') }}"></script>
-    @vite(['resources/views/layouts/css-layouts/header.css', 'resources/views/layouts/js-layouts/header.js'])
+    @vite(['resources/views/layouts/css-layouts/header.css', 'resources/views/layouts/js-layouts/header.js', 'resources/views/layouts/js-layouts/headerShowDataChildren.js', 'resources/views/layouts/js-layouts/changeplayer.js'])
 
     @yield('custom_css')
 
@@ -69,7 +69,7 @@
             <div class="modal-container" id="profileModal">
                 <div class="head-modal">
                     <img src="{{ asset('imgs/imagenes_home/profile.svg') }}" alt="" class="img-modal">
-                    <span>Nick</span>
+                    <span class="head-modal-span"></span>
                 </div>
                 <div class="modal-options">
                     <ul>
@@ -107,19 +107,19 @@
                         <img src="{{ asset('imgs/imagenes_home/wooper.svg') }}" alt="Wooper character">
                     </div>
                     <div class="description2">
-                        <p>Estás a punto de cambiar de cuenta de jugador. Ingresa el nickname de la cuenta a la que
-                            quieres acceder</p>
+                        <p>Estás a punto de cambiar de cuenta de jugador. Ingresa el nickname de la cuenta a la que quieres acceder</p>
                     </div>
                     <div class="name-input-container2">
-                        <input type="text" class="name-input2" placeholder="Ingresa el nickname">
+                        <input type="text" class="name-input2" id="nicknameInput" placeholder="Ingresa el nickname">
                     </div>
-                    <button class="search2">
+                    <button class="search2" id="changePlayerBtn">
                         Cambiar
                     </button>
                 </div>
-                <button class="back2" aria-label="Cerrar">×</button>
+                <button class="back2" id="closeModalBtn" aria-label="Cerrar">×</button>
             </div>
         </section>
+        
 
         {{-- modal perfil de adulto --}}
         <section class="modal3" id="adultProfileModal">
