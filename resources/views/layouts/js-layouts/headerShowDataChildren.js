@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (!token) {
         alert('No se encontró el token de autenticación');
-        return;
+        window.location.href = '/';
     }
 
     if (!childId) {

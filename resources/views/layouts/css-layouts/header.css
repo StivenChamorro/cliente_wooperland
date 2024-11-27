@@ -22,6 +22,10 @@ header {
   align-items: center;
 }
 
+span{
+  cursor: pointer;
+}
+
 header a{
   text-decoration: none;
   cursor: pointer;

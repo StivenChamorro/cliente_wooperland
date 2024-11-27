@@ -11,7 +11,7 @@ function setupChangePlayer() {
 
     if (!token) {
         alert('No se encontró el token de autenticación');
-        return;
+        window.location.href = '/';
     }
 
     changePlayerBtn.addEventListener('click', async function () {

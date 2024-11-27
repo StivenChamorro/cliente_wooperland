@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ asset('js/script_escoger-imagen.js') }}"></script>
-    @vite(['resources/views/layouts/css-layouts/header.css', 'resources/views/layouts/js-layouts/header.js', 'resources/views/layouts/js-layouts/headerShowDataChildren.js', 'resources/views/layouts/js-layouts/changeplayer.js'])
+    @vite(['resources/views/layouts/css-layouts/header.css', 
+    'resources/views/layouts/js-layouts/header.js', 
+    'resources/views/layouts/js-layouts/headerShowDataChildren.js',
+    'resources/views/layouts/js-layouts/changeplayer.js',
+    ])
 
     @yield('custom_css')
 
@@ -91,12 +95,11 @@
                     </ul>
                 </div>
                 <div class="foot-modal">
-                    <a href="{{route('login')}}">
                         <img src="{{ asset('imgs/imagenes_home/logout.svg') }}" alt="" class="icon-logout">
-                        <span>Cerrar sesión</span>
-                    </a>
+                        <span id="logout-session">Cerrar sesión</span>
                 </div>
             </div>
+            <script src="{{asset('js/logout.js')}}"></script>
         </section>
 
         {{-- modal cambiar de jugador --}}
@@ -128,17 +131,18 @@
                     <img src="{{ asset('imgs/imagenes_home/wooperpadre.svg') }}" alt="">
                 </div>
                 <div class="description3">
-                    <p>Para acceder a esta información escribe el pin que ingresaste cuando hiciste el registro</p>
+                    <p>Para acceder a esta información ingresa tu año de nacimiento</p>
                     <div class="pin-input-container">
                         <input type="number" maxlength="1" class="pin-input" data-index="0">
                         <input type="number" maxlength="1" class="pin-input" data-index="1">
                         <input type="number" maxlength="1" class="pin-input" data-index="2">
                         <input type="number" maxlength="1" class="pin-input" data-index="3">
                     </div>
-                    <a href="{{route('profile_father')}}"><button class="accept">Ingresar</button></a>
+                    <a href="#"><button class="accept">Ingresar</button></a>
                     <button class="back2" aria-label="Cerrar">×</button>
                 </div>
             </div>
+            <script src="{{asset('js/pinScript.js')}}"></script>
         </section>
 
     </header>
