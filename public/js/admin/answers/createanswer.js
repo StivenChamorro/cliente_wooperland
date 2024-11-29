@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const questionSelect = document.getElementById("question_id");
+    const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch("https://backend-production-40d8.up.railway.app/v1/question/index");
+        const response = await fetch(
+            "https://backend-production-40d8.up.railway.app/v1/question/index",
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            }
+        );
 
         if (!response.ok) {
             throw new Error("Error al obtener las preguntas");

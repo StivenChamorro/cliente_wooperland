@@ -131,6 +131,7 @@
                     <img src="{{ asset('imgs/imagenes_home/wooperpadre.svg') }}" alt="">
                 </div>
                 <div class="description3">
+                    <!-- Contenido inicial del modal -->
                     <p>Para acceder a esta información ingresa tu año de nacimiento</p>
                     <div class="pin-input-container">
                         <input type="number" maxlength="1" class="pin-input" data-index="0">
@@ -138,12 +139,13 @@
                         <input type="number" maxlength="1" class="pin-input" data-index="2">
                         <input type="number" maxlength="1" class="pin-input" data-index="3">
                     </div>
-                    <a href="#"><button class="accept">Ingresar</button></a>
+                    <button class="accept">Ingresar</button>
                     <button class="back2" aria-label="Cerrar">×</button>
                 </div>
             </div>
-            <script src="{{asset('js/pinScript.js')}}"></script>
+            <script src="{{ asset('js/pinScript.js') }}"></script>
         </section>
+        
 
     </header>
 
