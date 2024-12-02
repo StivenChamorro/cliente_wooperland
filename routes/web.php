@@ -62,6 +62,7 @@ Route::get('perfil_padre',[ProfileFatherController::class,'index'])->name('profi
 Route::get('vista_usuarios',[ProfileFatherController::class,'index2'])->name('father_users');
 //Ruta plantilla del nivel de matematicas(BRAYAN SOLARTE)
 Route::get('vista_niveles',[HomeController::class,'nivel1'])->name('view_lelvel');
+Route::get('level_preview/{id}', [HomeController::class, 'levelpreview'])->name('level_preview');
 
 Route::get('question', function () {
     return view('VIEWS_ADMIN.questions.create');

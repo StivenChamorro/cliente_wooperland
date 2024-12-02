@@ -22,6 +22,9 @@ class HomeController extends Controller
     {
         return view('layouts.nivel1');
     }
+
+    public function levelpreview($id){
+        return view('levelpreview', ['topicId' => $id]);    }
 }
 
 

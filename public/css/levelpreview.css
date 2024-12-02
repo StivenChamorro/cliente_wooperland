@@ -1,0 +1,259 @@
+/* Estilos generales */
+:root {
+    --primary-color: #EF476F;
+    --secondary-color: #4ECDC4;
+    --background-color: #FFD93D;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Happy Monkey', cursive;
+    background: linear-gradient(180deg, #FFD166 0%, #F78D6B 100%);
+}
+
+/* Contenedor principal */
+.level-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-bottom: 8rem;
+}
+
+/* Estilos del encabezado */
+.level-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    background-color: #8E243D;
+    padding: 1rem 1rem 0rem 1rem;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.level-teacher-img {
+    width: 200px;
+    height: auto;
+}
+
+.level-learn-button {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.level-learn-button:hover {
+    transform: scale(1.05);
+}
+
+/* Sección ¿Por qué matemáticas? */
+.level-why-math {
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.level-section-title {
+    font-family: 'Press Start 2P', cursive;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Contenedor del juego */
+.level-game-container {
+    position: relative;
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    object-fit:contain;
+    background-color: #4ECDC4;
+}
+
+/* Números flotantes */
+.level-numbers-container {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.level-item{
+    border-radius: 17px;
+    background: linear-gradient(45deg, #8E243D, #982943, #A12D49, #AB324F, #EFBE4B, #F3C352, #F7C859, #F7C859, #FBCD60);
+    background-size: 400%;
+    z-index: -1;
+    animation: glowing 20s linear infinite;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 4px 10px rgba(0, 0, 1, 3); /* Sombra básica */
+}
+
+.start-game-button{
+    background-color: #EF476F;
+    border-radius: 8px;
+    padding: 8px;
+    color: white;
+    font-family: 'press start 2p', cursive;
+    border: none;
+    cursor: pointer;
+}
+
+h3{
+    font-family: 'press start 2p', cursive;
+}
+
+.level-number-box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Animación flotante para los números */
+.level-number-box {
+    animation: float 3s ease-in-out infinite;
+}
+
+.level-active {
+    background-color: #FFD700;
+    position: relative;
+}
+
+/* Animación del borde brillante */
+.level-active::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 17px;
+    background: linear-gradient(45deg, #8E243D, #982943, #A12D49, #AB324F, #EFBE4B, #F3C352, #F7C859, #F7C859, #FBCD60);
+    background-size: 400%;
+    z-index: -1;
+    animation: glowing 20s linear infinite;
+}
+
+.level-locked {
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: not-allowed;
+}
+
+/* Ajolote */
+.level-axolotl {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    animation: moveAxolotl 8s ease-in-out infinite;
+}
+
+/* Modal */
+.level-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.level-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.level-modal-close {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+/* Animaciones */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 400% 0;
+    }
+}
+
+@keyframes moveAxolotl {
+    0% {
+        transform: translate(-50%, 0);
+    }
+    25% {
+        transform: translate(-30%, -20px);
+    }
+    50% {
+        transform: translate(-50%, 0);
+    }
+    75% {
+        transform: translate(-70%, -20px);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Nubes */
+.level-clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('nubes.png') repeat-x;
+    animation: moveClouds 20s linear infinite;
+}
+
+@keyframes moveClouds {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
