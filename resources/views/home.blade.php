@@ -31,79 +31,18 @@
         {{-- carrusel --}}
         <div class="slider">
             <div class="list">
-                <div class="item">
-                    <h2 class="title-carrusel">ASTRONOMIA</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image.svg')}}" alt="">
-                    <div class="buttons-container">
-                        <a href="#"><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">ARTE</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href=""><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">ESPAÑOL</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 2.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href=""><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">CIENCIAS SOCIALES</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 3.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href=""><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">MATEMATICAS</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 4.png')}}" alt="">
-                    <div class="buttons-container">
-
-                        <a href="{{route('view_lelvel')}}"><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">BIOLOGIA</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 5.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href=""><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">INGLES</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 6.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href=""><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
-                <div class="item">
-                    <h2 class="title-carrusel">MINIJUEGO</h2>
-                    <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 7.png')}}" alt="">
-                    <div class="buttons-container">
-                        <a href="{{route('listgames')}}"><button class="button2">JUGAR</button></a>
-                    </div>
-                </div>
+                <!-- Aquí se renderizarán dinámicamente los temas -->
+                
             </div>
             <div class="buttons">
                 <button id="prev"><</button>
                 <button id="next">></button>
             </div>
             <ul class="dots">
-                <li class="active"></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
+                <!-- Las dots también se generarán dinámicamente -->
             </ul>
         </div>
+        
 
         <script src="{{asset('js/home.js')}}"></script>
         {{-- carrusel --}}
