@@ -1,8 +1,18 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const storeSelect = document.getElementById("store_id");
+    const token = localStorage.getItem("token");
+
 
     try {
-        const response = await fetch("https://backend-production-40d8.up.railway.app/v1/stores/list");
+        const response = await fetch(
+            "https://backend-production-40d8.up.railway.app/v1/stores/list",
+            {
+                method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+            }
+        );
         
         if (!response.ok) {
             throw new Error("Error al obtener las tiendas");
@@ -70,6 +80,7 @@ document
                 const data = await response.json();
                 alert("Artículo creado exitosamente.");
                 console.log(data);
+                window.location.href = `/articles`
             } else {
                 const error = await response.json();
                 alert("Error al crear el artículo: " + (error.message || "Desconocido"));

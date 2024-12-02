@@ -1,8 +1,17 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const topicSelect = document.getElementById("topic_id");
+    const token = localStorage.getItem("token");
+
 
     try {
-        const response = await fetch("https://backend-production-40d8.up.railway.app/v1/topic/index");
+        const response = await fetch(
+            "https://backend-production-40d8.up.railway.app/v1/topic/index",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         
         if (!response.ok) {
             throw new Error("Error al obtener los temas");

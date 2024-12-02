@@ -38,7 +38,7 @@
     color: white;
   }
 
-  .create-level{
+  .create-answer{
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
@@ -49,7 +49,7 @@
     color: white;
   }
 
-  .level-table{
+  .answer-table{
     border: 1px solid black;
   }
 

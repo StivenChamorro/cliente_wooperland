@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const questionSelect = document.getElementById("question_id");
+    const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch("https://backend-production-40d8.up.railway.app/v1/question/index");
+        const response = await fetch(
+            "https://backend-production-40d8.up.railway.app/v1/question/index",
+            {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            }
+        );
 
         if (!response.ok) {
             throw new Error("Error al obtener las preguntas");
@@ -61,7 +69,7 @@ document
                 alert("Respuesta creada exitosamente.");
                 console.log(data);
                 // Redirigir o realizar una acción específica tras la creación
-                window.location.reload();
+                window.location.href = `/answers`;
             } else {
                 const error = await response.json();
                 alert("Error al crear la respuesta: " + (error.message || "Desconocido"));

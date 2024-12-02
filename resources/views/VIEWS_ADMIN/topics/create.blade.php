@@ -23,7 +23,7 @@
   <textarea class="input" id="description" name="description"></textarea>
 
   <label for="image">Image:</label>
-  <input type="file" name="image" id="image" class="input-image" placeholder="image">
+  <input type="file" name="image" id="image"  placeholder="image">
   
   <br>
   <a href="{{route('topics.index')}}"><button class="button" type="submit">Create</button></a>

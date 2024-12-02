@@ -36,7 +36,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image.svg')}}" alt="">
                     <div class="buttons-container">
                         <a href="#"><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -44,7 +43,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy.png')}}" alt="">
                     <div class="buttons-container">
                         <a href=""><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -52,7 +50,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 2.png')}}" alt="">
                     <div class="buttons-container">
                         <a href=""><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -60,7 +57,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 3.png')}}" alt="">
                     <div class="buttons-container">
                         <a href=""><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -69,8 +65,6 @@
                     <div class="buttons-container">
 
                         <a href="{{route('view_lelvel')}}"><button class="button2">JUGAR</button></a>
-
-                        <a href="{{route('vista_1_achievement')}}"><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -78,7 +72,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 5.png')}}" alt="">
                     <div class="buttons-container">
                         <a href=""><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">
@@ -86,7 +79,6 @@
                     <img src="{{asset('imgs/imagenes_home/images_carrusel/image copy 6.png')}}" alt="">
                     <div class="buttons-container">
                         <a href=""><button class="button2">JUGAR</button></a>
-                        <a href=""><button class="button2">LOGROS</button></a>
                     </div>
                 </div>
                 <div class="item">

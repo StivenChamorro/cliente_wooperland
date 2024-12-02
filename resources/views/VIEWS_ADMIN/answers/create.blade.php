@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<h1>Crear respuestas</h1>
+<h1>Create answer</h1>
 <br>
 <form id="create-answer-form">
   <label for="answer">Answer:</label>
