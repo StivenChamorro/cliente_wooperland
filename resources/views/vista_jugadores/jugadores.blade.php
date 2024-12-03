@@ -1,4 +1,7 @@
 @extends('layouts.header1')
+
+@section('title', 'Lista de jugadores')
+
 @section('content')
 
 <!DOCTYPE html>
@@ -12,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/vista_jugadores/jugadores.css') }}">
 
 
-</head>
+</head> 
 <body>
     <main id="principal">
     <div class="vistas">
@@ -86,20 +89,43 @@
         </button>
 
         <button id="agregar" class="agregar">Agregar Jugador</button>
-        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="activarModoEliminar()">Eliminar Jugador</button>
+        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button>
         <section>
 
-    <div id="agregados" style="margin-top: 20px;" class="agregados"></div>
+    <div id="agregados" style="margin-top: 20px;" class="agregados">
+
+    </div>
+
+    <div class="modal" id="childModal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            
+            <p><strong>Nombre:</strong> <span id="modalChildName"></span></p>
+            <p><strong>Apellido:</strong> <span id="modalChildLastname"></span></p>
+            <p><strong>Fecha de Nacimiento:</strong> <span id="modalChildBirthdate"></span></p>
+            <p><strong>Apodo:</strong> <span id="modalChildNickname"></span></p>
+            <p><strong>Relación:</strong> <span id="modalChildRelation"></span></p>
+            <p><strong>Género:</strong> <span id="modalChildGender"></span></p>
+            <p><strong>Diamantes:</strong> <span id="modalChildDiamonds"></span></p>
+            <p><strong>Sobre:</strong> <span id="modalChildAbout"></span></p>
+        </div>
+    </div>
 
     </section>
     </aside>
     <script src="{{asset('js/perfil_padre/perfil_padre_oscuro.js')}}"></script>
-    <script src="{{asset('js/vista_jugadores/crear_jugadores.js')}}"></script>
-    <script src="{{asset('js/vista_jugadores/visualizar.js')}}"></script>
-    <script src="{{asset('js/perfil_padre/todo.js')}}"></script>
+    <script src="{{asset('js/vista_jugadores/crear_jugador.js')}}"></script>
+    {{-- <script src="{{asset('js/vista_jugadores/visualizar.js')}}"></script>
+    <script src="{{asset('js/perfil_padre/todo.js')}}"></script> --}}
     {{-- <script src="{{asset('js/perfil_padre/foto_perfil.js')}}"></script>  --}}
     </main>
 </body>
 @include('layouts.footer')
 </html>
 @endsection
+
+
+
+
+
+
