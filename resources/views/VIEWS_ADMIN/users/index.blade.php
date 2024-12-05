@@ -6,7 +6,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ADMIN-CSS/users/index.css') }}">
 
 @endsection
 
@@ -23,9 +23,11 @@
       <th>ID</th>
       <th>Name</th>
       <th>Last_name</th>
+      <th>Birthdate</th>
       <th>Email</th>
       <th>User</th>
       <th>Role</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody id="user-list">

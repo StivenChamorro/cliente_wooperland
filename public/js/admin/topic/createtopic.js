@@ -28,6 +28,7 @@ document
             if (response.ok) {
                 const data = await response.json();
                 alert("Topic created successfully");
+                window.location.href = `/topics`
                 console.log(data);
             } else {
                 const error = await response.json();

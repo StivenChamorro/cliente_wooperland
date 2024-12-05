@@ -11,7 +11,7 @@
 @endsection
 
 @section('content')
-<h1>Edit Level</h1>
+<h1>Edit question</h1>
 <form id="edit-question-form" class="form" enctype="multipart/form-data">
   <div class="form-group">
     <label for="question">Question:</label>

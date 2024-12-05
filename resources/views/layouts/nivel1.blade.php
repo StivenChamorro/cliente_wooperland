@@ -4,28 +4,29 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=Press+Start+2P&display=swap" rel="stylesheet">
-@vite(['resources/views/layouts/css-layouts/nivel1.css', 'resources/js/animate.js'])
+@vite(['resources/views/layouts/css-layouts/nivel1.css'])
 
 @endsection
    
 @section('content')
 <body>
-    <section class="hero">
-        <div class="fondomatematicas">
-            <img src="{{ asset('img/niveles/fondomatematicas.png')  }}" alt="fondo matematicas" class="img-hero">
+    <div class="level-container">
+        <div class="level-header" id="level-header-id">
+            <!-- Imagen del profesor y pizarra -->
+            <div class="level-teacher-container">
+                <!-- Aquí va la imagen del profesor: profesor-matematicas.png -->
+                <img src="{{asset('img/niveles/woopermatematico.png')}}" alt="Profesor de matemáticas" class="level-teacher-img">
+            </div>
+            <button class="level-learn-button" id="learn-button">Aprende </button>
         </div>
-        <img id="mascota" src="{{asset('img/niveles/woopermatematico.png')}}" alt="woopermatematico">
-        <img id="anuncio" src="{{asset('img/niveles/aprendemate.png')}}" alt="aprendemate">
-    </section>
 
-    <section class="informacion">
-        <h2>¿Por qué matemáticas?</h2>
-        <hr>
-        <p>Las matemáticas son importantes para los niños porque les ayudan a desarrollar habilidades de pensamiento lógico y resolución de problemas. A través de las matemáticas, los niños aprenden a analizar situaciones, encontrar patrones y tomar decisiones basadas en datos. Estas habilidades no solo les sirven en la escuela, sino también en la vida cotidiana, como cuando deben repartir cantidades, medir objetos o manejar el dinero. Además, las matemáticas fomentan la creatividad al encontrar soluciones diferentes para un mismo problema, preparándolos para desafíos futuros.</p>
-        <hr>
-    </section>
+        <section class="level-why-math">
+            <h2 class="level-section-title" id="level-description-id"></h2>
+            <p class="level-explanation" id="level-explanation">
+            </p>
+        </section>
 
-    <section id="nivel" class="nivel">
+        <section id="nivel" class="nivel">
         <div id="quiz-container" class="quiz-container">
             <header class="header-quiz">
                 <div class="question-counter">1 de 10</div>
@@ -36,6 +37,9 @@
             <main>
                 <div class="question-bubble">
                     <p></p>
+                </div>
+                <div class="level-img">
+                    <img src="{{asset('img/niveles/wooperquestion.png')}}" alt="" class="level-wooper">
                 </div>
                 <div class="equation">
                     <p></p>
@@ -58,13 +62,15 @@
             </footer>
             <button class="next-button" style="display: none;">Siguiente Pregunta</button>
         </div>
-    </section>
+    </div>
 
     <div class="relleno"></div>
 
     <script src="{{ asset('js/nivel1.js') }}"></script>
+
+
+
+    @include('layouts.footer')
+
 </body>
-
-@include('layouts.footer')
-
 @endsection

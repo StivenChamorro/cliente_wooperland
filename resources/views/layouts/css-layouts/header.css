@@ -22,6 +22,10 @@ header {
   align-items: center;
 }
 
+span{
+  cursor: pointer;
+}
+
 header a{
   text-decoration: none;
   cursor: pointer;
@@ -548,6 +552,41 @@ height: auto;
   transform: scale(1.1);
   color: white;
 }
+
+/* Estilo general para el botón de cerrar */
+.close-modal {
+  background-color: #FFD166; /* Color rojo para destacar */
+  color: rgb(0, 0, 0); /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Efecto al pasar el mouse */
+  font-family: 'happy monkey', cursive;
+}
+
+/* Cambia el color al pasar el mouse */
+.close-modal:hover {
+  background-color: #FFE066; /* Rojo más oscuro */
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+/* Opcional: Cambia el estilo al hacer clic */
+.close-modal:active {
+  background-color: #FFD166; /* Rojo aún más oscuro */
+  transform: scale(0.95); /* Reduce ligeramente el tamaño */
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+  .close-modal {
+      font-size: 14px; /* Reduce el tamaño de fuente */
+      padding: 8px 16px; /* Ajusta el espacio interno */
+  }
+}
+
 
 /* modal perfil padre */
 

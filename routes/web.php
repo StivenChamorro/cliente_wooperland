@@ -46,7 +46,7 @@ Route::get('woopergames2',[LevelController::class, 'SpaceRuner'])->name('wooperg
 Route::get('login',[LoginController::class,'store'])->name('login');
 Route::get('register',[RegisterController::class,'store'])->name('register');
 Route::get('add_child',[AddChildController::class,'store'])->name('add_child');
-Route::get('terms',[TermsController::class,'store'])->name('terms');
+Route::get('terms',[TermsController::class,'store'])->name('terms')->name('terms');
 Route::get('profilechildren',[ProfileController::class,'store'])->name('Myprofile');
 
 //Rutas Tienda (HAIVE VELASCO)
@@ -61,7 +61,8 @@ Route::get('perfil_padre',[ProfileFatherController::class,'index'])->name('profi
 //Ruta usuarios registrados(BRAYAN SOLARTE)
 Route::get('vista_usuarios',[ProfileFatherController::class,'index2'])->name('father_users');
 //Ruta plantilla del nivel de matematicas(BRAYAN SOLARTE)
-Route::get('vista_niveles',[HomeController::class,'nivel1'])->name('view_lelvel');
+Route::get('vista_niveles/{id_tema}/{id_nivel}', [HomeController::class, 'nivel1'])->name('view_level');
+Route::get('level_preview/{id}', [HomeController::class, 'levelpreview'])->name('level_preview');
 
 Route::get('question', function () {
     return view('VIEWS_ADMIN.questions.create');
@@ -111,4 +112,6 @@ Route::get('/answers/{id}/edit', [AnswerController::class, 'edit']);  // Para pr
 
 //users///
 Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics
+Route::get('/admin/profile', [UserController::class, 'adminprofile'])->name('admin_profile'); // Muestra la lista de topics
+
 

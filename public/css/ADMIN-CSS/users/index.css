@@ -42,3 +42,22 @@
     display: flex;
     gap: 2rem;
   }
+  
+  .user-table{
+    border: 1px solid black;
+  }
+
+  tr{
+    border: 1px solid black;
+  }
+
+  tbody{
+    border: 1px solid black;
+  }
+
+  td{
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }

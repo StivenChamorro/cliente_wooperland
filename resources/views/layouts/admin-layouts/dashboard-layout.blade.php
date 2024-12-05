@@ -34,10 +34,6 @@
             <a href="{{route('questions.index')}}">
                 <div class="nav-item {{ Request::is('questions*') ? 'active' : '' }}">Questions</div>
             </a>
-            <a href="{{route('achievements.index')}}">
-                <div class="nav-item {{ Request::is('achievements*') ? 'active' : '' }}">Achievements</div>
-            </a>
-
             <a href="{{route('answers.index')}}">
                 <div class="nav-item {{ Request::is('answers*') ? 'active' : '' }}">Answers</div>
             </a>
@@ -56,7 +52,6 @@
                 <input type="text" placeholder="Search...">
             </div>
             <div class="admin-info" onclick="toggleModal()">
-                <div class="admin-avatar"></div>
                 <span class="admin-name">John Doe</span>
                 <div class="dropdown-arrow"></div>
             </div>

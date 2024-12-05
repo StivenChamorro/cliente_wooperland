@@ -8,78 +8,79 @@
   --font-secondary: 'Press Start 2P', cursive;
 }
 
-  body{
-    margin: 0;
-    background: linear-gradient(180deg, #FFD166 50.13%, #F78D6B 90%); 
-  }
-  
-  /* Hero Section */
-  .hero {
-    position: relative;
-    height: 50vh;
-    overflow: hidden;
-  }
-  
-  .fondomatematicas {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  .img-hero {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  #mascota {
-    position: absolute;
-    width: 25%;
-    max-width: 400px;
-    height: auto;
-    top: 10%;
-    left: 5%;
-    z-index: 2;
-  }
-  
-  #anuncio {
-    position: absolute;
-    width: 40%;
-    max-width: 595px;
-    height: auto;
-    top: 30%;
-    right: 5%;
-    z-index: 2;
-  }
-  
-  /* Information Section */
-  .informacion {
-    border-radius: 15px;
-    padding: 2rem;
-    margin: 2rem auto;
-    width: 80%;
-    max-width: 1000px;
-  }
-  
-  .informacion h2 {
-    color: var(--color-primary);
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .informacion p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-  
-  .informacion hr {
-    border: none;
-    height: 1px;
-    background-color: black;
-    margin: 1rem 0;
-  }
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Happy Monkey', cursive;
+  background: linear-gradient(180deg, #FFD166 0%, #F78D6B 100%);
+}
+
+/* Contenedor principal */
+.level-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-bottom: 8rem;
+}
+
+/* Estilos del encabezado */
+.level-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  background-color: #8E243D;
+  padding: 1rem 1rem 0rem 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.level-teacher-img {
+  width: 200px;
+  height: auto;
+}
+
+.level-learn-button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #EF476F;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.level-learn-button:hover {
+  transform: scale(1.05);
+}
+
+/* Sección ¿Por qué matemáticas? */
+.level-why-math {
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+.level-section-title {
+  font-family: 'Press Start 2P', cursive;
+  color:#EF476F;
+  margin-bottom: 15px;
+}
+
+.level-img{
+  margin-top: 1rem;
+  max-width: 300px;
+  max-height: 300px;
+  display: flex;
+  margin: 0 auto; /* Centra horizontalmente */
+  width: 50%; /* Define un ancho para que funcione */
+}
+
+.level-wooper{
+  height: 90%;
+  width: 90%;
+}
   
   /* Quiz Container */
   .nivel {
@@ -161,7 +162,7 @@
   
   .answer-button {
     background-color: white;
-    border: 2px solid #000;
+    border: 2px solid #B43654;
     border-radius: 5px;
     padding: 10px;
     font-family: var(--font-primary);

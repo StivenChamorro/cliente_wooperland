@@ -1,9 +1,9 @@
-.topic-list {
+.article-list {
     list-style-type: none;
     padding: 0;
     width: 100%;
   }
-  .topic-item {
+  .article-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,10 +12,10 @@
     background-color: #f0f0f0;
     border-radius: 5px;
   }
-  .topic-info {
+  .article-info {
     flex-grow: 1;
   }
-  .topic-actions {
+  .article-actions {
     display: flex;
     gap: 10px;
   }
@@ -38,7 +38,7 @@
     color: white;
   }
 
-  .create-topic{
+  .create-article{
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
@@ -53,4 +53,23 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+  }
+
+  .article-table{
+    border: 1px solid black;
+  }
+
+  tr{
+    border: 1px solid black;
+  }
+
+  tbody{
+    border: 1px solid black;
+  }
+
+  td{
+    border: 1px solid black;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
   }

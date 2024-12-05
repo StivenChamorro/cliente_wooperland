@@ -9,7 +9,7 @@ class ProfileFatherController extends Controller
     //
     public function index()
     {
-        return view('perfil_padre.perfil_padre');
+        return view('perfil_padre');
     }
 
     public function index2()

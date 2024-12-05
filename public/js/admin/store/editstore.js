@@ -53,6 +53,7 @@ document
 
             if (response.ok) {
                 alert("Store updated successfully");
+                window.location.href = `/stores`
             } else {
                 const errorText = await response.text();
                 console.error("Error updating store:", errorText);

@@ -1,8 +1,16 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const levelSelect = document.getElementById("level_id");
+    const token = localStorage.getItem("token");
 
     try {
-        const response = await fetch("https://backend-production-40d8.up.railway.app/v1/levels/index");
+        const response = await fetch(
+            "https://backend-production-40d8.up.railway.app/v1/levels/index",
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         
         if (!response.ok) {
             throw new Error("Error al obtener los niveles");
@@ -17,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         levels.forEach(level => {
             const option = document.createElement("option");
             option.value = level.id;
-            option.textContent = level.name;
+            option.textContent = `${level.name} - ${level.topic.name}`;
             levelSelect.appendChild(option);
         });
 
