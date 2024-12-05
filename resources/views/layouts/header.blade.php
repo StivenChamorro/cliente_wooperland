@@ -41,7 +41,7 @@
                     class="foto_actual">
 
                 <div class="catalogo_fotos">
-                    <img src="{{ asset('imgs/imgs_achievements-haiver_velasco/dragon_catagolo_cambiar_foto.png') }}"
+                    {{-- <img src="{{ asset('imgs/imgs_achievements-haiver_velasco/dragon_catagolo_cambiar_foto.png') }}"
                         class="foto_disponible">
                     <img src="{{ asset('imgs/imgs_achievements-haiver_velasco/wooperninja_catalogo_cambiar_foto.png') }}"
                         class="foto_disponible">
@@ -56,7 +56,7 @@
                     <img src="{{ asset('imgs/imgs_achievements-haiver_velasco/woopernieve_catalogo_cambiar_foto.png') }}"
                         class="foto_disponible">
                     <img src="{{ asset('imgs/imgs_achievements-haiver_velasco/deadpoolwooper_catalogo_cambiar_foto.png') }}"
-                        class="foto_disponible active">
+                        class="foto_disponible active"> --}}
                 </div>
 
                 <button class="boton_aceptar" id="aceptar_cambiar_imagen"> Aceptar </button>
@@ -65,14 +65,14 @@
 
         </nav>
         <button class="button-profile">
-            <img src="{{ asset('imgs/imagenes_home/image.svg') }}" alt="" class="profile-img">
+            <img src="{{ asset('img/imagen-default.png') }}" alt="" class="profile-img" id="profile-img-children">
             <span><img src="{{ asset('imgs/imagenes_home/arrow.svg') }}" alt="" class="arrow-profile"></span>
         </button>
 
         <section class="modal">
             <div class="modal-container" id="profileModal">
                 <div class="head-modal">
-                    <img src="{{ asset('imgs/imagenes_home/profile.svg') }}" alt="" class="img-modal">
+                    <img src="{{ asset('img/imagen-default.png') }}" alt="" class="img-modal" id="profile-img-children">
                     <span class="head-modal-span"></span>
                 </div>
                 <div class="modal-options">
