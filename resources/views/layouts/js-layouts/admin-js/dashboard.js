@@ -1,3 +1,5 @@
+
+
 function toggleModal() {
     const modal = document.getElementById('adminModal');
     modal.classList.toggle('show');
@@ -22,6 +24,7 @@ window.onclick = function(event) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
     const navItems = document.querySelectorAll(".nav-item");
 
     navItems.forEach((item) => {
