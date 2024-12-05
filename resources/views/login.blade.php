@@ -19,7 +19,7 @@
                 
                 <form id="loginForm" action="javascript:void(0);" class="form-grid">
                     <div class="input-group">
-                        <label for="email" class="label">Nombre de Usuario</label>
+                        <label for="email" class="label">Correo Electrónico</label>
                         <input id="email" name="email" type="email" class="input" placeholder="Usuario">
                     </div>
 
