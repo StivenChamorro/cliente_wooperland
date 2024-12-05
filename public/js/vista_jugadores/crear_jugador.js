@@ -1,87 +1,80 @@
-let tarjetas = JSON.parse(localStorage.getItem('tarjetas')) || [];
+// Cargar lista de tiendas
+async function loadChildrens() {
+    const token = localStorage.getItem('token');
 
-
-// Cargar tarjetas al iniciar
-
-window.onload = mostrarTarjetas;
-
-
-function mostrarTarjetas() {
-    const galeria = document.getElementById('agregados');
-    galeria.innerHTML = '';
-    tarjetas.forEach((tarjeta, index) => {
-        galeria.innerHTML += `
-            <div class="card">
-                <img src="${tarjeta.imagen}" alt="${tarjeta.titulo}" />
-                <h3>${tarjeta.titulo}</h3>
-                <p>${tarjeta.contexto}</p>
-                <button class="editar" onclick="editarTarjeta(${index})">Editar</button>
-                <button class="eliminar" onclick="eliminarTarjeta(${index})">
-                <img class="basura" src="../../img/vista_jugadores/eliminar1.png">
-                </button>
-            </div>
-        `;
-    });
-}
-
-function agregarTarjeta() {
-    const titulo = document.getElementById('titulo').value;
-    const contexto = document.getElementById('contexto').value;
-    const inputImagen = document.getElementById('inputImagen');
-
-
-
-    if (titulo && inputImagen.files && inputImagen.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const imagenUrl = e.target.result;
-            tarjetas.push({ titulo,contexto, imagen: imagenUrl });
-            localStorage.setItem('tarjetas', JSON.stringify(tarjetas)); // Guardar en localStorage
-            mostrarTarjetas();
-            document.getElementById('titulo').value = '';
-            inputImagen.value = ''; // Limpiar entrada de archivo
-            document.getElementById('contexto').value = '';
-        };
-        reader.readAsDataURL(inputImagen.files[0]); // Leer la imagen y convertir a Data URL
-    } else {
-        alert("Por favor, completa ambos campos.");
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
     }
-}
 
-function editarTarjeta(index) {
-    const tarjeta = tarjetas[index];
-    const nuevoTitulo = prompt("Introduce el nuevo título", tarjeta.titulo);
-    const nuevoContexto = prompt("Introduce el nuevo contexto", tarjeta.contexto);
-    const inputImagen = document.createElement('input');
-    inputImagen.type = 'file';
-    inputImagen.accept = 'image/*';
-
-    if (nuevoTitulo !== null) { // Solo actúo si el título no es cancelado
-        inputImagen.onchange = function() {
-            if (inputImagen.files && inputImagen.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    tarjeta.titulo = nuevoTitulo; // Actualizar el título
-                    tarjeta.imagen = e.target.result; // Actualizar la imagen
-                    tarjeta.contexto = nuevoContexto; // Actualizar el título
-                    localStorage.setItem('tarjetas', JSON.stringify(tarjetas)); // Guardar cambios en localStorage
-                    mostrarTarjetas(); // Mostrar las tarjetas actualizadas
-                };
-                reader.readAsDataURL(inputImagen.files[0]); // Leer la nueva imagen
-            } else {
-                tarjeta.titulo = nuevoTitulo; // Actualizar solo el título si no hay imagen
-                localStorage.setItem('tarjetas', JSON.stringify(tarjetas)); // Guardar cambios en localStorage
-                mostrarTarjetas(); // Mostrar las tarjetas actualizadas
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/children/index', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
-        };
-        inputImagen.click(); // Simular un clic en el input para abrir el selector de archivos
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Server error response:', errorText);
+            throw new Error(`Error: ${errorText}`);
+        }
+
+        const childrens = await response.json();
+        const childrenContainer = document.getElementById('agregados');
+        childrenContainer.innerHTML = '';
+
+        childrens.forEach(children => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${children.name}</h3>
+                <p>${children.nickname}</p>
+            `;
+
+            // Agregar event listener para mostrar detalles del niño
+            card.onclick = () => showChildDetails(children);
+
+            childrenContainer.appendChild(card);
+        });
+    } catch (error) {
+        console.error('Error loading stores:', error.message);
+        alert('No se pudieron cargar los usuarios. Por favor, inténtalo de nuevo.');
     }
 }
 
-function eliminarTarjeta(index) {
-    if (confirm("¿Estás seguro de que deseas eliminar esta tarjeta?")) {
-        tarjetas.splice(index, 1);
-        localStorage.setItem('tarjetas', JSON.stringify(tarjetas)); // Actualizar localStorage
-        mostrarTarjetas();
+// Función para mostrar los detalles del niño en el modal
+function showChildDetails(children) {
+    document.getElementById('modalChildName').innerText = children.name;
+    document.getElementById('modalChildLastname').innerText = children.lastname;
+    document.getElementById('modalChildNickname').innerText = children.nickname;
+    document.getElementById('modalChildBirthdate').innerText = children.birthdate;
+    document.getElementById('modalChildRelation').innerText = children.relation;
+    document.getElementById('modalChildGender').innerText = children.gender;
+    document.getElementById('modalChildDiamonds').innerText = children.diamonds;
+    document.getElementById('modalChildAbout').innerText = children.about;
+
+    // Mostrar el modal
+    const modal = document.getElementById('childModal');
+    modal.style.display = 'block';
+}
+
+// Manejo del cierre del modal
+document.getElementById('closeModal').onclick = function() {
+    const modal = document.getElementById('childModal');
+    modal.style.display = 'none';
+}
+
+// Para cerrar el modal al hacer clic fuera del contenido del modal
+window.onclick = function(event) {
+    const modal = document.getElementById('childModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
 }
+
+// Llamar a loadChildrens para cargar los niños una vez que se haya cargado la página
+document.addEventListener('DOMContentLoaded', loadChildrens);
+  loadChildrens();
+  
