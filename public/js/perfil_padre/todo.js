@@ -7,7 +7,8 @@ async function loadUsers() {
     }
 
     try {
-        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/user/show/1', {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
@@ -16,32 +17,101 @@ async function loadUsers() {
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('Server error response:', errorText);
-            throw new Error(`Error: ${errorText}`);
+            throw new Error(`Error al cargar los datos del usuario: ${errorText}`);
         }
 
+        const usuario = await response.json(); // Obtener el objeto JSON de la respuesta
 
-        const users = await response.json();
-        const userList = document.getElementById('perfil');
-        userList.innerHTML = ''; // Limpia la tabla antes de agregar nuevas filas
-    
-        users.forEach(user => {
-            const card = document.createElement('div');
-            card.className = 'informacion';
-            card.innerHTML = `
-                <p>${user.user}</p>
-                <p>${user.name}</p>
-                <p>${children.lastname}</p>
-            `;
-
-            // Agregar evento al hacer clic en la tarjeta para mostrar detalles
-
-            childrenContainer.appendChild(card);
-        });
+        // Actualizar el DOM con los datos del usuario
+        document.getElementById('nombreUsuario').innerText = usuario.user; // Nombre completo
+        document.getElementById('nombres').innerText = usuario.name; // Nombres
+        document.getElementById('apellidos').innerText = usuario.last_name; // Apellidos
+        document.getElementById('fechaNacimiento').innerText = usuario.birthdate; // Fecha de nacimiento
+        document.getElementById('correo').innerText = usuario.email; // Correo electrónico
 
     } catch (error) {
         console.error(error.message);
         alert('No se pudieron cargar los datos del usuario. Por favor, inténtalo de nuevo.');
     }
 }
-loadUsers()
+
+async function cargarDatosPrivados() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error al cargar los datos: ${errorText}`);
+        }
+
+        const usuario = await response.json();
+        document.getElementById('nombre').value = usuario.name; // Cargar correo
+        // Contraseña no se carga por seguridad
+    } catch (error) {
+        console.error(error.message);
+        alert('No se pudieron cargar los datos. Por favor, inténtale de nuevo.');
+    }
+}
+
+async function guardarDatosPrivados() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    const nombre = document.getElementById('nombre').value;
+    const contraseña = document.getElementById('pass').value;
+
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre, contraseña }),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error al guardar los datos: ${errorText}`);
+        }
+
+        alert('Datos guardados exitosamente');
+    } catch (error) {
+        console.error(error.message);
+        alert('No se pudieron guardar los datos. Por favor, inténtalo de nuevo.');
+    }
+}
+
+document.getElementById('guardar').onclick = guardarDatosPrivados;
+
+document.getElementById('togglePassword').onclick = function() {
+    const passwordField = document.getElementById('pass');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
+};
+
+document.addEventListener('DOMContentLoaded', cargarDatosPrivados);
+
+
+// Llamar a la función cuando se carga la página
+document.addEventListener('DOMContentLoaded', loadUsers);
+loadUsers();
