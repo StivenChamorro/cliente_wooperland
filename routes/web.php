@@ -109,4 +109,6 @@ Route::get('/answers/{id}/edit', [AnswerController::class, 'edit']);  // Para pr
 
 //users///
 Route::get('/users', [UserController::class, 'index'])->name('user.index'); // Muestra la lista de topics
+Route::get('/admin/profile', [UserController::class, 'adminprofile'])->name('admin_profile'); // Muestra la lista de topics
+
 
