@@ -11,9 +11,9 @@
     <title>STORE VIEW 1 </title>
     <link rel="stylesheet" href="{{ asset('css/Tienda-haiver_velasco.css/vista_3_tienda-haiver_velasco.css') }}">
     <script src="{{asset('js/script_buscador_tienda.js')}}"></script>
-    <script src="{{asset('js/script_escoger-imagen.js')}}"></script>
     <script src="{{asset('js/script_desplegable-perfil.js')}}"></script>
     <script src="{{asset('js/traer_img_tienda.js')}}"></script>
+    <script src="{{asset('js/traer_diamantes_children.js')}}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
 </head>
 

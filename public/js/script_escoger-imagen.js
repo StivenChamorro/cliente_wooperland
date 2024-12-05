@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     const cancelar_cambiar_imagen = document.getElementById("cancelar_cambiar_imagen");
     const aceptar_cambiar_imagen = document.getElementById("aceptar_cambiar_imagen");
     const img_perfil_actual = document.getElementById("img_perfil_actual"); // Imagen de perfil actual
-    const foto_perfil = document.getElementById("foto_perfil");
     const foto_actual = document.querySelector('.foto_actual'); // Elemento que muestra la foto actual en la lista
+    const foto_perfil = document.getElementById("foto_perfil");
     const catalogoFotos = document.getElementById("catalogo_fotos"); // Contenedor de imágenes disponibles
 
     // Obtener datos de la API
     async function obtenerDatos() {
         try {
-            const response = await fetch('https://backend-production-40d8.up.railway.app/');
+            const response = await fetch('https://backend-production-40d8.up.railway.app/v1');
             const data = await response.json();
             return data;
         } catch (error) {
