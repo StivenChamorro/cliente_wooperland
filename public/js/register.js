@@ -33,7 +33,7 @@ async function register(event) {
         if (response.ok) {
             alert('Registro exitoso');
             // Redirige o realiza otra acción después del registro exitoso
-            window.location.href = '/terms';
+            window.location.href = '/login';
         } else {
             alert('Error en el registro: ' + JSON.stringify(data));
         }

@@ -26,9 +26,20 @@ async function login() {
 
         // Verificar si el login fue exitoso y el access_token está presente
         if (response.ok && data.access_token) {
-            // Guardar el token en localStorage y redirigir
-            localStorage.setItem('token', data.access_token); // Cambiado a access_token
-            window.location.href = '/home'; // Redirige a la página principal
+            // Guardar el token en localStorage
+            localStorage.setItem('token', data.access_token);
+
+            // Revisar si es la primera vez que el usuario inicia sesión
+            const isFirstLogin = localStorage.getItem('isFirstLogin');
+
+            if (!isFirstLogin) {
+                // Si no hay un registro previo, redirigir a la ruta de bienvenida
+                localStorage.setItem('isFirstLogin', 'false'); // Marcar que ya no es el primer login
+                window.location.href = '/terms'; // Ruta para la primera vez
+            } else {
+                // Si no es la primera vez, redirigir a la ruta estándar
+                window.location.href = '/home';
+            }
         } else {
             alert('Credenciales no válidas o error en el servidor.');
         }

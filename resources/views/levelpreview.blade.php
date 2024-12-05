@@ -17,13 +17,12 @@
                 <!-- Aquí va la imagen del profesor: profesor-matematicas.png -->
                 <img src="{{asset('img/niveles/woopermatematico.png')}}" alt="Profesor de matemáticas" class="level-teacher-img">
             </div>
-            <button class="level-learn-button" id="learn-button">Aprende Tema</button>
+            <button class="level-learn-button" id="learn-button">Aprende </button>
         </div>
 
         <section class="level-why-math">
             <h2 class="level-section-title" id="level-description-id"></h2>
             <p class="level-explanation" id="level-explanation">
-                Las matemáticas son importantes para los niños porque les ayudan a desarrollar habilidades de pensamiento lógico y resolución de problemas. A través de las matemáticas, los niños aprenden a analizar situaciones, identificar patrones y tomar decisiones basadas en la lógica. Estas habilidades son fundamentales en la vida cotidiana, como cuando tienen que realizar compras, medir objetos o manejar el dinero. Además, las matemáticas fomentan la creatividad al encontrar soluciones innovadoras a problemas complejos.
             </p>
         </section>
 
