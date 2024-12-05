@@ -1,16 +1,14 @@
 async function register(event) {
     event.preventDefault();
 
-    // Captura los valores del formulario
     const name = document.querySelector('[name="name"]').value;
     const last_name = document.querySelector('[name="last_name"]').value;
-    const birthdate = document.querySelector('[name="birthdate"]').value; // Corrección aquí
+    const birthdate = document.querySelector('[name="birthdate"]').value;
     const email = document.querySelector('[name="email"]').value;
     const user = document.querySelector('[name="user"]').value;
     const password = document.querySelector('[name="password"]').value;
     const password_confirmation = document.querySelector('[name="password_confirmation"]').value;
 
-    // Enviar solicitud al backend
     try {
         const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/register', {
             method: 'POST',
@@ -20,7 +18,7 @@ async function register(event) {
             body: JSON.stringify({
                 name,
                 last_name,
-                birthdate, // Asegurarse de que el nombre coincida aquí también
+                birthdate,
                 email,
                 user,
                 password,
@@ -29,13 +27,23 @@ async function register(event) {
         });
 
         const data = await response.json();
+        console.log('Respuesta del backend:', data);
 
         if (response.ok) {
-            alert('Registro exitoso');
-            // Redirige o realiza otra acción después del registro exitoso
-            window.location.href = '/login';
+            // Verificar si la respuesta contiene un token
+            const token = data.accessToken;
+            if (token) {
+                localStorage.setItem('token', token);
+                console.log('Token guardado:', localStorage.getItem('token')); // Verificar si el token está en localStorage
+
+                // Redirigir después del registro exitoso
+                window.location.href = '/terms';
+            } else {
+                console.error('No se encontró un token en la respuesta:', data);
+                alert('Registro exitoso, pero no se obtuvo un token.');
+            }
         } else {
-            alert('Error en el registro: ' + JSON.stringify(data));
+            alert('Error en el registro: ' + JSON.stringify(data.errors || data));
         }
     } catch (error) {
         console.error('Error en el registro:', error);

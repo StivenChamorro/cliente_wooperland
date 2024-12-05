@@ -1,37 +1,31 @@
 document.getElementById('loginButton').addEventListener('click', login);
 
 async function login() {
-    // Obtener los valores de los campos del formulario
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Validar que los campos no estén vacíos
     if (!email || !password) {
         alert("Por favor, ingrese ambos campos.");
         return;
     }
 
     try {
-        // Enviar los datos al backend
         const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
-        console.log('Respuesta del backend:', data); // Verificar qué datos llegan
+        console.log('Respuesta del backend:', data);
 
-        // Verificar si el login fue exitoso y el access_token está presente
         if (response.ok && data.access_token) {
             // Guardar el token en localStorage
             localStorage.setItem('token', data.access_token);
 
             const token = localStorage.getItem('token');
 
-            // Hacer la consulta a /auth/me para obtener la información del usuario
+            // Obtener datos del usuario
             const userResponse = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
                 method: 'POST',
                 headers: {
@@ -44,25 +38,27 @@ async function login() {
             console.log('Datos del usuario:', userData);
 
             if (userResponse.ok) {
-                const userRole = userData.role; // Suponiendo que la respuesta tiene un campo 'role'
+                const userRole = userData.role;
 
-                // Redirigir según el rol del usuario
                 if (userRole === 'admin') {
-                    window.location.href = '/dashboard'; // Ruta específica para el administrador
-                } else if (userRole === 'user') {
-                    // Revisar si es la primera vez que el usuario inicia sesión
+                    // Si el rol es admin, redirigir a /dashboard
+                    console.log('Redirigiendo a /dashboard...');
+                    window.location.href = '/dashboard';
+                } else {
+                    // Si no es admin, verificar si es el primer inicio de sesión
                     const isFirstLogin = localStorage.getItem('isFirstLogin');
+                    console.log('isFirstLogin antes:', isFirstLogin);
 
-                    if (!isFirstLogin) {
-                        // Si no hay un registro previo, redirigir a la ruta de bienvenida
-                        localStorage.setItem('isFirstLogin', 'false'); // Marcar que ya no es el primer login
-                        window.location.href = '/terms'; // Ruta para la primera vez
+                    if (isFirstLogin === null || isFirstLogin === 'true') {
+                        // Primer inicio de sesión
+                        localStorage.setItem('isFirstLogin', 'false'); // Marcar como no primer inicio
+                        console.log('Redirigiendo a /terms...');
+                        window.location.href = '/terms';
                     } else {
-                        // Si no es la primera vez, redirigir a la ruta estándar
+                        // No es el primer inicio de sesión
+                        console.log('Redirigiendo a /home...');
                         window.location.href = '/home';
                     }
-                } else {
-                    alert('Rol no reconocido.');
                 }
             } else {
                 alert('No se pudo obtener la información del usuario.');
