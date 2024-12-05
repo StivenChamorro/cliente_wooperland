@@ -70,62 +70,45 @@
             <span><img src="{{ asset('img/perfil_padre/luna.png') }}" alt="luna"></span>
         </button>
         <section>
-            <div class="perfil">
+            <div class="perfil" id="perfil">
                 <div class="informacion" id="informacion">
                     <h3>Información Personal</h3>
                     <div class="usuario">
                         <img src="{{ asset('img/perfil_padre/foto_usuario.png') }}" alt="foto usuario">
-                        <h2 id="nombreUsuario">John Smith</h2>
+                        <h2 id="nombreUsuario"></h2> <!-- Correcto ID -->
                     </div>
-
-                    <h4>Nombres</h4>
-                    <p class="editable" id="nombres">John Andres</p>
-                    <img class="lapiz" src="{{asset('img/perfil_padre/lapiz.png')}}" alt="lapiz" style="display: none;">
-
+                    <h4>Nombre</h4>
+                    <p class="editable" id="nombres"></p> <!-- Correcto ID -->
                     <hr>
-
-                    <h4>Apellidos</h4>
-                    <p class="editable" id="apellidos">Smith Pines</p>
-                    <img class="lapiz" src="{{asset('img/perfil_padre/lapiz.png')}}" alt="lapiz" style="display: none;">
-
+                    <h4>Apellido</h4>
+                    <p class="editable" id="apellidos"></p> <!-- Correcto ID -->
                     <hr>
-
                     <h4>Fecha Nacimiento</h4>
-                    <p class="editable" id="fechaNacimiento">12/08/1986</p>
-                    <img class="lapiz" src="{{asset('img/perfil_padre/lapiz.png')}}" alt="lapiz" style="display: none;">
-
+                    <p class="editable" id="fechaNacimiento"></p> <!-- Correcto ID -->
                     <hr>
-
                     <h4>Correo Electrónico</h4>
-                    <p class="editable" id="correo">johnsmith@example.com</p>
-                    <img class="lapiz" src="{{asset('img/perfil_padre/lapiz.png')}}" alt="lapiz" style="display: none;">
-
+                    <p class="editable" id="correo"></p> <!-- Correcto ID -->
                     <hr>
-
-                    <button id="editar"><p>Editar</p></button>
                 </div>
 
 
-    <div class="adicional">
-        <div class="clave" id="clave">
-            <h3>Información Privada</h3>
-            <div class="formulario">
-                <h4>Usuario</h4>
-                <input type="text" name="usuario" id="nombre" placeholder="Ingrese el correo electronico">
-                <h4>Contraseña</h4>
-                <input class="pass" type="password" name="contraseña" id="pass" placeholder="*********">
-                <i class="fa-solid fa-eye-low-vision" id="togglePassword"></i>
-            </div>
-            <button id="cambiar"><p>Editar</p></button>
-            <div id="botonera" >
-            <button id="guardar" style="display: none;"><p>Guardar</p></button>
-            <button id="cancelar" style="display: none;"><p>Cancelar</p></button>
-        </div>
-        </div>
-
-        <div class="relleno">
-        </div>
-    </div>
+                <div class="adicional">
+                    <div class="clave" id="clave">
+                        <h3>Información Privada</h3>
+                        <div class="formulario">
+                            <h4>Usuario</h4>
+                            <input type="text" name="usuario" id="nombre" placeholder="Ingrese el correo electrónico">
+                            <h4>Contraseña</h4>
+                            <input class="pass" type="password" name="contraseña" id="pass" placeholder="*********">
+                            <i class="fa-solid fa-eye-low-vision" id="togglePassword"></i>
+                        </div>
+                        <button id="cambiar"><p>Editar</p></button>
+                        <div id="botonera">
+                            <button id="guardar" style="display: none;"><p>Guardar</p></button>
+                            <button id="cancelar" style="display: none;"><p>Cancelar</p></button>
+                        </div>
+                    </div>
+                </div>
             </div>
     </section>
     </aside>
@@ -135,7 +118,7 @@
 </body>
 <script src="{{ asset('js/perfil_padre/perfil_padre_oscuro.js') }}"></script>
 <script src="{{asset('js/perfil_padre/todo.js')}}"></script>
-<script src="{{asset('js/perfil_padre/foto_perfil.js')}}"></script>
+{{-- <script src="{{asset('js/perfil_padre/foto_perfil.js')}}"></script> --}}
 
 @include('layouts.footer')
 </html>

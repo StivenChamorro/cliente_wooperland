@@ -1,4 +1,7 @@
 @extends('layouts.header1')
+
+@section('title', 'Lista de jugadores')
+
 @section('content')
 
 <!DOCTYPE html>
@@ -12,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('css/vista_jugadores/jugadores.css') }}">
 
 
-</head>
+</head> 
 <body>
     <main id="principal">
     <div class="vistas">
@@ -60,21 +63,6 @@
 
             </div>
     </div>
-    <div class="agregara" id="agregara">
-        <h1>Administrar Tarjetas</h1>
-        <input type="file" id="inputImagen" accept="image/*" />
-        <img src="{{ asset('img/perfil_padre/foto_usuario.png') }}"  alt="avatar" id="avatar">
-        <input type="text" id="campo1" placeholder="Campo 1" />
-        <input type="text" id="campo2" placeholder="Campo 2" />
-        <input type="text" id="campo3" placeholder="Campo 3" />
-        <input type="text" id="campo4" placeholder="Campo 4" />
-        <input type="text" id="campo5" placeholder="Campo 5" />
-        <input type="text" id="campo6" placeholder="Campo 6" />
-        <button id="botonagregar" onclick="agregarTarjeta()">Agregar Tarjeta</button>
-
-        <button id="cerrar" onclick="ocultarformulario()" class="back2" aria-label="Cerrar">×</button>
-    </div>
-
     <aside>
         <div class="decoracion">
         </div>
@@ -85,21 +73,77 @@
             <span><img src="{{ asset('img/vista_jugadores/luna.png') }}" alt="luna"></span>
         </button>
 
-        <button id="agregar" class="agregar">Agregar Jugador</button>
-        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="activarModoEliminar()">Eliminar Jugador</button>
+        <a href="{{route('add_child')}}"><button id="agregar" class="agregar">Agregar Jugador</button></a>
+        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button>
         <section>
 
-    <div id="agregados" style="margin-top: 20px;" class="agregados"></div>
+    <div id="agregados" style="margin-top: 20px;" class="agregados">
+
+    </div>
+
+    <div class="modal" id="childModal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <h2>Información del Niño</h2>
+            </div>
+            <div class="information">
+                <div class="columna1">
+                    <p><strong>Nombres:</strong> <span id="modalChildName"></span></p>
+                    <p><strong>Apellidos:</strong> <span id="modalChildLastname"></span></p>
+                    <p><strong>Edad:</strong> <span id="modalChildBirthdate"></span></p>
+                </div>
+                <div class="columna2">
+                    <p><strong>Relación:</strong> <span id="modalChildRelation"></span></p>
+                    <p><strong>Género:</strong> <span id="modalChildGender"></span></p>
+                    <p><strong>Diamantes:</strong> <span id="modalChildDiamonds"></span></p>
+                    <p><strong>Nickname:</strong> <span id="modalChildNickname"></span></p>
+                </div>
+            </div>
+            <button id="editButton" class="edit-button">Editar</button>
+            <button id="deleteButton" class="delete-button">Eliminar</button>
+        </div>
+    </div>
+    {{-- modal para implementar edicion del niño --}}
+    <div class="modal" id="editChildModal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" id="closeEditModal">&times;</span>
+            <div class="modal-header">
+                <h2>Editar Información del Niño</h2>
+            </div>
+            <div class="information">
+                <div class="columna1">
+                    <p><strong>Nombres:</strong> <input type="text" id="editModalChildName" /></p>
+                    <p><strong>Apellidos:</strong> <input type="text" id="editModalChildLastname" /></p>
+                    <p><strong>Edad:</strong> <input type="text" id="editModalChildBirthdate" /></p>
+                </div>
+                <div class="columna2">
+                    <p><strong>Relación:</strong> <input type="text" id="editModalChildRelation" /></p>
+                    <p><strong>Género:</strong> <input type="text" id="editModalChildGender" /></p>
+                    <p><strong>Diamantes:</strong> <input type="text" id="editModalChildDiamonds" /></p>
+                    <p><strong>Nickname:</strong> <input type="text" id="editModalChildNickname" /></p>
+                </div>
+            </div>
+            <button id="saveButton" class="save-button">Guardar</button>
+        </div>
+    </div>
+    
 
     </section>
     </aside>
     <script src="{{asset('js/perfil_padre/perfil_padre_oscuro.js')}}"></script>
-    <script src="{{asset('js/vista_jugadores/crear_jugadores.js')}}"></script>
-    <script src="{{asset('js/vista_jugadores/visualizar.js')}}"></script>
-    <script src="{{asset('js/perfil_padre/todo.js')}}"></script>
-    {{-- <script src="{{asset('js/perfil_padre/foto_perfil.js')}}"></script>  --}}
+    <script src="{{asset('js/vista_jugadores/mostrar_jugador.js')}}"></script>
+    {{-- <script src="{{asset('js/vista_jugadores/editar_jugadores.js')}}"></script> --}}
+    {{-- <script src="{{asset('js/perfil_padre/todo.js')}}"></script> 
+    <script src="{{asset('js/perfil_padre/foto_perfil.js')}}"></script>  --}}
     </main>
 </body>
 @include('layouts.footer')
 </html>
 @endsection
+
+
+
+
+
+
