@@ -74,7 +74,7 @@
         </button>
 
         <a href="{{route('add_child')}}"><button id="agregar" class="agregar">Agregar Jugador</button></a>
-        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button>
+        {{-- <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button> --}}
         <section>
 
     <div id="agregados" style="margin-top: 20px;" class="agregados">
@@ -92,16 +92,20 @@
                     <p><strong>Nombres:</strong> <span id="modalChildName"></span></p>
                     <p><strong>Apellidos:</strong> <span id="modalChildLastname"></span></p>
                     <p><strong>Edad:</strong> <span id="modalChildBirthdate"></span></p>
+                    <p><strong>Relación:</strong> <span id="modalChildRelation"></span></p>
                 </div>
                 <div class="columna2">
-                    <p><strong>Relación:</strong> <span id="modalChildRelation"></span></p>
                     <p><strong>Género:</strong> <span id="modalChildGender"></span></p>
                     <p><strong>Diamantes:</strong> <span id="modalChildDiamonds"></span></p>
                     <p><strong>Nickname:</strong> <span id="modalChildNickname"></span></p>
                 </div>
             </div>
+            <br>
+            <br>
+            <div class="botonera">
             <button id="editButton" class="edit-button">Editar</button>
-            <button id="deleteButton" class="delete-button">Eliminar</button>
+            <button id="deleteChildButton" class="delete-button">Eliminar</button>
+        </div>
         </div>
     </div>
     {{-- modal para implementar edicion del niño --}}
@@ -124,6 +128,8 @@
                     <p><strong>Nickname:</strong> <input type="text" id="editModalChildNickname" /></p>
                 </div>
             </div>
+            <br>
+            <br>
             <button id="saveButton" class="save-button">Guardar</button>
         </div>
     </div>
