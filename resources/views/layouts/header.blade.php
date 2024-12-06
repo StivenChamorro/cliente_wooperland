@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="{{ asset('js/script_escoger-imagen.js') }}"></script>
+    <script src="{{asset('js/Shop/script_escoger-imagen.js')}}"></script>
     @vite(['resources/views/layouts/css-layouts/header.css', 
     'resources/views/layouts/js-layouts/header.js', 
     'resources/views/layouts/js-layouts/headerShowDataChildren.js',
@@ -65,14 +66,22 @@
 
         </nav>
         <button class="button-profile">
+
+            <img src="{{ asset('imgs/imagenes_home/image.svg') }}" alt="" class="profile-img" id="img_perfil_actual">
+
             <img src="{{ asset('img/imagen-default.png') }}" alt="" class="profile-img" id="profile-img-children">
+
             <span><img src="{{ asset('imgs/imagenes_home/arrow.svg') }}" alt="" class="arrow-profile"></span>
         </button>
 
         <section class="modal">
             <div class="modal-container" id="profileModal">
                 <div class="head-modal">
+
+                    <img src="{{ asset('imgs/imagenes_home/profile.svg') }}" alt="" class="img-modal" id="foto_perfil">
+
                     <img src="{{ asset('img/imagen-default.png') }}" alt="" class="img-modal" id="profile-img-children">
+
                     <span class="head-modal-span"></span>
                 </div>
                 <div class="modal-options">

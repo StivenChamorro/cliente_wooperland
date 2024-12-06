@@ -165,7 +165,7 @@ a {
     border-radius: 20px;
     z-index: 10;
     max-height: 0;
-    overflow: 1000;
+    overflow: hidden;
     transition: max-height 0.8s;
 }
 
