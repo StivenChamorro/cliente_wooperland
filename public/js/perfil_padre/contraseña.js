@@ -1,80 +1,79 @@
 
-    window.onload = function() {
-        const usuarioGuardado = localStorage.getItem('usuario');
-        const contraseñaGuardada = localStorage.getItem('contraseña');
+async function cargarDatosPrivados() {
+    const token = localStorage.getItem('token');
 
-        if (usuarioGuardado) {
-            document.getElementById('nombre').value = usuarioGuardado;
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error al cargar los datos: ${errorText}`);
         }
-        if (contraseñaGuardada) {
-            document.getElementById('pass').value = contraseñaGuardada;
+
+        const usuario = await response.json();
+        document.getElementById('nombre').value = usuario.nombre; // Cargar correo
+        // Contraseña no se carga por seguridad
+    } catch (error) {
+        console.error(error.message);
+        alert('No se pudieron cargar los datos. Por favor, inténtale de nuevo.');
+    }
+}
+
+async function guardarDatosPrivados() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    const nombre = document.getElementById('nombre').value;
+    const contraseña = document.getElementById('pass').value;
+
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ nombre, contraseña }),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Error al guardar los datos: ${errorText}`);
         }
-    };
 
-    const pass = document.getElementById("pass"),
-    icon = document.querySelector(".fa-solid")
-    
-    icon.addEventListener("click", e => {
-        if(pass.type === "password"){
-            pass.type = "text";
-            icon.classList.add('fa-eye')
-            icon.classList.remove('fa-eye-low-vision')
-        }
-        else{
-            pass.type = "password";
-            icon.classList.remove('fa-eye')
-            icon.classList.add('fa-eye-low-vision')
-        }
-    
-    });
+        alert('Datos guardados exitosamente');
+    } catch (error) {
+        console.error(error.message);
+        alert('No se pudieron guardar los datos. Por favor, inténtalo de nuevo.');
+    }
+}
 
-    document.getElementById('cambiar').addEventListener('click', function() {
-        // Mostrar botones de guardar y cancelar
-        document.getElementById('guardar').style.display = 'block';
-        document.getElementById('cancelar').style.display = 'block';
-        this.style.display = 'none';  // Ocultar el botón cambiar
+document.getElementById('guardar').onclick = guardarDatosPrivados;
 
-        // Habilitar campos para edición
-        document.getElementById('nombre').removeAttribute('disabled');
-        document.getElementById('pass').removeAttribute('disabled');
+document.getElementById('togglePassword').onclick = function() {
+    const passwordField = document.getElementById('pass');
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+    this.classList.toggle('fa-eye');
+    this.classList.toggle('fa-eye-slash');
+};
 
-        document.getElementById('clave').classList.add('activo');
-    });
-
-    document.getElementById('guardar').addEventListener('click', function() {
-        const usuarioNuevo = document.getElementById('nombre').value;
-        const contraseñaNueva = document.getElementById('pass').value;
-
-        // Guardar en localStorage
-        localStorage.setItem('usuario', usuarioNuevo);
-        localStorage.setItem('contraseña', contraseñaNueva);
-
-        alert('Información actualizada correctamente.');
-
-        // Ocultar botones de guardar y cancelar
-        this.style.display = 'none';
-        document.getElementById('cancelar').style.display = 'none';
-        document.getElementById('cambiar').style.display = 'block'; // Mostrar el botón cambiar nuevamente
-        document.getElementById('clave').classList.remove('activo');
-    });
-
-    document.getElementById('cancelar').addEventListener('click', function() {
-        // Volver a cargar los datos originales desde localStorage
-        document.getElementById('nombre').value = localStorage.getItem('usuario') || '';
-        document.getElementById('pass').value = localStorage.getItem('contraseña') || '';
-
-        // Ocultar botones de guardar y cancelar
-        document.getElementById('guardar').style.display = 'none';
-        this.style.display = 'none';
-        document.getElementById('cambiar').style.display = 'block'; // Mostrar el botón cambiar nuevamente
-
-        // Deshabilitar los campos
-        document.getElementById('nombre').setAttribute('disabled', true);
-        document.getElementById('pass').setAttribute('disabled', true);
-        document.getElementById('clave').classList.remove('activo');
-    });
+document.addEventListener('DOMContentLoaded', cargarDatosPrivados);
 
 
 
-
-    

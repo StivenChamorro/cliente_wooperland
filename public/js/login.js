@@ -1,34 +1,68 @@
 document.getElementById('loginButton').addEventListener('click', login);
 
 async function login() {
-    // Obtener los valores de los campos del formulario
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    // Validar que los campos no estén vacíos
     if (!email || !password) {
         alert("Por favor, ingrese ambos campos.");
         return;
     }
 
     try {
-        // Enviar los datos al backend
         const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/login', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         });
 
         const data = await response.json();
-        console.log('Respuesta del backend:', data); // Verificar qué datos llegan
+        console.log('Respuesta del backend:', data);
 
-        // Verificar si el login fue exitoso y el access_token está presente
         if (response.ok && data.access_token) {
-            // Guardar el token en localStorage y redirigir
-            localStorage.setItem('token', data.access_token); // Cambiado a access_token
-            window.location.href = '/home'; // Redirige a la página principal
+            // Guardar el token en localStorage
+            localStorage.setItem('token', data.access_token);
+
+            const token = localStorage.getItem('token');
+
+            // Obtener datos del usuario
+            const userResponse = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            const userData = await userResponse.json();
+            console.log('Datos del usuario:', userData);
+
+            if (userResponse.ok) {
+                const userRole = userData.role;
+
+                if (userRole === 'admin') {
+                    // Si el rol es admin, redirigir a /dashboard
+                    console.log('Redirigiendo a /dashboard...');
+                    window.location.href = '/dashboard';
+                } else {
+                    // Si no es admin, verificar si es el primer inicio de sesión
+                    const isFirstLogin = localStorage.getItem('isFirstLogin');
+                    console.log('isFirstLogin antes:', isFirstLogin);
+
+                    if (isFirstLogin === null || isFirstLogin === 'true') {
+                        // Primer inicio de sesión
+                        localStorage.setItem('isFirstLogin', 'false'); // Marcar como no primer inicio
+                        console.log('Redirigiendo a /terms...');
+                        window.location.href = '/terms';
+                    } else {
+                        // No es el primer inicio de sesión
+                        console.log('Redirigiendo a /home...');
+                        window.location.href = '/home';
+                    }
+                }
+            } else {
+                alert('No se pudo obtener la información del usuario.');
+            }
         } else {
             alert('Credenciales no válidas o error en el servidor.');
         }

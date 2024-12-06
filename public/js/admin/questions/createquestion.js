@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         levels.forEach(level => {
             const option = document.createElement("option");
             option.value = level.id;
-            option.textContent = level.name;
+            option.textContent = `${level.name} - ${level.topic.name}`;
             levelSelect.appendChild(option);
         });
 
