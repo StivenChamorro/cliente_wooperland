@@ -1,5 +1,5 @@
-async function loadArticles() { 
-    const token = localStorage.getItem("token"); 
+async function loadArticles() {
+    const token = localStorage.getItem("token");
 
     if (!token) {
         alert("No se encontró un token. Por favor, inicia sesión nuevamente.");
@@ -11,7 +11,7 @@ async function loadArticles() {
             "https://backend-production-40d8.up.railway.app/v1/articles/list",
             {
                 headers: {
-                    Authorization: `Bearer ${token}`, 
+                    Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
                 },
             }
@@ -33,7 +33,7 @@ async function loadArticles() {
 
 function renderArticles(articles) {
     const articleList = document.getElementById("contedido_buscador");
-    articleList.innerHTML = ""; 
+    articleList.innerHTML = ""; // Limpia la lista de artículos
 
     articles.forEach((article) => {
         const card = createArticleCard(article);
@@ -44,6 +44,7 @@ function renderArticles(articles) {
 function createArticleCard(article) {
     const card = document.createElement("div");
     card.className = "article-card";
+    card.setAttribute("data-id", article.id); // Asigna el ID del artículo como data-id
     card.innerHTML = `
         <div class="card-image">
             <img src="${article.avatar}" alt="${article.name}">
@@ -59,25 +60,31 @@ function createArticleCard(article) {
     return card;
 }
 
-// Función para mostrar el modal con la información del artículo
+// Función para mostrar el modal y guardar el artículo en localStorage
 function mostrarModal(article) {
-    const modal = document.getElementById("modal_desplegado");      
+    const modal = document.getElementById("modal_desplegado");
+
+    // Actualizar el contenido del modal
     modal.querySelector(".titulo_anuncio_compra").innerText = article.name;
     modal.querySelector(".texto_anuncio_compra").innerText = article.description;
     modal.querySelector(".costo_anuncio_compra").innerText = `Coste: ${article.price} 💎`;
     modal.querySelector(".img_BD").style.backgroundImage = `url(${article.avatar})`;
     modal.style.display = "block";
+
+    // Guardar el artículo en localStorage
+    localStorage.setItem("selectedArticle", JSON.stringify(article));
+    console.log("Artículo guardado en localStorage:", article);
 }
 
 // Cierra el modal cuando se hace clic fuera de él
-window.onclick = function(event) {
+window.onclick = function (event) {
     const modal = document.getElementById("modal_desplegado");
     if (event.target == modal) {
         modal.style.display = "none";
     }
 };
 
-// Llama a la función para cargar los artículos y obtener los diamantes al iniciar
-window.onload = function() {
+// Llama a la función para cargar los artículos al iniciar
+window.onload = function () {
     loadArticles();
 };

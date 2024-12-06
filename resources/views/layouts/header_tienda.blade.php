@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <script src="{{asset('js/script_buscador_tienda.js')}}"></script>
-    <script src="{{asset('js/script_escoger-imagen.js')}}"></script>
-    @vite(['resources/views/layouts/css-layouts/header_tienda.css'])
+    {{-- <script src="{{asset('js/Shop/script_buscador_tienda.js')}}"></script> --}}
+    <script src="{{asset('js/Shop/script_escoger-imagen.js')}}"></script>
+    @vite(['resources/views/layouts/css-layouts/header_tienda.css',
+    'resources/views/layouts/css-layouts/header.css', 
+    'resources/views/layouts/js-layouts/header.js', 
+    'resources/views/layouts/js-layouts/headerShowDataChildren.js',
+    'resources/views/layouts/js-layouts/changeplayer.js',
+    ])
     {{-- @vite(['resources/views/layouts/css-layouts/header_tienda.css','resources/css/app.css','resources/js/animate.js']) --}}
 
     <title>Document</title>
@@ -34,9 +39,7 @@
 
                 <div class="contenedor_cambiar_imagen" id="cambiar_imagen">
                     <h1 class="titulo_cambiar_imagen"> Cambiar foto de perfil</h1>
-                    <img src="{{asset('imgs/imgs_achievements-haiver_velasco/img_escogida_cambiar_foto.png')}}" class="foto_actual">
 
-                    
                     <div class="catalogo_fotos" id="catalogo_fotos">
                         <!-- Las imágenes se cargarán dinámicamente desde la API -->
                     </div>
@@ -45,33 +48,44 @@
                 </div>
             </div>
             
-            <div class="contenedor_desplegable_header">
-                <div class="img_perfil_header">
-                    <img src="{{ asset('imgs/imgs_store-haiver_velasco/wooper_header.png') }}" id="img_perfil_actual">
+            <button class="button-profile">
+                <img src="{{ asset('imgs/imagenes_home/image.svg') }}" alt="" class="profile-img">
+                <span><img src="{{ asset('imgs/imagenes_home/arrow.svg') }}" alt="" class="arrow-profile"></span>
+            </button>
+    
+            <section class="modal">
+                <div class="modal-container" id="profileModal">
+                    <div class="head-modal">
+                        <img src="{{ asset('imgs/imagenes_home/profile.svg') }}" alt="" class="img-modal">
+                        <span class="head-modal-span"></span>
+                    </div>
+                    <div class="modal-options">
+                        <ul>
+                            <li>
+                                <a href= "{{ route('Myprofile')}}"> 
+                                    <img src="{{ asset('imgs/imagenes_home/profile-icon.svg') }}" alt=""class="profile-icon"> Tu Perfil
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#change-player">
+                                    <img src="{{ asset('imgs/imagenes_home/change-player.svg') }}" alt="" class="change-player-icon"> Cambiar de jugador
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#adult-profile">
+                                    <img src="{{ asset('imgs/imagenes_home/adult-profile.svg') }}"alt="" class="adult profile">Perfil Adulto
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="foot-modal">
+                            <img src="{{ asset('imgs/imagenes_home/logout.svg') }}" alt="" class="icon-logout">
+                            <span id="logout-session">Cerrar sesión</span>
+                    </div>
                 </div>
-                
-                <div class="menu_perfil_desplegable" id="menu_desplegado_header">
-                    <div class="nombre_usuario_desplegable">
-                        <img src="{{asset('imgs/imgs_store-haiver_velasco/wooper_header.png')}}" class="img_perfil_desplegable" id="foto_perfil">
-                        <h1 class="texto_nombre_usuario_desplegable"> Nick</h1>
-                    </div>
-                    <div class="barra_1_desplegable"></div>
-                    <div class="container_perfil_desplegable_li">
-                        <ol>
-                            <li> <img src="{{asset('imgs/imgs_achievements-haiver_velasco/img_perfil.png')}}" alt=""> Tu Perfil</li>
-                            <li> <img src="{{asset('imgs/imgs_achievements-haiver_velasco/img_cambiar_jugador.png')}}" alt=""> Cambiar de Jugador</li>
-                            <li> <img src="{{asset('imgs/imgs_achievements-haiver_velasco/img_perfil_adulto.png')}}" alt=""> Perfil Adulto</li>
-                        </ol>
-                    </div>
-                    <div class="barra_2_desplegable"></div>
-                    <div class="cerrar_sesion_desplegable">
-                        <img src="{{asset('imgs/imgs_achievements-haiver_velasco/img_cerrar_sesion.png')}}" alt="" class="img_cerrar_sesion_despleglable">
-                        <h1 class="texto_cerrar_sesion_desplegable">Cerrar Sessión</h1>
-                    </div>
-                    </div>
-
-                <div class="flecha_header"></div>
-            </div>
+                <script src="{{asset('js/logout.js')}}"></script>
+            </section>
+    
         </div>
     </header>
     @yield('content') <!-- Aquí se inyectará el contenido de las vistas -->
