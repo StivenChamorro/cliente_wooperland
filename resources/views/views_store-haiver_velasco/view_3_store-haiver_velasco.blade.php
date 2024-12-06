@@ -10,10 +10,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>STORE VIEW 1 </title>
     <link rel="stylesheet" href="{{ asset('css/Tienda-haiver_velasco.css/vista_3_tienda-haiver_velasco.css') }}">
-    <script src="{{asset('js/script_buscador_tienda.js')}}"></script>
-    <script src="{{asset('js/script_desplegable-perfil.js')}}"></script>
-    <script src="{{asset('js/traer_img_tienda.js')}}"></script>
-    <script src="{{asset('js/traer_diamantes_children.js')}}"></script>
+    {{-- <script src="{{asset('js/Shop/script_buscador_tienda.js')}}"></script> --}}
+    <script src="{{asset('js/Shop/traer_img_tienda.js')}}"></script>
+    <script src="{{asset('js/Shop/traer_diamantes_children.js')}}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
 </head>
 
@@ -57,14 +56,15 @@
             {{-- Contenedor Tarjeta de Compra --}}
             <div class="container_tarjeta" id="modal_desplegado">
                 <div class="img_BD">
-                    <h1 class="titulo_anuncio_compra"> </h1>
-                    <p class="texto_anuncio_compra"> </p>
+                    <h1 class="titulo_anuncio_compra"></h1>
+                    <p class="texto_anuncio_compra"></p>
                     <h2 class="costo_anuncio_compra"></h2>
                     <div class="boton_comprar">
-                        <button id="a_comprar"> Comprar</button>
+                        <button id="a_comprar">Comprar</button>
                     </div>
                 </div>
             </div>
+            <script src="{{asset('js/Shop/canjes_tienda.js')}}"></script>
         </div>
     </main>
     {{-- /Contenido --}}
