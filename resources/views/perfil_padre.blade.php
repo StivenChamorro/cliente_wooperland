@@ -60,9 +60,6 @@
             </div>
     </div>
     <aside>
-        <div class="decoracion">
-            <p></p>
-        </div>
         <h2>Mi cuenta</h2>
         <hr>
         <button class="switch" id="switch">
@@ -89,27 +86,53 @@
                     <h4>Correo Electrónico</h4>
                     <p class="editable" id="correo"></p> <!-- Correcto ID -->
                     <hr>
+
+                    <button id="cambiar"><p>Editar</p></button>
                 </div>
 
 
-                <div class="adicional">
-                    <div class="clave" id="clave">
-                        <h3>Información Privada</h3>
-                        <div class="formulario">
-                            <h4>Usuario</h4>
-                            <input type="text" name="usuario" id="nombre" placeholder="Ingrese el correo electrónico">
-                            <h4>Contraseña</h4>
-                            <input class="pass" type="password" name="contraseña" id="pass" placeholder="*********">
-                            <i class="fa-solid fa-eye-low-vision" id="togglePassword"></i>
-                        </div>
-                        <button id="cambiar"><p>Editar</p></button>
-                        <div id="botonera">
-                            <button id="guardar" style="display: none;"><p>Guardar</p></button>
-                            <button id="cancelar" style="display: none;"><p>Cancelar</p></button>
-                        </div>
-                    </div>
-                </div>
+
             </div>
+
+            <!-- Modal para editar perfil -->
+<div id="editProfileModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <div class="contenido">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Editar Perfil</h2>
+        <div>
+            <h4>Usuario:</h4>
+            <input type="text" id="ediUsuario" placeholder="Ingrese su nombre de usuario">
+            <hr>
+        </div>
+        <div>
+            <h4>Nombre:</h4>
+            <input type="text" id="editNombre" placeholder="Ingrese su nombre">
+            <hr>
+        </div>
+        <div>
+            <h4>Apellidos:</h4>
+            <input type="text" id="editApellidos" placeholder="Ingrese sus apellidos">
+            <hr>
+        </div>
+        <div>
+            <h4>Fecha Nacimiento:</h4>
+            <input type="date" id="editFechaNacimiento" placeholder="Ingrese su fecha de nacimiento">
+            <hr>
+        </div>
+        <div>
+            <h4>Correo Electrónico:</h4>
+            <input type="email" id="editCorreo" placeholder="Ingrese su correo electrónico">
+            <hr>
+        </div>
+    </div>
+        <br>
+        <br>
+        <button id="saveChanges">Guardar Cambios</button>
+
+    </div>
+</div>
+
     </section>
     </aside>
 

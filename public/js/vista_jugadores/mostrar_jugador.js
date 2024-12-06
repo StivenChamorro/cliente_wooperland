@@ -11,7 +11,7 @@ async function loadChildrens() {
     }
 
     try {
-        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/children/index', {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/children/getchildrenbyuser', {
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'

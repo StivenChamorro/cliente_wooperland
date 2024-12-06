@@ -1,4 +1,6 @@
-async function loadUsers() {
+let userid = null; // Variable global para almacenar el ID del usuario
+
+async function loadUser() {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -17,25 +19,37 @@ async function loadUsers() {
 
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`Error al cargar los datos del usuario: ${errorText}`);
+            console.error('Error al cargar los datos del usuario:', errorText);
+            throw new Error(`Error: ${errorText}`);
         }
 
-        const usuario = await response.json(); // Obtener el objeto JSON de la respuesta
-
-        // Actualizar el DOM con los datos del usuario
-        document.getElementById('nombreUsuario').innerText = usuario.user; // Nombre completo
-        document.getElementById('nombres').innerText = usuario.name; // Nombres
-        document.getElementById('apellidos').innerText = usuario.last_name; // Apellidos
-        document.getElementById('fechaNacimiento').innerText = usuario.birthdate; // Fecha de nacimiento
-        document.getElementById('correo').innerText = usuario.email; // Correo electrónico
+        const user = await response.json();
+        userid = user.id; // Asignar el ID del usuario
+        // Cargar datos en la UI
+        document.getElementById('nombreUsuario').innerText = user.user; // Nombre completo
+        document.getElementById('nombres').innerText = user.name; // Nombres
+        document.getElementById('apellidos').innerText = user.last_name; // Apellidos
+        document.getElementById('fechaNacimiento').innerText = user.birthdate; // Fecha de nacimiento
+        document.getElementById('correo').innerText = user.email; // Correo electrónico
 
     } catch (error) {
-        console.error(error.message);
-        alert('No se pudieron cargar los datos del usuario. Por favor, inténtalo de nuevo.');
+        console.error('No se pudieron cargar los datos del usuario:', error.message);
     }
 }
 
-async function cargarDatosPrivados() {
+// Función para abrir el modal de edición
+function openEditProfileModal() {
+    document.getElementById('ediUsuario').value = document.getElementById('nombreUsuario').innerText; // Cargar nombre de usuario
+    document.getElementById('editNombre').value = document.getElementById('nombres').innerText; // Cargar nombres
+    document.getElementById('editApellidos').value = document.getElementById('apellidos').innerText; // Cargar apellidos
+    document.getElementById('editFechaNacimiento').value = document.getElementById('fechaNacimiento').innerText; // Cargar fecha de nacimiento
+    document.getElementById('editCorreo').value = document.getElementById('correo').innerText; // Cargar correo
+
+    document.getElementById('editProfileModal').style.display = 'block'; // Mostrar el modal
+}
+
+// Función para guardar cambios
+document.getElementById('saveChanges').onclick = async function() {
     const token = localStorage.getItem('token');
 
     if (!token) {
@@ -43,75 +57,55 @@ async function cargarDatosPrivados() {
         return;
     }
 
-    try {
-        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
-
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Error al cargar los datos: ${errorText}`);
-        }
-
-        const usuario = await response.json();
-        document.getElementById('nombre').value = usuario.name; // Cargar correo
-        // Contraseña no se carga por seguridad
-    } catch (error) {
-        console.error(error.message);
-        alert('No se pudieron cargar los datos. Por favor, inténtale de nuevo.');
-    }
-}
-
-async function guardarDatosPrivados() {
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
-        return;
-    }
-
-    const nombre = document.getElementById('nombre').value;
-    const contraseña = document.getElementById('pass').value;
+    const updatedUser = {
+        user: document.getElementById('ediUsuario').value,
+        name: document.getElementById('editNombre').value,
+        last_name: document.getElementById('editApellidos').value,
+        birthdate: document.getElementById('editFechaNacimiento').value,
+        email: document.getElementById('editCorreo').value,
+    };
 
     try {
-        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+        const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/user/update/${userid}`, {
             method: 'PUT',
             headers: {
                 'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre, contraseña }),
+            body: JSON.stringify(updatedUser),
         });
 
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`Error al guardar los datos: ${errorText}`);
+            console.error('Error al guardar los cambios:', errorText);
+            throw new Error(`Error: ${errorText}`);
         }
 
         alert('Datos guardados exitosamente');
+        loadUser(); // Recargar los datos de usuario
+        closeEditProfileModal(); // Cerrar el modal
+
     } catch (error) {
-        console.error(error.message);
-        alert('No se pudieron guardar los datos. Por favor, inténtalo de nuevo.');
+        console.error('No se pudieron guardar los cambios:', error.message);
+        alert('No se pudieron guardar los cambios, por favor inténtalo de nuevo.');
     }
-}
-
-document.getElementById('guardar').onclick = guardarDatosPrivados;
-
-document.getElementById('togglePassword').onclick = function() {
-    const passwordField = document.getElementById('pass');
-    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordField.setAttribute('type', type);
-    this.classList.toggle('fa-eye');
-    this.classList.toggle('fa-eye-slash');
 };
 
-document.addEventListener('DOMContentLoaded', cargarDatosPrivados);
+// Función para cerrar el modal de edición
+function closeEditProfileModal() {
+    document.getElementById('editProfileModal').style.display = 'none'; // Ocultar el modal
+}
 
+// Evento para abrir el modal al hacer clic en el botón "Editar"
+document.getElementById('cambiar').onclick = openEditProfileModal;
 
-// Llamar a la función cuando se carga la página
-document.addEventListener('DOMContentLoaded', loadUsers);
-loadUsers();
+// Cierra el modal cuando se hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    const modal = document.getElementById('editProfileModal');
+    if (event.target === modal) {
+        closeEditProfileModal();
+    }
+};
+
+// Cargar información del usuario al cargar la página
+document.addEventListener('DOMContentLoaded', loadUser);
