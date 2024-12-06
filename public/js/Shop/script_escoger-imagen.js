@@ -1,101 +1,45 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const childId = localStorage.getItem('selectedChildId'); // Obtener el ID del niño desde localStorage
-    const catalogoFotos = document.getElementById('catalogo_fotos'); // Contenedor de las imágenes
-    const contenedorCambiarImagen = document.getElementById('cambiar_imagen'); // Modal de cambio de imagen
-    const botonMirarImagenes = document.getElementById('mirar_imagenes'); // Botón "Avatares"
-    const botonAceptar = document.getElementById('aceptar_cambiar_imagen'); // Botón "Aceptar"
-    const botonCancelar = document.getElementById('cancelar_cambiar_imagen'); // Botón "Cancelar"
+document.addEventListener('DOMContentLoaded', function() {
+    let mirar_imagenes = document.getElementById("mirar_imagenes");
+    let cambiar_imagen = document.getElementById("cambiar_imagen");
+    let cancelar_cambiar_imagen = document.getElementById("cancelar_cambiar_imagen")
+    let aceptar_cambiar_imagen = document.getElementById("aceptar_cambiar_imagen")
+    let img_perfil_actual = document.getElementById("img_perfil_actual") // Imagen de perfil actual
+    let foto_perfil = document.getElementById("foto_perfil")
+    const foto_actual = document.querySelector('.foto_actual') // Elemento que muestra la foto actual en la lista
+    const foto_disponible = document.querySelectorAll('.foto_disponible') // Lista de imágenes disponibles
 
-    // Función para mostrar el modal
-    function mostrarModal() {
-        contenedorCambiarImagen.style.display = 'block';
-    }
+    // Abrir el menú para cambiar la imagen
+    mirar_imagenes.addEventListener('click', function() {
+        cambiar_imagen.classList.toggle("open-menu");
+    });
 
-    // Función para ocultar el modal
-    function ocultarModal() {
-        contenedorCambiarImagen.style.display = 'none';
-    }
-    
-    // Función para cargar las imágenes compradas
-    async function cargarImagenesCompradas() {
-        const token = localStorage.getItem("token");
-        if (!token) {
-            console.error("No se encontró el token en localStorage.");
-            alert("Por favor, inicia sesión nuevamente.");
-            return;
+    // Cancelar el cambio de imagen
+    cancelar_cambiar_imagen.addEventListener('click', function() {
+        cambiar_imagen.classList.remove("open-menu");
+    });
+
+    // Aceptar el cambio de imagen
+    aceptar_cambiar_imagen.addEventListener('click', function() {
+        const active = document.querySelector('.foto_disponible.active');
+        if (active) {
+            // Cambiar la imagen de perfil actual
+            img_perfil_actual.src = active.src;
+            foto_perfil.src = active.src;
         }
-    
-        try {
-            const response = await fetch(`https://backend-production-40d8.up.railway.app/imageUsers/image_users/${childId}`, {
-                method: "GET", 
-                headers: {
-                    'Authorization': `Bearer ${token}`, 
-                    'Content-Type': 'application/json',
-                },
-            });
+        cambiar_imagen.classList.remove("open-menu");
+    });
 
-            if (!response.ok) {
-                throw new Error(`Error al cargar imágenes: ${response.status} ${response.statusText}`);
+    // Seleccionar imagen disponible
+    foto_disponible.forEach(disponible => {
+        disponible.addEventListener('click', function() {
+            const active = document.querySelector('.foto_disponible.active');
+            if (active) {
+                active.classList.remove('active'); // Remover la clase active de la imagen actual
             }
-    
-            const imagenes = await response.json(); 
-    
-            if (imagenes.length === 0) {
-                catalogoFotos.innerHTML = '<p>No se encontraron imágenes compradas.</p>';
-                return;
-            }
-    
-            catalogoFotos.innerHTML = ''; // Limpiar el contenedor
-            imagenes.forEach(imagen => {
-                const imgElement = document.createElement('img');
-                imgElement.src = imagen.url_imagen;
-                imgElement.alt = 'Imagen comprada';
-                imgElement.className = 'imagen_comprada';
-                imgElement.dataset.imageId = imagen.id; // Guardar el ID de la imagen como atributo
-                imgElement.addEventListener('click', seleccionarImagen); // Agregar evento de selección
-                catalogoFotos.appendChild(imgElement);
-            });
-        } catch (error) {
-            console.error('Error al cargar las imágenes compradas:', error);
-            catalogoFotos.innerHTML = '<p>Error al cargar las imágenes. Inténtalo de nuevo más tarde.</p>';
-        }
-    }
-    
-
-    // Función para manejar la selección de una imagen
-    function seleccionarImagen(event) {
-        const imagenSeleccionada = document.querySelector('.imagen_comprada.seleccionada');
-        if (imagenSeleccionada) {
-            imagenSeleccionada.classList.remove('seleccionada'); // Desmarcar la imagen seleccionada previamente
-        }
-        event.target.classList.add('seleccionada'); // Marcar la nueva imagen seleccionada
-    }
-
-    // Función para confirmar la selección
-    botonAceptar.addEventListener('click', () => {
-        const imagenSeleccionada = document.querySelector('.imagen_comprada.seleccionada');
-        if (!imagenSeleccionada) {
-            alert('Por favor, selecciona una imagen antes de confirmar.');
-            return;
-        }
-
-        const imagenId = imagenSeleccionada.dataset.imageId;
-        console.log(`Imagen seleccionada con ID: ${imagenId}`);
-        alert(`Has cambiado tu foto de perfil con la imagen ID: ${imagenId}`);
-        ocultarModal();
+            this.classList.add('active'); // Añadir la clase active a la nueva imagen seleccionada
+            foto_actual.src = this.src; // Mostrar temporalmente la nueva imagen seleccionada
+        });
     });
 
-    // Función para cancelar la selección
-    botonCancelar.addEventListener('click', () => {
-        ocultarModal();
-    });
-
-    // Mostrar el modal al hacer clic en "Avatares"
-    botonMirarImagenes.addEventListener('click', () => {
-        mostrarModal();
-        cargarImagenesCompradas();
-    });
-
-    // Ocultar el modal inicialmente
-    ocultarModal();
+    
 });
