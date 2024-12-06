@@ -34,10 +34,12 @@ async function loadChildrens() {
             card.innerHTML = `
                 <h3>${children.name}</h3>
                 <p>${children.nickname}</p>
+
             `;
 
             // Agregar evento al hacer clic en la tarjeta para mostrar detalles
             card.onclick = () => showChildDetails(children);
+
 
             childrenContainer.appendChild(card);
         });
@@ -61,6 +63,46 @@ function showChildDetails(children) {
     // Mostrar el modal de información
     const modal = document.getElementById('childModal');
     modal.style.display = 'block';
+
+    document.getElementById('deleteChildButton').onclick = () => deleteChild(children.id);
+}
+
+// Función para eliminar un niño
+async function deleteChild(childId) {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar a este niño?');
+
+    if (!confirmDelete) {
+        return; // Si no se confirma, salimos de la función
+    }
+
+    try {
+        const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/children/destroy/${childId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error al eliminar niño:', errorText);
+            throw new Error(`Error al eliminar niño: ${errorText}`);
+        }
+
+        // Refresh the list of children after deletion
+        loadChildrens();
+    } catch (error) {
+        console.error('Error al eliminar niño:', error.message);
+        alert('No se pudo eliminar al niño. Por favor, inténtalo de nuevo.');
+    }
 }
 
 // Manejar evento de editar
@@ -82,6 +124,7 @@ document.getElementById('editButton').onclick = function() {
 // Función para guardar cambios
 document.getElementById('saveButton').onclick = async function() {
     const token = localStorage.getItem('token');
+
     if (!token) {
         alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
         return;
@@ -89,7 +132,7 @@ document.getElementById('saveButton').onclick = async function() {
 
     if (!currentChild || !currentChild.id) {
         console.error('No current child selected or ID is missing.');
-        alert('No se pudo guardar, por favor intenta nuevamente.'); 
+        alert('No se pudo guardar, por favor intenta nuevamente.');
         return;
     }
 
@@ -129,11 +172,11 @@ document.getElementById('saveButton').onclick = async function() {
     }
 };
 
+// Función para cerrar el modal de edición
 function closeEditModal() {
     const editModal = document.getElementById('editChildModal');
     editModal.style.display = 'none'; // Oculta el modal
 }
-
 
 // Cerrar modales
 document.getElementById('closeModal').onclick = function() {

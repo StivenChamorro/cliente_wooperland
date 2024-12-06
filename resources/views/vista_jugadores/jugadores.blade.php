@@ -74,7 +74,7 @@
         </button>
 
         <a href="{{route('add_child')}}"><button id="agregar" class="agregar">Agregar Jugador</button></a>
-        <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button>
+        {{-- <button id="eliminarSeleccionadosBtn" class="eliminar" onclick="loadChildrens()">Eliminar Jugador</button> --}}
         <section>
 
     <div id="agregados" style="margin-top: 20px;" class="agregados">
@@ -104,7 +104,7 @@
             <br>
             <div class="botonera">
             <button id="editButton" class="edit-button">Editar</button>
-            <button id="deleteButton" class="delete-button">Eliminar</button>
+            <button id="deleteChildButton" class="delete-button">Eliminar</button>
         </div>
         </div>
     </div>

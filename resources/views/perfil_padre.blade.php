@@ -127,8 +127,7 @@
         </div>
     </div>
         <br>
-        <br>
-        <button id="saveChanges">Guardar Cambios</button>
+        <button id="saveChanges">Guardar</button>
 
     </div>
 </div>

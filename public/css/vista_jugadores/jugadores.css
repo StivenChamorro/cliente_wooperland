@@ -351,8 +351,8 @@ body.dark section {
 }
 .card:hover{
     box-shadow: 0 2px 10px -2px black ;
-    width: 250px;
-    height: 250px;
+    width: 225px;
+    height: 225px;
 }
 body.dark .card {
     background-color: #31312C ;
