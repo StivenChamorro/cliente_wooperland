@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadStoredData();
     setupEventListeners();
-    
 });
 
 function loadStoredData() {
@@ -33,40 +32,50 @@ function loadStoredData() {
 }
 
 function setupEventListeners() {
-    // Handle image upload
     const fileInput = document.getElementById('childFileInput');
     if (fileInput) {
         fileInput.addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const profileImage = document.getElementById('childProfileImage');
-                    if (profileImage) {
-                        profileImage.src = e.target.result;
-                        localStorage.setItem('wooperland_profile_image', e.target.result);
-                    }
-                };
-                reader.readAsDataURL(file);
+                const formData = new FormData();
+                formData.append('avatar', file);
+
+                const childId = localStorage.getItem('selectedChildId');
+                const token = localStorage.getItem('token');
+
+                fetch(`https://backend-production-40d8.up.railway.app/v1/children/update/${childId}`, {
+                    method: 'PUT',
+                    headers: { 'Authorization': `Bearer ${token}` },
+                    body: formData,
+                })
+                    .then(async (response) => {
+                        const data = await response.json();
+                        if (response.ok) {
+                            const profileImage = document.getElementById('childProfileImage');
+                            profileImage.src = data.children.avatar;
+
+                            localStorage.setItem('wooperland_profile_image', data.children.avatar);
+
+                            alert(data.message || 'Imagen actualizada con éxito');
+                        } else {
+                            alert(`Error: ${data.message || 'No se pudo actualizar la imagen'}`);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                        alert('Hubo un problema al subir la imagen.');
+                    });
             }
         });
     }
 
-    // Character count for username
-    const usernameInput = document.getElementById('childUsernameInput');
-    if (usernameInput) {
-        usernameInput.addEventListener('input', function (e) {
-            updateCharacterCount(e.target, 25);
-        });
-    }
+    document.getElementById('childUsernameInput')?.addEventListener('input', function (e) {
+        updateCharacterCount(e.target, 25);
+    });
 
-    // Character count for about section
-    const aboutInput = document.getElementById('childAboutInput');
-    if (aboutInput) {
-        aboutInput.addEventListener('input', function (e) {
-            updateCharacterCount(e.target, 200);
-        });
-    }
+    document.getElementById('childAboutInput')?.addEventListener('input', function (e) {
+        updateCharacterCount(e.target, 200);
+    });
 }
 
 function updateCharacterCount(element, max) {
@@ -74,30 +83,6 @@ function updateCharacterCount(element, max) {
     const characterCountElement = element.parentElement.querySelector('.child-character-count');
     if (characterCountElement) {
         characterCountElement.textContent = `${count}/${max}`;
-    }
-}
-
-function openChildModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.add('show'); // Muestra el modal
-
-        if (modalId === 'childUsernameModal') {
-            const currentUsername = document.querySelector('.child-user-info h2').textContent.trim();
-            document.getElementById('childUsernameInput').value = currentUsername.replace('✏️', '').trim();
-        } else if (modalId === 'childAboutModal') {
-            const aboutText = document.getElementById('childAboutText');
-            if (aboutText) {
-                document.getElementById('childAboutInput').value = aboutText.textContent.trim();
-            }
-        }
-    }
-}
-
-function closeChildModal(modalId) {
-    const modal = document.getElementById(modalId);
-    if (modal) {
-        modal.classList.remove('show'); // Oculta el modal
     }
 }
 
@@ -113,29 +98,31 @@ function saveChildUsername() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify({ nickname: newUsername })
+            body: JSON.stringify({ nickname: newUsername }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (response.ok) { // Validamos si la respuesta fue exitosa
-                // Actualiza en localStorage y DOM con `data.children`
-                localStorage.setItem('wooperland_username', data.children.nickname);
-                const usernameElement = document.querySelector('.child-user-info h2');
-                if (usernameElement) {
-                    usernameElement.textContent = data.children.nickname + ' ';
+            .then(async (response) => {
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('wooperland_username', data.children.nickname);
+                    const usernameElement = document.querySelector('.child-user-info h2');
+                    if (usernameElement) {
+                        usernameElement.textContent = data.children.nickname + ' ';
+                    }
+                    closeChildModal('childUsernameModal');
+                    alert(data.message || 'Nombre de usuario actualizado con éxito');
+                } else {
+                    alert(`Error: ${data.message || 'No se pudo guardar el nombre de usuario'}`);
                 }
-                closeChildModal('childUsernameModal');
-                alert(data.message); // Muestra el mensaje del servidor
-            } else {
-                alert(`Error: ${data.message || 'No se pudo guardar el nombre de usuario'}`);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Hubo un problema al actualizar los datos.');
-        });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Hubo un problema al actualizar los datos.');
+            });
     }
 }
+
+// Similar optimización para `saveChildAbout`...
+
 
 function saveChildAbout() {
     const newAbout = document.getElementById('childAboutInput').value.trim();

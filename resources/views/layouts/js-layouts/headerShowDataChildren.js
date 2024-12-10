@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (response.ok) {
             const data = await response.json();
             document.querySelector('.head-modal-span').textContent = data.children.nickname;
+            document.getElementById('profile-img-children').textContent = data.children.avatar;
         } else {
             console.error('Error al obtener el perfil del niño');
         }

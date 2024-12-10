@@ -1,147 +1,111 @@
-// Organización del código en un objeto para manejar la lógica
-const UserProfileManager = {
-    init: function() {
-        this.loadUserInfo();
-        this.setupPasswordToggle();
-        this.setupChangeButton();
-        this.setupEditButton();
-    },
+let userid = null; // Variable global para almacenar el ID del usuario
 
-    loadUserInfo: function() {
-        const usuarioGuardado = localStorage.getItem('usuario') || '';
-        const contraseñaGuardada = localStorage.getItem('contraseña') || '';
-        const nombres = localStorage.getItem('nombres') || 'John Andres';
-        const apellidos = localStorage.getItem('apellidos') || 'Smith Pines';
-        const fechaNacimiento = localStorage.getItem('fechaNacimiento') || '12/08/1986';
-        const correo = localStorage.getItem('correo') || 'johnsmith@example.com';
+async function loadUser() {
+    const token = localStorage.getItem('token');
 
-        // Cargar datos en los campos correspondientes
-        document.getElementById('nombre').value = usuarioGuardado;
-        document.getElementById('pass').value = contraseñaGuardada;
-        document.getElementById('nombres').innerText = nombres;
-        document.getElementById('apellidos').innerText = apellidos;
-        document.getElementById('fechaNacimiento').innerText = fechaNacimiento;
-        document.getElementById('correo').innerText = correo;
-    },
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
 
-    setupPasswordToggle: function() {
-        const pass = document.getElementById("pass");
-        const icon = document.querySelector(".fa-solid");
-
-        icon.addEventListener("click", () => {
-            if (pass.type === "password") {
-                pass.type = "text";
-                icon.classList.add('fa-eye');
-                icon.classList.remove('fa-eye-low-vision');
-            } else {
-                pass.type = "password";
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-low-vision');
+    try {
+        const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/me', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
         });
-    },
 
-    setupChangeButton: function() {
-        document.getElementById('cambiar').addEventListener('click', () => {
-            // Mostrar botones de guardar y cancelar
-            document.getElementById('guardar').style.display = 'block';
-            document.getElementById('cancelar').style.display = 'block';
-            document.getElementById('cambiar').style.display = 'none'; // Ocultar el botón cambiar
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error al cargar los datos del usuario:', errorText);
+            throw new Error(`Error: ${errorText}`);
+        }
 
-            // Habilitar campos para edición
-            document.getElementById('nombre').removeAttribute('disabled');
-            document.getElementById('pass').removeAttribute('disabled');
-            document.getElementById('clave').classList.add('activo');
+        const user = await response.json();
+        userid = user.id; // Asignar el ID del usuario
+        // Cargar datos en la UI
+        document.getElementById('nombreUsuario').innerText = user.user; // Nombre completo
+        document.getElementById('nombres').innerText = user.name; // Nombres
+        document.getElementById('apellidos').innerText = user.last_name; // Apellidos
+        document.getElementById('fechaNacimiento').innerText = user.birthdate; // Fecha de nacimiento
+        document.getElementById('correo').innerText = user.email; // Correo electrónico
+
+    } catch (error) {
+        console.error('No se pudieron cargar los datos del usuario:', error.message);
+    }
+}
+
+// Función para abrir el modal de edición
+function openEditProfileModal() {
+    document.getElementById('ediUsuario').value = document.getElementById('nombreUsuario').innerText; // Cargar nombre de usuario
+    document.getElementById('editNombre').value = document.getElementById('nombres').innerText; // Cargar nombres
+    document.getElementById('editApellidos').value = document.getElementById('apellidos').innerText; // Cargar apellidos
+    document.getElementById('editFechaNacimiento').value = document.getElementById('fechaNacimiento').innerText; // Cargar fecha de nacimiento
+    document.getElementById('editCorreo').value = document.getElementById('correo').innerText; // Cargar correo
+
+    document.getElementById('editProfileModal').style.display = 'block'; // Mostrar el modal
+}
+
+// Función para guardar cambios
+document.getElementById('saveChanges').onclick = async function() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('No se encontró un token. Por favor, inicia sesión nuevamente.');
+        return;
+    }
+
+    const updatedUser = {
+        user: document.getElementById('ediUsuario').value,
+        name: document.getElementById('editNombre').value,
+        last_name: document.getElementById('editApellidos').value,
+        birthdate: document.getElementById('editFechaNacimiento').value,
+        email: document.getElementById('editCorreo').value,
+    };
+
+    try {
+        const response = await fetch(`https://backend-production-40d8.up.railway.app/v1/user/update/${userid}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedUser),
         });
 
-        document.getElementById('guardar').addEventListener('click', () => {
-            const usuarioNuevo = document.getElementById('nombre').value;
-            const contraseñaNueva = document.getElementById('pass').value;
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error al guardar los cambios:', errorText);
+            throw new Error(`Error: ${errorText}`);
+        }
 
-            // Guardar en localStorage
-            localStorage.setItem('usuario', usuarioNuevo);
-            localStorage.setItem('contraseña', contraseñaNueva);
+        alert('Datos guardados exitosamente');
+        loadUser(); // Recargar los datos de usuario
+        closeEditProfileModal(); // Cerrar el modal
 
-            alert('Información actualizada correctamente.');
-
-            // Ocultar botones de guardar y cancelar
-            document.getElementById('guardar').style.display = 'none';
-            document.getElementById('cancelar').style.display = 'none';
-            document.getElementById('cambiar').style.display = 'block'; // Mostrar el botón cambiar nuevamente
-            document.getElementById('clave').classList.remove('activo');
-
-            // Deshabilitar los campos
-            document.getElementById('nombre').setAttribute('disabled', true);
-            document.getElementById('pass').setAttribute('disabled', true);
-        });
-
-        document.getElementById('cancelar').addEventListener('click', () => {
-            // Volver a cargar los datos originales desde localStorage
-            this.loadUserInfo();
-
-            // Ocultar botones de guardar y cancelar
-            document.getElementById('guardar').style.display = 'none';
-            document.getElementById('cancelar').style.display = 'none';
-            document.getElementById('cambiar').style.display = 'block'; // Mostrar el botón cambiar nuevamente
-
-            // Deshabilitar los campos
-            document.getElementById('nombre').setAttribute('disabled', true);
-            document.getElementById('pass').setAttribute('disabled', true);
-            document.getElementById('clave').classList.remove('activo');
-        });
-    },
-
-    setupEditButton: function() {
-        document.getElementById('editar').addEventListener('click', () => {
-            const informacion = document.getElementById('informacion');
-            const elementosEditable = document.querySelectorAll('.editable');
-            const lapices = document.querySelectorAll('.lapiz');
-
-            // Alternar la clase activa
-            informacion.classList.toggle('activo');
-
-            if (informacion.classList.contains('activo')) {
-                elementosEditable.forEach((elemento, index) => {
-                    const contenidoActual = elemento.innerText;
-                    elemento.innerHTML = `<input type="text" value="${contenidoActual}" class="inputEditar" />`;
-                    lapices[index].style.display = 'block'; // Mostrar lápiz
-                });
-
-                document.getElementById('editar').innerText = 'Guardar';
-
-            } else {
-                const inputs = document.querySelectorAll('.inputEditar');
-                inputs.forEach((input, index) => {
-                    const parent = input.parentElement;
-                    const nuevaInfo = input.value; // Obtenemos el nuevo valor
-                    parent.innerText = nuevaInfo; // Guardamos el nuevo valor
-
-                    // Guardamos en localStorage
-                    switch (parent.id) {
-                        case 'nombres':
-                            localStorage.setItem('nombres', nuevaInfo);
-                            break;
-                        case 'apellidos':
-                            localStorage.setItem('apellidos', nuevaInfo);
-                            break;
-                        case 'fechaNacimiento':
-                            localStorage.setItem('fechaNacimiento', nuevaInfo);
-                            break;
-                        case 'correo':
-                            localStorage.setItem('correo', nuevaInfo);
-                            break;
-                    }
-
-                    lapices[index].style.display = 'none'; // Ocultar lápiz después de guardar
-                });
-
-                document.getElementById('editar').innerText = 'Editar';
-            }
-        });
+    } catch (error) {
+        console.error('No se pudieron guardar los cambios:', error.message);
+        alert('No se pudieron guardar los cambios, por favor inténtalo de nuevo.');
     }
 };
 
-// Inicializar la aplicación al cargar el DOM
-document.addEventListener('DOMContentLoaded', () => {
-    UserProfileManager.init();
-});
+// Función para cerrar el modal de edición
+function closeEditProfileModal() {
+    document.getElementById('editProfileModal').style.display = 'none'; // Ocultar el modal
+}
+
+// Evento para abrir el modal al hacer clic en el botón "Editar"
+document.getElementById('cambiar').onclick = openEditProfileModal;
+
+// Cierra el modal cuando se hace clic fuera del contenido del modal
+window.onclick = function(event) {
+    const modal = document.getElementById('editProfileModal');
+    if (event.target === modal) {
+        closeEditProfileModal();
+    }
+};
+
+// Cargar información del usuario al cargar la página
+document.addEventListener('DOMContentLoaded', loadUser);

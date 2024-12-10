@@ -16,7 +16,7 @@
             <div class="child-profile-content">
                 <div class="child-profile-card">
                     <div class="child-profile-picture">
-                        <img id="childProfileImage" src="{{ asset('img/perfil_padre/camara.png') }}" alt="Profile Picture">
+                        <img id="childProfileImage" src="" alt="Profile Picture">
                         <div class="child-edit-icon" onclick="document.getElementById('childFileInput').click()">
                             📷
                         </div>
