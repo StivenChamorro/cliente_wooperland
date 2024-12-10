@@ -398,8 +398,17 @@ body.dark .informacion hr{
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.4);
     }
+    body.dark .modal-content {
+        background-color: #262726; ;
+    }
 
-    .modal-content {
+    body.dark .contenido, body.dark .contenido input{
+        background-color: #31312C;
+        color: white;
+
+    }
+
+    .modal-content  {
         background-color:rgb(241, 199, 91) ;
         border-radius: 40px;
         margin: 10% auto;
