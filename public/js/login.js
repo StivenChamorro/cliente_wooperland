@@ -10,6 +10,7 @@ async function login() {
     }
 
     try {
+        // Enviar solicitud de inicio de sesión
         const response = await fetch('https://backend-production-40d8.up.railway.app/v1/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -39,6 +40,28 @@ async function login() {
 
             if (userResponse.ok) {
                 const userRole = userData.role;
+
+                // Obtener el primer niño
+                const firstChildResponse = await fetch('https://backend-production-40d8.up.railway.app/v1/user/first-child', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                const firstChildData = await firstChildResponse.json();
+                console.log('Primer niño:', firstChildData);
+
+                if (firstChildResponse.ok && firstChildData.child && firstChildData.child.id) {
+                    // Guardar el ID del niño en localStorage
+                    localStorage.setItem('selectedChildId', firstChildData.child.id);
+                    console.log('ID del niño guardado en localStorage:', firstChildData.child.id);
+                } else {
+                    console.error('Error al obtener el primer niño.');
+                    alert('No se pudo obtener el primer perfil de niño.');
+                    return;
+                }
 
                 if (userRole === 'admin') {
                     // Si el rol es admin, redirigir a /dashboard
