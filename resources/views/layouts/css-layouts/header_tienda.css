@@ -8,7 +8,7 @@ body {
     position: relative;
     background-color: #B43654;
     width: auto;
-    height: auto;
+    height: auto;   
     min-height: 80px;
     width: 100%;
     height: 80px;
@@ -153,24 +153,39 @@ a {
 
 /* ESTILOS IMAGENES AVATARES */
 
+/* Contenedor del modal */
 .tienda_avatares .contenedor_cambiar_imagen {
     position: absolute;
-    font-family: Happy Monkey;
+    font-family: 'Happy Monkey', sans-serif;
     width: 400px;
-    height: 500px;
+    height: 400px;
     margin-top: 5%;
-    display: block;
     background: linear-gradient(180deg, #FFD166 0%, #F78D6B 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     z-index: 10;
-    max-height: 0;
+    max-height: 0; /* Oculto inicialmente */
     overflow: hidden;
-    transition: max-height 0.8s;
+    transition: max-height 0.8s ease-in-out, opacity 0.8s ease-in-out; /* Animación */
+    opacity: 0; /* Invisible inicialmente */
+}
+
+/* Cuando está visible */
+.tienda_avatares .contenedor_cambiar_imagen.activo {
+    max-height: 500px; /* Altura máxima para desplegar */
+    opacity: 1; /* Visible */
+}
+
+
+.imagen_comprada{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    transition: .3s;
 }
 
 .contenedor_cambiar_imagen.open-menu {
-    max-height: 1000px;
+    max-height: 1000px
 }
 
 .contenedor_cambiar_imagen .titulo_cambiar_imagen {
@@ -183,13 +198,6 @@ a {
     height: auto;
     display: inline;
     margin-left: 35%;
-
-}
-
-.active {
-    opacity: 1 !important;
-    box-shadow: 0 5px 5px rgb(248, 251, 247);
-    border-radius: 50%;
 }
 
 .foto_disponible {
@@ -199,168 +207,37 @@ a {
     transition: .3s;
 }
 
-#img_perfil_actual {
-    width: 55px;
-    height: auto;
-}
-
 .catalogo_fotos {
     display: flex;
     flex-wrap: wrap;
-    background-color: #B43654;
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    gap: 10px; /* Espaciado entre imágenes */
     width: 90%;
     height: 270px;
     margin-left: 16px;
-    padding: 4px;
+    padding: 10px;
     border-radius: 20px;
+    overflow: scroll; /* Oculta el scroll */
+    scrollbar-width: none; /* Elimina barra de desplazamiento en Firefox */
+}
+
+/* Estilo de las imágenes dentro del contenedor */
+.catalogo_fotos img {
+    width: 80px; /* Ajusta el tamaño de las imágenes */
+    height: 80px;
+    object-fit: cover; /* Asegura que la imagen se ajuste al marco sin deformarse */
+    border-radius: 10px; /* Bordes redondeados para las imágenes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Añade sombra para resaltar */
+    transition: transform 0.2s ease; /* Animación suave al pasar el mouse */
+}
+
+/* Efecto al pasar el mouse sobre las imágenes */
+.catalogo_fotos img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
 }
 
 .foto_disponible:hover {
     opacity: 0.1;
-}
-
-.contenedor_cambiar_imagen .boton_cancelar {
-    margin-top: 5%;
-    margin-left: auto;
-    width: 40%;
-    height: auto;
-    background: #EF476F;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    color: white;
-    font-family: Happy Monkey;
-    font-size: larger;
-    cursor: pointer;
-}
-
-.contenedor_cambiar_imagen .boton_aceptar {
-    margin-left: 10%;
-    width: 40%;
-    height: auto;
-    background: #EF476F;
-    border: none;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    color: white;
-    font-family: Happy Monkey;
-    font-size: larger;
-    cursor: pointer;
-}
-
-.boton_aceptar a,
-.boton_cancelar a {
-    text-decoration: none;
-    color: white;
-}
-
-/* DESPLEGABLE PERFIL HEADER */
-
-.contenedor_desplegable_header .menu_perfil_desplegable {
-    position: absolute;
-    top: 130%;
-    left: -80%;
-    transform: translateX(-30%);
-    width: 300px;
-    height: 500%;
-    border-radius: 10%;
-    font-family: 'Happy Monkey';
-    color: white;
-    background-color: #B43654;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.8s;
-    z-index: 10;
-}
-
-.menu_perfil_desplegable.open-menu {
-    max-height: 600px;
-    /* Cuando está abierto */
-}
-
-/* Sección de nombre de usuario */
-.nombre_usuario_desplegable {
-    display: flex;
-    align-items: center;
-    padding: 20px;
-}
-
-.nombre_usuario_desplegable .img_perfil_desplegable {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 15px;
-    margin-top: 0;
-}
-
-.nombre_usuario_desplegable .texto_nombre_usuario_desplegable {
-    font-size: 25px;
-    font-weight: 100;
-}
-
-/* Barras de separación */
-.barra_1_desplegable {
-    width: 100%;
-    height: 1px;
-    background-color: white;
-    margin: -15px 0;
-}
-
-.barra_2_desplegable {
-    width: 100%;
-    height: 1px;
-    background-color: white;
-    margin: 0px 0;
-    margin-top: -11%;
-}
-
-/* Lista de opciones de perfil */
-.container_perfil_desplegable_li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 5px 15px;
-}
-
-.container_perfil_desplegable_li ol {
-    list-style: none;
-    padding: 0;
-}
-
-.container_perfil_desplegable_li li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.container_perfil_desplegable_li img {
-    width: 40px;
-    margin-right: 10px;
-}
-
-.container_perfil_desplegable_li a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-
-/* Sección de cerrar sesión */
-.cerrar_sesion_desplegable {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 20px;
-}
-
-.cerrar_sesion_desplegable .img_cerrar_sesion_despleglable {
-    width: 35px;
-    margin-right: 10px;
-}
-
-.cerrar_sesion_desplegable .texto_cerrar_sesion_desplegable {
-    font-size: 16px;
-    font-weight: 100;
-    margin-top: auto;
 }
 
 @media screen and (max-width: 780px) and (min-width: 468px) {
