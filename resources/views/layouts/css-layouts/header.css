@@ -422,7 +422,7 @@ height: auto;
 }
 
 .contenedor_cambiar_imagen .boton_cancelar {
-  margin-top: auto;
+  margin-top: 10px;
   margin-left: auto;
   width: 40%;
   height: auto;
