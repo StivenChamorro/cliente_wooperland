@@ -9,15 +9,7 @@ function loadStoredData() {
     const storedProfileImage = localStorage.getItem('wooperland_profile_image');
 
     if (storedUsername) {
-        const usernameElement = document.querySelector('.child-user-info h2');
-        if (usernameElement) {
-            usernameElement.textContent = storedUsername + ' ';
-            const editButton = document.createElement('button');
-            editButton.className = 'child-edit-button';
-            editButton.innerHTML = '✏️';
-            editButton.onclick = () => openChildModal('childUsernameModal');
-            usernameElement.appendChild(editButton);
-        }
+        updateNicknameElement(storedUsername);
     }
 
     const aboutText = document.getElementById('childAboutText');
@@ -104,10 +96,7 @@ function saveChildUsername() {
                 const data = await response.json();
                 if (response.ok) {
                     localStorage.setItem('wooperland_username', data.children.nickname);
-                    const usernameElement = document.querySelector('.child-user-info h2');
-                    if (usernameElement) {
-                        usernameElement.textContent = data.children.nickname + ' ';
-                    }
+                    updateNicknameElement(data.children.nickname);
                     closeChildModal('childUsernameModal');
                     alert(data.message || 'Nombre de usuario actualizado con éxito');
                 } else {
@@ -121,8 +110,26 @@ function saveChildUsername() {
     }
 }
 
-// Similar optimización para `saveChildAbout`...
+function updateNicknameElement(nickname) {
+    const usernameElement = document.querySelector('.child-user-info h2');
 
+    if (usernameElement) {
+        // Eliminar contenido previo (si existe)
+        usernameElement.textContent = '';
+
+        // Agregar el nickname
+        usernameElement.textContent = nickname + '';
+
+        // Crear el botón de edición
+        const editButton = document.createElement('button');
+        editButton.className = 'child-edit-button';
+        editButton.innerHTML = '✏️';
+        editButton.onclick = () => openChildModal('childUsernameModal');
+
+        // Agregar el botón al elemento
+        usernameElement.appendChild(editButton);
+    }
+}
 
 function saveChildAbout() {
     const newAbout = document.getElementById('childAboutInput').value.trim();
@@ -146,16 +153,11 @@ function saveChildAbout() {
             const data = await response.json();
 
             if (response.ok) {
-                // Actualizar en localStorage
                 localStorage.setItem('wooperland_about', newAbout);
-
-                // Actualizar el texto en la vista
                 const aboutText = document.getElementById('childAboutText');
                 if (aboutText) {
                     aboutText.textContent = newAbout;
                 }
-
-                // Cerrar el modal y notificar éxito
                 closeChildModal('childAboutModal');
                 alert(data.message || 'Descripción actualizada con éxito');
             } else {
@@ -168,5 +170,16 @@ function saveChildAbout() {
         });
 }
 
+function openChildModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+    }
+}
 
-
+function closeChildModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
