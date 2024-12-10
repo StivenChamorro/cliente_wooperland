@@ -113,7 +113,7 @@
         <div class="modal-content">
             <span class="close" id="closeEditModal">&times;</span>
             <div class="modal-header">
-                <h2>Editar Información del Niño</h2>
+                <h2>Editar Información Niño</h2>
             </div>
             <div class="information">
                 <div class="columna1">

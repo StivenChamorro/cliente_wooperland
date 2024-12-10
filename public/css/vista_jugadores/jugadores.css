@@ -523,6 +523,7 @@ body.ok .registro{
     height: 600px;
     z-index: 8;
 }
+
 .modal-content .information{
     display: flex; /* Mantenemos flex para las columnas */
     width: 90%; /* O usar 340px si deseas mantener el ancho */
@@ -570,6 +571,20 @@ body.ok .registro{
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+body.dark .modal-content {
+    background-color: #262726; ;
+}
+
+body.dark .columna1, body.dark .columna2 , body.dark .information{
+    background-color: #31312C;
+}
+
+body.dark .contenido, body.dark .columna1 input, body.dark .columna2 input{
+    background-color: #31312C;
+    color: white;
+
 }
 
 .card .icono-basura {
