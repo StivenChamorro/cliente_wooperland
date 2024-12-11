@@ -49,14 +49,14 @@
                 </div>
             </div>
             <button class="button-profile">
-                <img src="{{ asset('imgs/imagenes_home/image.svg') }}" alt="" class="profile-img" id="img_perfil_actual">
+                <img src="" alt="" class="profile-img" id="img_perfil_actual">
                 <span><img src="{{ asset('imgs/imagenes_home/arrow.svg') }}" alt="" class="arrow-profile"></span>
             </button> 
 
             <section class="modal">
                 <div class="modal-container" id="profileModal">
                     <div class="head-modal">
-                        <img src="{{ asset('imgs/imagenes_home/profile.svg') }}" alt="" class="img-modal" id="foto_perfil">
+                        <img src="" alt="Imagen de perfil" class="img-modal" id="foto_perfil">
                         <span class="head-modal-span"></span>
                     </div>
                     <div class="modal-options">
